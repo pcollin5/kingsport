@@ -1,0 +1,258 @@
+---
+title: "Demographic, Social, Economic, and Housing Characteristics for Kingsport, TN"
+author: "Paul Collins"
+date: '`r format(Sys.Date(), "%m/%d/%Y")`'
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+bibliography: bibli.bibtex 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Summary
+
+This report highlights and describes selected socal , social, economic, and housing characteristics of Sullivan County, Tennessee, with special focus on the Kingsport City, IF I CAN GET THE CENCUS TRACTS THAT IT ENCOMPASSES, using data from the U.S. Census Bureau's American Community Survey data collected between 2013 and 2018. The data included is given in both the county wide levels for Sullivan and Hawkins Counties, as well as individual census tracts for detailed mapping and location data. In this report, special focus is given on 
+
+
+
+```{r load packages, include=FALSE}
+packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "gganimate", "report")
+
+lapply(packages, library, character.only = TRUE)
+
+
+```
+
+```{r load data, echo = FALSE, include = FALSE}
+dp_table_variables <- load_variables(2018, "acs5/profile", cache = TRUE)
+
+
+new_names <- c("variable", "label", "concept")
+
+names(dp_table_variables) <- new_names
+
+Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Sullivan_dp04_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Sullivan_dp05_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+Hawkins_dp02_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Hawkins_dp03_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Hawkins_dp04_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Hawkins_dp05_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+Sullivan_dp02_18 <- inner_join(Sullivan_dp02_2018, dp_table_variables, by = "variable")
+
+Sullivan_dp03_18 <- inner_join(Sullivan_dp03_2018, dp_table_variables, by = "variable")
+
+Sullivan_dp04_18 <- inner_join(Sullivan_dp04_2018, dp_table_variables, by = "variable")
+
+Sullivan_dp05_18 <- inner_join(Sullivan_dp05_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp02_18 <- inner_join(Hawkins_dp02_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp03_18 <- inner_join(Hawkins_dp03_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp04_18 <- inner_join(Hawkins_dp04_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp05_18 <- inner_join(Hawkins_dp05_2018, dp_table_variables, by = "variable")
+
+
+Sullivan_data_profile <- rbind(Sullivan_dp02_18, Sullivan_dp03_18, Sullivan_dp04_18, Sullivan_dp05_18)
+
+Hawkins_data_profile <- rbind(Hawkins_dp02_18, Hawkins_dp03_18, Hawkins_dp04_18, Hawkins_dp05_18)
+
+combined_tract_dp <- rbind(Sullivan_data_profile, Hawkins_data_profile)
+
+Sullivan_County_dp02_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp03_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp04_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp05_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp02_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp03_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp04_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp05_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp02_18 <- inner_join(Sullivan_County_dp02_2018, dp_table_variables, by = "variable")
+
+Sullivan_County_dp03_18 <- inner_join(Sullivan_County_dp03_2018, dp_table_variables, by = "variable")
+
+Sullivan_County_dp04_18 <- inner_join(Sullivan_County_dp04_2018, dp_table_variables, by = "variable")
+
+Sullivan_County_dp05_18 <- inner_join(Sullivan_County_dp05_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp02_18 <- inner_join(Hawkins_County_dp02_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp03_18 <- inner_join(Hawkins_County_dp03_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp04_18 <- inner_join(Hawkins_County_dp04_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp05_18 <- inner_join(Hawkins_County_dp05_2018, dp_table_variables, by = "variable")
+
+
+Sullivan_County_data_profile <- rbind(Sullivan_County_dp02_18, Sullivan_County_dp03_18, Sullivan_County_dp04_18, Sullivan_County_dp05_18)
+
+Hawkins_County_data_profile <- rbind(Hawkins_County_dp02_18, Hawkins_County_dp03_18, Hawkins_County_dp04_18, Hawkins_County_dp05_18)
+
+combined_county_dp <- rbind(Sullivan_County_data_profile, Hawkins_County_data_profile)
+
+```
+## Age
+
+Sullivan County had an estimated total population of 156,734 individuals, with the median age being 44.9 years. 80.4% of the population is above 18 years of age.  
+
+```{r Age Data Table, echo = FALSE}
+
+
+
+
+```
+
+```{r median age census tract map, echo = FALSE}
+median_age_tract <- combined_tract_dp %>%
+  filter(variable == "DP05_0018") 
+  
+
+median_age_county <- combined_county_dp %>%
+  filter(variable == "DP05_0018")
+
+median_age_tract_map <- mapview(median_age_tract, zcol = "estimate", layer.name = "Median Age for Census Tracts")
+
+
+###the county overview doesn't really need a legend
+median_age_county_map <- mapview(median_age_county, zcol = "estimate", layer.name = "Median Age County", legend = FALSE)
+
+median_age_map <-  median_age_county_map + median_age_tract_map
+
+median_age_map
+
+
+```
+
+
+
+```{r data table test for tracts, echo = FALSE}
+
+age_vars <- c("DP05_0001",  "DP05_0005",  "DP05_0006",  "DP05_0007",  "DP05_0008",  "DP05_0009",
+               "DP05_0010",  "DP05_0011",  "DP05_0012",  "DP05_0013",  "DP05_0014", 
+              "DP05_0015",  "DP05_0016",  "DP05_0017",  "DP05_0018",  "DP05_0021",  "DP05_0024"
+              )
+
+age_vars_percent <- c("DP05_0001P", "DP05_0005P",  "DP05_0006P", "DP05_0007P",  "DP05_0008P", 
+              "DP05_0009P",  "DP05_0010P",  "DP05_0011P", "DP05_0012P",  "DP05_0013P",  "DP05_0014P",
+               "DP05_0015P", "DP05_0016P",  "DP05_0017P",  "DP05_0018P",  "DP05_0021P", 
+              "DP05_0024P")
+
+sull_col_dt_names_reg <- c("Total Population",  
+                      "Age Under 5 Years", "Age 5-9 Years", "Age 10-14 Years",  "Age 15-19 Years", 
+                       "Age 20-24 Years",  "Age 25-34 Years",  "Age 35-44 Years",  
+                       "Age 45-54 Years",  "Age 55-59 Years",  "Age 60-64 Years", 
+                       "Age 65-74 Years",  "Age 75-84 Years",  "Age 85+ Years",  
+                       "Median Age", "Age 18+ Years",  "Age 65+ Years")
+
+sull_col_dt_names_percent <- c("Total Population Percentage","Age Under 5 Years Percentage","Age 5-9 Years Percentage", "Age 10-14 Years Percentage","Age 15-19 Years Percentage", "Age 20-24 Years Percentage",
+                               "Age 25-34 Years Percentage", "Age 35-44 Years Percentage", "Age 45-54 Years Percentage", "Age 55-59 Years Percentage", "Age 60-64 Years Percentage", "Age 65-74 Years Percentage",
+                               "Age 75-84 Years Percentage","Age 85+ Years Percentage","Median Age Percentage", "Age 18+ Years Percentage", "Age 65+ Years Percentage" )
+
+
+
+dt_age_tract_counts <- combined_tract_dp %>%
+  filter(variable %in% age_vars)
+
+dt_age_county_counts <- combined_county_dp %>%
+  filter(variable %in% age_vars)
+
+dt_age_tract_percent <- combined_tract_dp %>%
+  filter(variable %in% age_vars_percent)
+
+dt_age_county_percent <- combined_county_dp %>%
+  filter(variable %in% age_vars_percent)
+
+
+
+age_tract_df <- cbind(sull_col_dt_names_reg, dt_age_tract_counts, dt_age_tract_percent)
+
+age_tract_dt <- age_tract_df[,c(1,3,5,6,12,13)]
+
+age_dt <- st_set_geometry(age_tract_dt, NULL)
+
+age_dt_names <- c("Age Group", "Census Tract", "Count Estimate", "Count Margin of Error", "Percent of Total Population", "Percent Margin of Error")
+
+names(age_dt) <- age_dt_names
+
+age_data_table <- datatable(age_dt)
+
+
+```
+
+```{r data table for counties, echo = FALSE}
+
+age_vars <- c("DP05_0001",  "DP05_0005",  "DP05_0006",  "DP05_0007",  "DP05_0008",  "DP05_0009",
+               "DP05_0010",  "DP05_0011",  "DP05_0012",  "DP05_0013",  "DP05_0014", 
+              "DP05_0015",  "DP05_0016",  "DP05_0017",  "DP05_0018",  "DP05_0021",  "DP05_0024"
+              )
+
+age_vars_percent <- c("DP05_0001P", "DP05_0005P",  "DP05_0006P", "DP05_0007P",  "DP05_0008P", 
+              "DP05_0009P",  "DP05_0010P",  "DP05_0011P", "DP05_0012P",  "DP05_0013P",  "DP05_0014P",
+               "DP05_0015P", "DP05_0016P",  "DP05_0017P",  "DP05_0018P",  "DP05_0021P", 
+              "DP05_0024P")
+
+sull_col_dt_names_reg <- c("Total Population",  
+                      "Age Under 5 Years", "Age 5-9 Years", "Age 10-14 Years",  "Age 15-19 Years", 
+                       "Age 20-24 Years",  "Age 25-34 Years",  "Age 35-44 Years",  
+                       "Age 45-54 Years",  "Age 55-59 Years",  "Age 60-64 Years", 
+                       "Age 65-74 Years",  "Age 75-84 Years",  "Age 85+ Years",  
+                       "Median Age", "Age 18+ Years",  "Age 65+ Years")
+
+sull_col_dt_names_percent <- c("Total Population Percentage","Age Under 5 Years Percentage","Age 5-9 Years Percentage", "Age 10-14 Years Percentage","Age 15-19 Years Percentage", "Age 20-24 Years Percentage",
+                               "Age 25-34 Years Percentage", "Age 35-44 Years Percentage", "Age 45-54 Years Percentage", "Age 55-59 Years Percentage", "Age 60-64 Years Percentage", "Age 65-74 Years Percentage",
+                               "Age 75-84 Years Percentage","Age 85+ Years Percentage","Median Age Percentage", "Age 18+ Years Percentage", "Age 65+ Years Percentage" )
+
+
+###need to make the tables for the counties, and like top 10 or something for the tracts###
+
+dt_age_county_counts <- combined_county_dp %>%
+  filter(variable %in% age_vars)
+
+dt_age_county_percent <- combined_county_dp %>%
+  filter(variable %in% age_vars_percent)
+
+age_county_df <- cbind(sull_col_dt_names_reg, dt_age_county_counts, dt_age_county_percent)
+
+age_county_dt <- age_county_df[,c(1,3,5,6,12,13)]
+
+age_county_dt <- st_set_geometry(age_county_dt, NULL)
+
+age_dt_county_names <- c("Age Group", "County", "Count Estimate", "Count Margin of Error", "Percent of Total Population", "Percent Margin of Error")
+
+names(age_county_dt) <- age_dt_county_names
+
+age_county_data_table <- datatable(age_county_dt, caption = "Table 1: Sullivan and Hawkins County, Tennessee Age Groups")
+
+age_county_data_table
+
+
+
+```
+
+## References 
+
+---
+nocite: '@*'
+...
