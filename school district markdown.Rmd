@@ -1,22 +1,42 @@
-####
+---
+title: "Demographic, Social, Economic, and Housing Characteristics for Kingsport, TN"
+author: "Paul Collins"
+date: '`r format(Sys.Date(), "%m/%d/%Y")`'
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+bibliography: bibliography.bibtex
+---
 
-#load packages
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-  packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "gganimate", "report")
- 
-  lapply(packages, library, character.only = TRUE)
+```{r load packages, include=FALSE}
+packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "gganimate", "report")
 
-#get variables names, make pretty
+lapply(packages, library, character.only = TRUE)
 
+
+```
+
+```{r load data, include = FALSE, echo = FALSE}
+  
   dp_table_variables_18 <- load_variables(2018, "acs5/profile", cache = TRUE)
 
   new_names_18 <- c("variable", "label", "concept")
 
   names(dp_table_variables_18) <- new_names_18
+ 
+  ##may use 13 sometime for comparison so go ahead and load it in
+  
+  dp_table_variables_13 <- load_variables(2013, "acs5/profile", cache = TRUE)
+  
+  new_names_13 <- c("variable", "label", "concept")
+  
+  names(dp_table_variables_13) <- new_names_13
 
-  
-#load the data 
-  
+    
   Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
   
   Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
@@ -127,7 +147,12 @@
   kpt_data_profile_18 <- tn_data_profile_18 %>%
     filter(NAME == "Kingsport City School District, Tennessee")
 
-#Demographics Section
+```
+
+#Age Demographics
+
+
+```{r data for data tables, echo = FALSE}
   
   age_vars_18 <- c("DP05_0001",  "DP05_0005",  "DP05_0006",  "DP05_0007",  "DP05_0008",  "DP05_0009",
                 "DP05_0010",  "DP05_0011",  "DP05_0012",  "DP05_0013",  "DP05_0014", 
@@ -168,11 +193,7 @@
   dt_age_kpt_percent_18 <- kpt_data_profile_18 %>%
     filter(variable %in% age_vars_percent_18)
   
-#making data tables for the age variables
-  
-  #census tracts data table
-  
-  age_tract_df <- cbind(age_col_dt_names_reg, dt_age_tract_counts, dt_age_tract_percent)
+    age_tract_df <- cbind(age_col_dt_names_reg, dt_age_tract_counts, dt_age_tract_percent)
   
   age_tract_dt <- age_tract_df[,c(1,3,5,6,12,13)]
   
@@ -184,15 +205,14 @@
   
   age_data_table <- datatable(age_dt)  
 
-  age_data_table
   
   #county data table
   
   dt_age_county_counts <- combined_county_dp %>%
-    filter(variable %in% age_vars)
+    filter(variable %in% age_vars_18)
   
   dt_age_county_percent <- combined_county_dp %>%
-    filter(variable %in% age_vars_percent)
+    filter(variable %in% age_vars_percent_18)
   
   age_county_df <- cbind(age_col_dt_names_reg, dt_age_county_counts, dt_age_county_percent)
   
@@ -204,11 +224,11 @@
   
   names(age_county_dt) <- age_dt_county_names
   
-  age_county_data_table <- datatable(age_county_dt, caption = "Table 1: Sullivan and Hawkins County, Tennessee Age Groups")
+  age_county_data_table <- datatable(age_county_dt, caption = "Table 1: Sullivan and Hawkins County, Tennessee Age Groups, 2018")
   
   age_county_data_table
   
-  #kingsport city data table
+  #kpt data table
   
   dt_age_kpt_counts_18 <- kpt_data_profile_18 %>%
     filter(variable %in% age_vars_18)
@@ -226,75 +246,44 @@
   
   names(age_kpt_dt_18) <- age_dt_kpt_names  
 
-  age_kpt_data_table_18 <- datatable(age_kpt_dt_18, caption = "Table 2: Kingsport, Tennessee Age Groups, 2018")  
+  age_kpt_data_table_18 <- datatable(age_kpt_dt_18, caption = "Table 2: Kingsport, Tennessee Age Groups, 2018")
+  
+  age_kpt_data_table_18
 
-  age_kpt_data_table_18  
-  
-  #I'm curious to see how its changed since 2013
-  
-  dp_table_variables_13 <- load_variables(2013, "acs5/profile", cache = TRUE)
-  
-  new_names_13 <- c("variable", "label", "concept")
-  
-  names(dp_table_variables_13) <- new_names_13
-  
-  kpt_dp02_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP02", year = 2013)
-  
-  kpt_dp03_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP03", year = 2013)
-  
-  kpt_dp04_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP04", year = 2013)
-  
-  kpt_dp05_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP05", year = 2013)
-  
-  kptcity_dp02_13 <- inner_join(kpt_dp02_2013, dp_table_variables_13, by = "variable")
-  
-  kptcity_dp03_13 <- inner_join(kpt_dp03_2013, dp_table_variables_13, by = "variable")
-  
-  kptcity_dp04_13 <- inner_join(kpt_dp04_2013, dp_table_variables_13, by = "variable")
-  
-  kptcity_dp05_13 <- inner_join(kpt_dp05_2013, dp_table_variables_13, by = "variable")
-  
-  tn_data_profile_13 <- rbind(kptcity_dp02_13, kptcity_dp03_13, kptcity_dp04_13, kptcity_dp05_13)
-  
-  districts <- school_districts(state = "TN", type = "unified", refresh = TRUE)
-  
-  districts <- st_as_sf(districts)
-  
-  kpt_13 <- districts %>%
-    filter(NAME == "Kingsport City School District")
-  
-  kpt_data_profile_13 <- tn_data_profile_13 %>%
-    filter(NAME == "Kingsport City School District, Tennessee")
-  
-  ###2013 has different variable numbers starting at DP05_0004 because sex ratio is gone
-  
-  age_vars_13 <- c("DP05_0001",  "DP05_0004",  "DP05_0005",  "DP05_0006",  "DP05_0007",  "DP05_0008",
-                   "DP05_0009",  "DP05_0010",  "DP05_0011",  "DP05_0012",  "DP05_0013", 
-                   "DP05_0014",  "DP05_0015",  "DP05_0016",  "DP05_0017",  "DP05_0018",  "DP05_0021")
-  
-  age_vars_percent_13 <- c("DP05_0001P", "DP05_0004P",  "DP05_0005P", "DP05_0006P",  "DP05_0007P", 
-                           "DP05_0008P",  "DP05_0009P",  "DP05_0010P", "DP05_0011P",  "DP05_0012P",  "DP05_0013P",
-                           "DP05_0014P", "DP05_0015P",  "DP05_0016P",  "DP05_0017P",  "DP05_0018P", 
-                           "DP05_0021P")
-  
-  
-  dt_age_kpt_counts_13 <- kpt_data_profile_13 %>%
-    filter(variable %in% age_vars_13)
-  
-  dt_age_kpt_percent_13 <- kpt_data_profile_13 %>%
-    filter(variable %in% age_vars_percent_13)
-  
-  age_kpt_df_13 <- cbind(age_col_dt_names_reg, dt_age_kpt_counts_13, dt_age_kpt_percent_13)
-  
-  age_kpt_dt_13 <- age_kpt_df_13[,c(1,5,6,12,13)]  
-  
-  #age_kpt_dt <- st_set_geometry(age_kpt_dt, NULL)  DONT NEED THIS BECAUSE THE SCHOOL DISTRICT DATA PULL DOESN"T SUPPORT LOCAITON DIRECTLY YET
-  
-  age_dt_kpt_names <- c("Age Group", "Count Estimate", "Count Margin of Error", "Percent of Total Population", "Percent Margin of Error")
-  
-  names(age_kpt_dt_13) <- age_dt_kpt_names  
-  
-  age_kpt_data_table_13 <- datatable(age_kpt_dt_13, caption = "Table 3: Kingsport, Tennessee Age Groups 2013")  
-  
-  age_kpt_data_table_13 	
-  
+```
+
+
+```{r median age map}
+
+
+kpt_median_age <- kpt_data_profile_18 %>%
+  filter(variable == "DP05_0018")
+
+
+kpt_joined <- full_join(kpt, kpt_median_age, by = "GEOID")
+
+median_age_county <- combined_county_dp %>%
+  filter(variable == "DP05_0018")
+
+median_age_tract <- combined_tract_dp %>%
+  filter(variable == "DP05_0018")
+
+mapview(kpt_joined, popup = popupTable(kpt_joined,
+                                      zcol = c("estimate",
+                                               "moe",
+                                               "NAME.x")))
+
+
+mapview(list(median_age_county, median_age_tract, kpt_joined),
+        zcol = list("estimate", "estimate", NULL),
+        legend = list(FALSE, TRUE, FALSE),
+        popup = list(popupTable("estimate", "moe", "NAME"),
+                     popupTable("estimate", "moe", "NAME"),
+                     popupTable("estimate", "moe", "NAME.x")))
+
+```
+## References 
+
+---
+nocite: '@*'
+...
