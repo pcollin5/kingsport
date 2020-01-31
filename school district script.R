@@ -17,21 +17,21 @@
   
 #load the data 
   
-  Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+  Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+  Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Sullivan_dp04_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+  Sullivan_dp04_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Sullivan_dp05_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+  Sullivan_dp05_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_dp02_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+  Hawkins_dp02_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_dp03_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+  Hawkins_dp03_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_dp04_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+  Hawkins_dp04_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_dp05_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+  Hawkins_dp05_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
   
   Sullivan_dp02_18 <- inner_join(Sullivan_dp02_2018, dp_table_variables_18, by = "variable")
   
@@ -54,23 +54,23 @@
   
   Hawkins_data_profile <- rbind(Hawkins_dp02_18, Hawkins_dp03_18, Hawkins_dp04_18, Hawkins_dp05_18)
   
-  combined_tract_dp <- rbind(Sullivan_data_profile, Hawkins_data_profile)
+  combined_tract_dp_18 <- rbind(Sullivan_data_profile, Hawkins_data_profile)
   
-  Sullivan_County_dp02_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+  Sullivan_County_dp02_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Sullivan_County_dp03_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+  Sullivan_County_dp03_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Sullivan_County_dp04_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+  Sullivan_County_dp04_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Sullivan_County_dp05_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+  Sullivan_County_dp05_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_County_dp02_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+  Hawkins_County_dp02_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_County_dp03_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+  Hawkins_County_dp03_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_County_dp04_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+  Hawkins_County_dp04_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
   
-  Hawkins_County_dp05_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+  Hawkins_County_dp05_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
   
   Sullivan_County_dp02_18 <- inner_join(Sullivan_County_dp02_2018, dp_table_variables_18, by = "variable")
   
@@ -93,19 +93,19 @@
   
   Hawkins_County_data_profile <- rbind(Hawkins_County_dp02_18, Hawkins_County_dp03_18, Hawkins_County_dp04_18, Hawkins_County_dp05_18)
   
-  combined_county_dp <- rbind(Sullivan_County_data_profile, Hawkins_County_data_profile)
+  combined_county_dp_18 <- rbind(Sullivan_County_data_profile, Hawkins_County_data_profile)
   
   
 #these are named wrong, the dataprofiles are for all tennessee school districts until if is filtered below as 
 #kingsport data profile 
   
-  kpt_dp02_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP02", year = 2018)
+  kpt_dp02_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP02", year = 2018, cache = TRUE)
   
-  kpt_dp03_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP03", year = 2018)
+  kpt_dp03_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP03", year = 2018, cache = TRUE)
   
-  kpt_dp04_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP04", year = 2018)
+  kpt_dp04_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP04", year = 2018, cache = TRUE)
   
-  kpt_dp05_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP05", year = 2018)
+  kpt_dp05_2018 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP05", year = 2018, cache = TRUE)
   
   kptcity_dp02_18 <- inner_join(kpt_dp02_2018, dp_table_variables_18, by = "variable")
   
@@ -150,16 +150,16 @@
                                  "Age 75-84 Years Percentage","Age 85+ Years Percentage","Median Age Percentage", "Age 18+ Years Percentage", "Age 65+ Years Percentage" )
   
   
-  dt_age_tract_counts <- combined_tract_dp %>%
+  dt_age_tract_counts <- combined_tract_dp_18 %>%
     filter(variable %in% age_vars_18)
   
-  dt_age_county_counts <- combined_county_dp %>%
+  dt_age_county_counts <- combined_county_dp_18 %>%
     filter(variable %in% age_vars_18)
   
-  dt_age_tract_percent <- combined_tract_dp %>%
+  dt_age_tract_percent <- combined_tract_dp_18 %>%
     filter(variable %in% age_vars_percent_18)
   
-  dt_age_county_percent <- combined_county_dp %>%
+  dt_age_county_percent <- combined_county_dp_18 %>%
     filter(variable %in% age_vars_percent_18)
   
   dt_age_kpt_counts_18 <- kpt_data_profile_18 %>%
@@ -188,10 +188,10 @@
   
   #county data table
   
-  dt_age_county_counts <- combined_county_dp %>%
+  dt_age_county_counts <- combined_county_dp_18 %>%
     filter(variable %in% age_vars)
   
-  dt_age_county_percent <- combined_county_dp %>%
+  dt_age_county_percent <- combined_county_dp_18 %>%
     filter(variable %in% age_vars_percent)
   
   age_county_df <- cbind(age_col_dt_names_reg, dt_age_county_counts, dt_age_county_percent)
@@ -230,7 +230,7 @@
 
   age_kpt_data_table_18  
   
-  #I'm curious to see how its changed since 2013
+  ####I'm curious to see how its changed since 2013####
   
   dp_table_variables_13 <- load_variables(2013, "acs5/profile", cache = TRUE)
   
@@ -238,13 +238,13 @@
   
   names(dp_table_variables_13) <- new_names_13
   
-  kpt_dp02_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP02", year = 2013)
+  kpt_dp02_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP02", year = 2013, cache = TRUE)
   
-  kpt_dp03_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP03", year = 2013)
+  kpt_dp03_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP03", year = 2013, cache = TRUE)
   
-  kpt_dp04_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP04", year = 2013)
+  kpt_dp04_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP04", year = 2013, cache = TRUE)
   
-  kpt_dp05_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP05", year = 2013)
+  kpt_dp05_2013 <- get_acs(geography = "school district (unified)",  state = "TN", table = "DP05", year = 2013, cache = TRUE)
   
   kptcity_dp02_13 <- inner_join(kpt_dp02_2013, dp_table_variables_13, by = "variable")
   
@@ -297,4 +297,342 @@
   age_kpt_data_table_13 <- datatable(age_kpt_dt_13, caption = "Table 3: Kingsport, Tennessee Age Groups 2013")  
   
   age_kpt_data_table_13 	
+  
+  
+  
+  ####Racial demographics####
+  
+  race_vars_18 <- c("DP05_0063", "DP05_0064", "DP05_0065", "DP05_0066", "DP05_0067", "DP05_0068", "DP05_0069",
+                 "DP05_0071")
+  
+  race_percent_vars_18 <- c("DP05_0063P", "DP05_0064P", "DP05_0065P", "DP05_0066P", "DP05_0067P", "DP05_0068P", "DP05_0069P", 
+                        "DP05_0071P")
+  
+  race_vars_names_18 <- c("Total Population", "White", "African American", "American Indian or Alaskan Native",
+                       "Asian", "Native Hawaiian or Pacific Island", "Some other Race", "Hispanic of Any Race")
+  
+  race_percent_names_18 <- c("Percent Total Population", "Percent White", "Percent African American", "Percent American Indian or Alaskan Native",
+                          "Percent Asian", "Percent Native Hawaiian or Pacific Island", "Percent Some other Race", "Percent Hispanic of Any Race")
+  
+  df_race_tract_counts_18 <- combined_tract_dp_18 %>%
+    filter(variable %in% race_vars_18)
+  
+  df_race_county_counts_18 <- combined_county_dp_18 %>%
+    filter(variable %in% race_vars_18)
+  
+  df_race_tract_percent_18 <- combined_tract_dp_18 %>%
+    filter(variable %in% race_percent_vars_18)
+  
+  df_race_county_percent_18 <- combined_county_dp_18 %>%
+    filter(variable %in% race_percent_vars_18)
+  
+  df_race_kpt_counts_18 <- kpt_data_profile_18 %>%
+    filter(variable %in% race_vars_18)
+  
+  df_race_kpt_percent_18 <- kpt_data_profile_18 %>%
+    filter(variable %in% race_percent_vars_18)
+
+  ##combine the percents into one table
+  
+  df_race_tract_18 <- cbind(race_vars_names_18, df_race_tract_counts_18, df_race_tract_percent_18)
+  
+  df_race_county_18 <- cbind(race_vars_names_18, df_race_county_counts_18, df_race_county_percent_18)
+  
+  df_race_kpt_18 <- cbind(race_vars_names_18, df_race_kpt_counts_18, df_race_kpt_percent_18)
+  
+      
+      #adding location data in to this before trimming for mapping purposes, will remove a couple lines down but it 
+      #makes sense to do this here
+        
+          #the names fucked up when cbind them together so rename them for some reason
+        
+      dummy_names <- names(df_race_county_18)
+      
+      dummy_names_2 <- dummy_names[-c(16,17)]
+      
+      names(df_race_kpt_18) <- dummy_names_2
+      
+      race_kpt_18_for_map <- left_join(kpt_18, df_race_kpt_18, by = "GEOID") #this has the location data
+      
+      
+  
+  trimmed_df_race_tract_18 <- df_race_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+  
+  trimmed_df_race_county_18 <- df_race_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+  
+  trimmed_df_race_kpt_18 <- df_race_kpt_18[,c(1,5,6,12,13)] # no location data
+  
+  
+  ##get ride of location data for the tract/county
+  
+  data_table_race_tract_18 <- st_set_geometry(trimmed_df_race_tract_18, NULL)
+  
+  data_table_race_county_18 <- st_set_geometry(trimmed_df_race_county_18, NULL)
+  
+  data_table_race_kpt_18 <- trimmed_df_race_kpt_18
+  
+  ##rename the columns 
+  
+  race_table_tract_names <- c("Racial Group", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+  
+  race_table_county_names <- c("Racial Group", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+
+  race_table_kpt_names <- c("Racial Group", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+  
+  names(data_table_race_tract_18) <- race_table_tract_names
+  
+  names(data_table_race_county_18) <- race_table_county_names
+  
+  names(data_table_race_kpt_18) <- race_table_kpt_names
+  
+  ##make the data tables
+  
+  race_tract_data_table_18 <- datatable(data_table_race_tract_18, caption = "Racial Breakdown of Census Tract Groups for Sullivan and Hawkins County, Tennessee 2018")
+  
+  race_county_data_table_18 <- datatable(data_table_race_county_18, caption = "Racial Breakdown for Sullivan and Hawkins County, Tennessee 2018")
+  
+  race_kpt_data_table_18 <- datatable(data_table_race_kpt_18, caption = "Racial Breakdown for Kingsport, Tennessee 2018")
+  
+  race_tract_data_table_18
+  
+  race_county_data_table_18
+  
+  race_kpt_data_table_18
+  
+  
+  ###make a map of white
+  
+  race_tract_map_names <- c("Race", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+  
+  race_county_map_names <- c("Race", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+  
+  trimmed_race_kpt_18_for_map <- race_kpt_18_for_map[,c(15,16,18,19,25,26)]
+
+  race_kpt_map_names <- c("Race", "Kingsport", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+  
+  names(trimmed_df_race_county_18) <- race_county_map_names
+  
+  names(trimmed_df_race_tract_18) <- race_tract_map_names
+  
+  names(trimmed_race_kpt_18_for_map) <- race_kpt_map_names
+  
+  
+  
+  percent_white_county <- trimmed_df_race_county_18 %>%
+    filter(Race == "White")
+  
+  
+  percent_white_tract <- trimmed_df_race_tract_18 %>%
+    filter(Race == "White")
+  
+  percent_white_kpt <- trimmed_race_kpt_18_for_map %>%
+    filter(Race == "White")
+
+  white_people_map <- mapview(list(percent_white_county,percent_white_tract, percent_white_kpt),
+          zcol = list("Percent", "Percent", NULL),
+          layer.name = list("Percent White County", "Percent White Tract", "Percent White City"),
+          legend = list(FALSE, TRUE, FALSE))
+  
+  ####median age map####
+  
+  kpt_median_age <- kpt_data_profile_18 %>%
+    filter(variable == "DP05_0018") %>%
+    mutate(variable ="Median Age")
+  
+  kpt_joined_median_age <- full_join(kpt_18, kpt_median_age, by = "GEOID")
+  
+  
+  trimmed_kpt_median_age <- kpt_joined_median_age[,c(15,17,18)]
+  
+  map_names_kpt_median_age <- c("Location", "Median Age", "Margin of Error", "geometry")
+  
+  names(trimmed_kpt_median_age) <- map_names_kpt_median_age
+  
+  
+  
+  median_age_county <- combined_county_dp_18 %>%
+    filter(variable == "DP05_0018")
+  
+  
+  trimmed_median_age_county <- median_age_county[,c(2,4,5)]
+  
+  map_names_county_median_age <- c("County", "Median Age", "Margin of Error", "geometry" )
+  
+  names(trimmed_median_age_county) <- map_names_county_median_age
+  
+  
+  median_age_tract <- combined_tract_dp_18 %>%
+    filter(variable == "DP05_0018")
+  
+  trimmed_median_age_tract <- median_age_tract[,c(2,4,5)]
+  
+  map_names_tract_median_age <- c("Census Tract", "Median Age", "Margin of Error", "geometry" )
+  
+  names(trimmed_median_age_tract) <- map_names_tract_median_age
+  
+  median_age_map <- mapview(list(trimmed_median_age_county, trimmed_median_age_tract, trimmed_kpt_median_age),
+          zcol = list("Median Age", "Median Age", NULL),
+          legend = list(FALSE, TRUE, FALSE))
+  
+
+  
+#### Social Characteristics ####
+  ####households####
+  household_vars_18 <- c("DP02_0001", "DP02_0002", "DP02_0003", "DP02_0004", "DP02_0007", "DP02_0009", "DP02_0012", "DP02_0013",
+                         "DP02_0015", "DP02_0016", "DP02_0017", "DP02_0020", "DP02_0044", "DP02_0045", "DP02_0046", "DP02_0047",
+                         "DP02_0048", "DP02_0050")
+  
+  household_percent_vars_18 <- c("DP02_0001P", "DP02_0002P", "DP02_0003P", "DP02_0004P", "DP02_0007P", "DP02_0009P", "DP02_0012P", "DP02_0013P",
+                                 "DP02_0015P", "DP02_0016P", "DP02_0017P", "DP02_0020P", "DP02_0044P", "DP02_0045P", "DP02_0046P", "DP02_0047P",
+                                 "DP02_0048P", "DP02_0050P")
+  
+  household_vars_names_18 <- c("Total Households", "Family Households", "Family Households with Children under 18", "Married Couple Family Households",
+                               "Single Male Households with Children under 18", "Single Female Households with Children under 18", "Households of Age 65 or Greater Living Alone",
+                               "Total Households with Children under 18", "Average Household Size", "Average Family Size", "Population in Households", "Children in Households", 
+                               "Number of Grandparents Living With and Responsible for Children under 18 Years Old", "Number of Grandparents Living With and Responsible for Children under 1 Year Old",
+                               "Number of Grandparents Living With and Responsible for Children 1-2 Years Old", "Number of Grandparents Living With and Responsible for Children 3-4 Years Old",
+                               "Number of Grandparents Living With and Responsible for Children 5+ Years Old", "Number of Female Grandparents Living With and Responsible for Children under 18 Years Old")
+  
+  household_percent_varsnames_18 <- c("Percent Total Households", "Percent Family Households", "Percent of Family Households with Children under 18", "Percent Married Couple Family Households",
+                                 "Percent Single Male Households with Children under 18", "Percent Single Female Households with Children under 18", "Percent Households of Age 65 or Greater Living Alone",
+                                 "Percent Total Households with Children under 18", "Percent Average Household Size", "Percent Average Family Size", "Percent of Population in Households", "Percent of Children in Households", 
+                                 "Percent Number of Grandparents Living With and Responsible for Children under 18 Years Old", "Percent of Number of Grandparents Living With and Responsible for Children under 1 Year Old",
+                                 "Percent Number of Grandparents Living With and Responsible for Children 1-2 Years Old", " Percent of Number of Grandparents Living With and Responsible for Children 3-4 Years Old",
+                                 "Percent of Number of Grandparents Living With and Responsible for Children 5+ Years Old", "Percent of Number of Female Grandparents Living With and Responsible for Children under 18 Years Old")
+  
+  length(household_vars_names_18)
+  
+  length(household_vars_18)
+  
+  length(household_percent_vars_18)
+  
+  df_household_tract_counts_18 <- combined_tract_dp_18 %>%
+    filter(variable %in% household_vars_18)
+  
+  df_household_county_counts_18 <- combined_county_dp_18 %>%
+    filter(variable %in% household_vars_18)
+  
+  df_household_tract_percent_18 <- combined_tract_dp_18 %>%
+    filter(variable %in% household_percent_vars_18)
+  
+  df_household_county_percent_18 <- combined_county_dp_18 %>%
+    filter(variable %in% household_percent_vars_18)
+  
+  df_household_kpt_counts_18 <- kpt_data_profile_18 %>%
+    filter(variable %in% household_vars_18)
+  
+  df_household_kpt_percent_18 <- kpt_data_profile_18 %>%
+    filter(variable %in% household_percent_vars_18)
+  
+  dim(df_household_county_counts_18)
+  dim(df_household_county_percent_18)
+  dim(df_household_kpt_counts_18)
+  head(df_household_county_counts_18)
+  dim(df_household_county_percent_18)
+  
+  ##combine the percents into one table
+  
+  df_household_tract_18 <- cbind(household_vars_names_18, df_household_tract_counts_18, df_household_tract_percent_18)
+  
+  df_household_county_18 <- cbind(household_vars_names_18, df_household_county_counts_18, df_household_county_percent_18)
+  
+  df_household_kpt_18 <- cbind(household_vars_names_18, df_household_kpt_counts_18, df_household_kpt_percent_18)
+  
+  
+  
+  #adding location data in to this before trimming for mapping purposes, will remove a couple lines down but it 
+  #makes sense to do this here
+  
+  #the names fucked up when cbind them together so rename them for some reason
+  names(df_household_county_18)
+  names(df_household_kpt_18)
+  
+  house_names <- names(df_household_county_18)
+  
+  house_names_2 <- house_names[-c(16,17)]
+  
+  names(df_household_kpt_18) <- house_names_2
+  
+  household_kpt_18_for_map <- left_join(kpt_18, df_household_kpt_18, by = "GEOID") #this has the location data
+  
+  
+  
+  trimmed_df_household_tract_18 <- df_household_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+  
+  trimmed_df_household_county_18 <- df_household_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+  
+  trimmed_df_household_kpt_18 <- df_household_kpt_18[,c(1,5,6,12,13)] # no location data
+  
+  
+  ##get ride of location data for the tract/county
+  
+  data_table_household_tract_18 <- st_set_geometry(trimmed_df_household_tract_18, NULL)
+  
+  data_table_household_county_18 <- st_set_geometry(trimmed_df_household_county_18, NULL)
+  
+  data_table_household_kpt_18 <- trimmed_df_household_kpt_18
+  
+  ##rename the columns 
+  
+  
+  household_table_tract_names <- c("Household Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+  
+  household_table_county_names <- c("Household Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+  
+  household_table_kpt_names <- c("Household Measure", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+  
+  names(data_table_household_tract_18) <- household_table_tract_names
+  
+  names(data_table_household_county_18) <- household_table_county_names
+  
+  names(data_table_household_kpt_18) <- household_table_kpt_names
+  
+  ##make the data tables
+  
+  household_tract_data_table_18 <- datatable(data_table_household_tract_18, caption = "Household Characteristics of Census Tract Groups for Sullivan and Hawkins County, Tennessee 2018")
+  
+  household_county_data_table_18 <- datatable(data_table_household_county_18, caption = "Household Characteristics for Sullivan and Hawkins County, Tennessee 2018")
+  
+  household_kpt_data_table_18 <- datatable(data_table_household_kpt_18, caption = "Household Characteristics for Kingsport, Tennessee 2018")
+  
+  household_tract_data_table_18  
+  
+  household_county_data_table_18
+  
+  household_kpt_data_table_18
+  
+  #single female household map
+  
+  
+  
+  household_tract_map_names <- c("Household Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+  
+  household_county_map_names <- c("Household Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+  
+  trimmed_household_kpt_18_for_map <- household_kpt_18_for_map[,c(15,16,18,19,25,26)]
+  
+  household_kpt_map_names <- c("Household Measure", "Kingsport", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+  
+  names(trimmed_df_household_county_18) <- household_county_map_names
+  
+  names(trimmed_df_household_tract_18) <- household_tract_map_names
+  
+  names(trimmed_household_kpt_18_for_map) <- household_kpt_map_names
+  
+  
+  percent_single_mothers_county <- trimmed_df_household_county_18 %>%
+    filter(`Household Measure` == "Single Female Households with Children under 18")
+  
+  
+  percent_single_mothers_tract <- trimmed_df_household_tract_18 %>%
+    filter(`Household Measure` == "Single Female Households with Children under 18")
+  
+  percent_single_mothers_kpt <- trimmed_household_kpt_18_for_map %>%
+    filter(`Household Measure` == "Single Female Households with Children under 18")
+  
+  single_mothers_map <- mapview(list(percent_single_mothers_county,percent_single_mothers_tract, percent_single_mothers_kpt),
+                              zcol = list("Percent", "Percent", NULL),
+                              layer.name = list("Percent Single Mothers County", "Percent Single Mothers Tract", "Percent Single Mothers City"),
+                              legend = list(FALSE, TRUE, FALSE))
+  single_mothers_map  
   
