@@ -15,7 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ####load packages####
 
-packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "report", "xtable", "knitr", "RColorBrewer", "kableExtra")
+pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
+                 "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
+                 "directlabels", "officer", "flextable")
 
 lapply(packages, library, character.only = TRUE)
 
@@ -842,7 +844,7 @@ race_full_dt <- race_full_df[,c(1,3,5,6,12,13)]
 names(race_full_dt) <- race_dt_combined_names
 
 
-##### FIX THIS ###
+
 ## filter out relevant race groups for table/graph
 
 race_count_for_table <- race_full_dt %>%

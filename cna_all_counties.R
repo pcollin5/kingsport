@@ -1,6 +1,7 @@
 ####load packages####
-
-packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "gganimate", "report", "ipumsr", "xtable", "knitr", "RColorBrewer")
+pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
+                 "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
+                 "directlabels", "officer", "flextable")
 
 lapply(packages, library, character.only = TRUE)
 

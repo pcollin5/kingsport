@@ -1,9 +1,11 @@
 ---
-title: "Components Markdown PDF"
+title: "dummy for tables"
 author: "Paul Collins"
-date: "6/29/2020"
-output: pdf_document
+date: "7/9/2020"
+output: word_document
+always_allow_html: true
 ---
+
 ```{r code, echo = FALSE}
 pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
                  "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
@@ -338,5 +340,24 @@ kable_components_change <- final %>%
   kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
 
 kable_components_change
+
+kable_components_change_word <- final %>%
+  mutate("Total Change" = cell_spec(`Total Change`, color = ifelse(`Total Change` < 0, "red", "green"))) %>%
+  mutate("Natural Increase" = cell_spec(`Natural Increase`, color = ifelse(`Natural Increase` < 0, "red", "green"))) %>%
+  mutate("Net Migration" = cell_spec(`Net Migration`, color = ifelse(`Net Migration` < 0, "red", "green"))) %>%
+  kable("html", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+
+final_df <- as.data.frame(final)
+
+regulartable(final_df %>%
+  mutate("Total Change" = cell_spec(`Total Change`, color = ifelse(`Total Change` < 0, "red", "green"))) %>%
+  mutate("Natural Increase" = cell_spec(`Natural Increase`, color = ifelse(`Natural Increase` < 0, "red", "green"))) %>%
+  mutate("Net Migration" = cell_spec(`Net Migration`, color = ifelse(`Net Migration` < 0, "red", "green"))) %>%
+  kable("latex", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+)
+
+
 
 ```

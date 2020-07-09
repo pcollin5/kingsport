@@ -1,4 +1,6 @@
-pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report", "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris")
+pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
+                 "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
+                 "directlabels", "officer", "flextable")
 
 lapply(pd_packages, library, character.only = TRUE)
 
@@ -3057,6 +3059,38 @@ kable_race_changes_table <- race_group_changes_only %>%
   kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
 
 kable_race_changes_table
+
+kable_race_changes_html <- race_group_changes_only %>%
+  mutate("Total Change: White" = cell_spec(`Total Change: White`, color = ifelse(`Total Change: White` < 0, "red", "green"))) %>%
+  mutate("Total Change: African American" = cell_spec(`Total Change: African American`, color = ifelse(`Total Change: African American` < 0, "red", "green"))) %>%
+  mutate("Total Change: American Indian or Alaska Native" = cell_spec(`Total Change: American Indian or Alaska Native`, color = ifelse(`Total Change: American Indian or Alaska Native` < 0, "red", "green"))) %>%
+  mutate("Total Change: Asian" = cell_spec(`Total Change: Asian`, color = ifelse(`Total Change: Asian` < 0, "red", "green"))) %>%
+  mutate("Total Change: Native Hawaiian or Pacific Islander" = cell_spec(`Total Change: Native Hawaiian or Pacific Islander`, color = ifelse(`Total Change: Native Hawaiian or Pacific Islander` < 0, "red", "green"))) %>%
+  mutate("Total Change: Two or more Races" = cell_spec(`Total Change: Two or more Races`, color = ifelse(`Total Change: Two or more Races` < 0, "red", "green"))) %>%
+  mutate("Percent Change: White" = cell_spec(`Percent Change: White`, color = ifelse(`Percent Change: White` < 0, "red", "green"))) %>%
+  mutate("Percent Change: African American" = cell_spec(`Percent Change: African American`, color = ifelse(`Percent Change: African American` < 0, "red", "green"))) %>%
+  mutate("Percent Change: American Indian or Alaska Native" = cell_spec(`Percent Change: American Indian or Alaska Native`, color = ifelse(`Percent Change: American Indian or Alaska Native` < 0, "red", "green"))) %>%
+  mutate("Percent Change: Asian" = cell_spec(`Percent Change: Asian`, color = ifelse(`Percent Change: Asian` < 0, "red", "green"))) %>%
+  mutate("Percent Change: Native Hawaiian or Pacific Islander" = cell_spec(`Percent Change: Native Hawaiian or Pacific Islander`, color = ifelse(`Percent Change: Native Hawaiian or Pacific Islander` < 0, "red", "green"))) %>%
+  mutate("Percent Change: Two or more Races" = cell_spec(`Percent Change: Two or more Races`, color = ifelse(`Percent Change: Two or more Races` < 0, "red", "green"))) %>%
+  kable("html", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+
+kable_race_changes_html
+
+kable_pop_table2 <- final_pop_table %>%
+  mutate("Population Change" = cell_spec(`Population Change`, color = ifelse(`Population Change` < 0, "red", "green"))) %>%
+  mutate("Pop. Percent Change" = cell_spec(`Pop. Percent Change`, color = ifelse(`Pop. Percent Change` < 0, "red", "green"))) %>%
+  kable("latex", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+
+kable_pop_table_html <- final_pop_table %>%
+  mutate("Population Change" = cell_spec(`Population Change`, color = ifelse(`Population Change` < 0, "red", "green"))) %>%
+  mutate("Pop. Percent Change" = cell_spec(`Pop. Percent Change`, color = ifelse(`Pop. Percent Change` < 0, "red", "green"))) %>%
+  kable("html", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+
+kable_pop_table_html
 
 total_short_names <- c("Location", "Total Change: White", "Total Change: AA", "Total Change: AIAN", "Total Change: Asian",
                        "Total Change: NHPI", "Total Change: Two or More Races")

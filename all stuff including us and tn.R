@@ -2,7 +2,9 @@
 
 ####load packages####
 
-packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "report", "xtable", "knitr", "RColorBrewer", "kableExtra")
+pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
+                 "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
+                 "directlabels", "officer", "flextable")
 
 lapply(packages, library, character.only = TRUE)
 
@@ -612,6 +614,10 @@ kable_age_count_table <- kable(age_count_for_table, caption = "Selected Age Grou
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
 
 kable_age_count_table
+
+kable_age_count_html_table <- kable(age_count_for_table, caption = "Selected Age Groups from 2018 ACS") %>%
+  kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position")) %>%
+  kable("html", booktabs = TRUE, escape = FALSE)
 
 kable_age_percent_table <- kable(age_percent_for_table, caption = "Selected Age Groups from 2018 ACS") %>%
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))

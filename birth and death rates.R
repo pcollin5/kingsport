@@ -1,6 +1,6 @@
 pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
                  "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
-                 "directlabels")
+                 "directlabels", "officer", "flextable")
 
 lapply(pd_packages, library, character.only = TRUE)
 
@@ -271,3 +271,5 @@ facet_by_NAME <-full %>%
   geom_point() + 
   geom_line() +
   facet_wrap(~NAME)
+
+

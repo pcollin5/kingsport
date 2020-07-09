@@ -1,5 +1,6 @@
-pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report", "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris")
-
+pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report",
+                 "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris",
+                 "directlabels", "officer", "flextable")
 lapply(pd_packages, library, character.only = TRUE)
 
 dp_variables_2018 <- load_variables(2018, "acs5/profile", cache = TRUE)    
@@ -327,6 +328,18 @@ kable_components_change <- final %>%
   kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
 
 kable_components_change
+
+kable_components_change_word <- final %>%
+  mutate("Total Change" = cell_spec(`Total Change`, color = ifelse(`Total Change` < 0, "red", "green"))) %>%
+  mutate("Natural Increase" = cell_spec(`Natural Increase`, color = ifelse(`Natural Increase` < 0, "red", "green"))) %>%
+  mutate("Net Migration" = cell_spec(`Net Migration`, color = ifelse(`Net Migration` < 0, "red", "green"))) %>%
+  kable("html", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down"))
+
+kable_components_change_word
+
+
+  
 
 ###just some plots of stuff###
 
