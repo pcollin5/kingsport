@@ -1,0 +1,582 @@
+---
+title: "PDF Example for Meeting"
+author: "Paul Collins"
+date: "2/26/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Here's what some things look like in the PDF form of output that this produces. 
+
+```{r load packages, echo = FALSE, include = FALSE}
+
+packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "gganimate", "report", "ipumsr", "xtable", "knitr", "RColorBrewer", "kableExtra")
+
+lapply(packages, library, character.only = TRUE)
+
+```
+
+```{r load data, echo = FALSE, include = FALSE}
+
+
+dp_table_variables_18 <- load_variables(2018, "acs5/profile", cache = TRUE)
+
+new_names_18 <- c("variable", "label", "concept")
+
+names(dp_table_variables_18) <- new_names_18
+
+  ####load the data#####
+    
+    ####data profiles####
+    
+    ##carter##
+    
+    Carter_dp02_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Carter_dp03_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Carter_dp04_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Carter_dp05_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    ##greene##
+    
+    
+    Greene_dp02_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Greene_dp03_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Greene_dp04_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Greene_dp05_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    ##hancock
+    
+    Hancock_dp02_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Hancock_dp03_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Hancock_dp04_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Hancock_dp05_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    ##hawkins
+    
+    Hawkins_dp02_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Hawkins_dp03_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Hawkins_dp04_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Hawkins_dp05_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    
+    ##johnson
+    
+    Johnson_dp02_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Johnson_dp03_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Johnson_dp04_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Johnson_dp05_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    ##sullivan
+    
+    Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Sullivan_dp04_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Sullivan_dp05_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    ##washington
+    
+    
+    Washington_dp02_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Washington_dp03_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Washington_dp04_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Washington_dp05_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    ##unicoi
+    
+    Unicoi_dp02_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Unicoi_dp03_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Unicoi_dp04_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Unicoi_dp05_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    
+    ####2018####
+    
+    ##carter
+    
+    Carter_dp02_18 <- inner_join(Carter_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Carter_dp03_18 <- inner_join(Carter_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Carter_dp04_18 <- inner_join(Carter_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Carter_dp05_18 <- inner_join(Carter_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##greene
+    
+    Greene_dp02_18 <- inner_join(Greene_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Greene_dp03_18 <- inner_join(Greene_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Greene_dp04_18 <- inner_join(Greene_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Greene_dp05_18 <- inner_join(Greene_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##hancock
+    
+    Hancock_dp02_18 <- inner_join(Hancock_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Hancock_dp03_18 <- inner_join(Hancock_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Hancock_dp04_18 <- inner_join(Hancock_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Hancock_dp05_18 <- inner_join(Hancock_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##hawkins  
+    
+    Hawkins_dp02_18 <- inner_join(Hawkins_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Hawkins_dp03_18 <- inner_join(Hawkins_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Hawkins_dp04_18 <- inner_join(Hawkins_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Hawkins_dp05_18 <- inner_join(Hawkins_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##johnson
+    
+    Johnson_dp02_18 <- inner_join(Johnson_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Johnson_dp03_18 <- inner_join(Johnson_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Johnson_dp04_18 <- inner_join(Johnson_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Johnson_dp05_18 <- inner_join(Johnson_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##sullivan
+    
+    Sullivan_dp02_18 <- inner_join(Sullivan_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Sullivan_dp03_18 <- inner_join(Sullivan_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Sullivan_dp04_18 <- inner_join(Sullivan_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Sullivan_dp05_18 <- inner_join(Sullivan_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##washington
+    
+    Washington_dp02_18 <- inner_join(Washington_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Washington_dp03_18 <- inner_join(Washington_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Washington_dp04_18 <- inner_join(Washington_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Washington_dp05_18 <- inner_join(Washington_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ##unicoi
+    
+    Unicoi_dp02_18 <- inner_join(Unicoi_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Unicoi_dp03_18 <- inner_join(Unicoi_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Unicoi_dp04_18 <- inner_join(Unicoi_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Unicoi_dp05_18 <- inner_join(Unicoi_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    dp02_18 <- rbind(Carter_dp02_18, Greene_dp02_18, Hancock_dp02_18, Hawkins_dp02_18, Johnson_dp02_18, Sullivan_dp02_18, Washington_dp02_18, Unicoi_dp02_18)
+    
+    dp03_18 <- rbind(Carter_dp03_18, Greene_dp03_18, Hancock_dp03_18, Hawkins_dp03_18, Johnson_dp03_18, Sullivan_dp03_18, Washington_dp03_18, Unicoi_dp03_18)
+    
+    dp04_18 <- rbind(Carter_dp04_18, Greene_dp04_18, Hancock_dp04_18, Hawkins_dp04_18, Johnson_dp04_18, Sullivan_dp04_18, Washington_dp04_18, Unicoi_dp04_18)
+    
+    dp05_18 <- rbind(Carter_dp05_18, Greene_dp05_18, Hancock_dp05_18, Hawkins_dp05_18, Johnson_dp05_18, Sullivan_dp05_18, Washington_dp05_18, Unicoi_dp05_18)
+    
+    #2018#
+    
+    dp_2018 <- rbind(dp02_18, dp03_18, dp04_18, dp05_18)
+    
+    
+    #Carter
+    
+    #2018
+    
+    Carter_County_dp02_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Carter_County_dp03_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Carter_County_dp04_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Carter_County_dp05_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Greene
+    
+    #2018
+    
+    Greene_County_dp02_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Greene_County_dp03_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Greene_County_dp04_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Greene_County_dp05_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Hancock
+    
+    #2018
+    
+    Hancock_County_dp02_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Hancock_County_dp03_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Hancock_County_dp04_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Hancock_County_dp05_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Hawkins
+    
+    #2018
+    
+    Hawkins_County_dp02_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Hawkins_County_dp03_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Hawkins_County_dp04_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Hawkins_County_dp05_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Johnson
+    
+    #2018
+    
+    Johnson_County_dp02_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Johnson_County_dp03_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Johnson_County_dp04_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Johnson_County_dp05_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Sullivan
+    
+    #2018
+    
+    Sullivan_County_dp02_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Sullivan_County_dp03_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Sullivan_County_dp04_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Sullivan_County_dp05_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Washington
+    
+    #2018
+    
+    Washington_County_dp02_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Washington_County_dp03_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Washington_County_dp04_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Washington_County_dp05_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    #Unicoi
+    
+    #2018
+    
+    Unicoi_County_dp02_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+    
+    Unicoi_County_dp03_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+    
+    Unicoi_County_dp04_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+    
+    Unicoi_County_dp05_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+    
+    
+    ####2018####
+    
+    ##carter
+    
+    Carter_County_dp02_18 <- inner_join(Carter_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Carter_County_dp03_18 <- inner_join(Carter_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Carter_County_dp04_18 <- inner_join(Carter_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Carter_County_dp05_18 <- inner_join(Carter_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    ##Greene
+    
+    Greene_County_dp02_18 <- inner_join(Greene_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Greene_County_dp03_18 <- inner_join(Greene_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Greene_County_dp04_18 <- inner_join(Greene_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Greene_County_dp05_18 <- inner_join(Greene_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    ##Hancock
+    
+    Hancock_County_dp02_18 <- inner_join(Hancock_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Hancock_County_dp03_18 <- inner_join(Hancock_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Hancock_County_dp04_18 <- inner_join(Hancock_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Hancock_County_dp05_18 <- inner_join(Hancock_County_dp05_2018, dp_table_variables_18, by = "variable")  
+    
+    ####2018####
+    
+    ##Hawkins
+    
+    Hawkins_County_dp02_18 <- inner_join(Hawkins_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Hawkins_County_dp03_18 <- inner_join(Hawkins_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Hawkins_County_dp04_18 <- inner_join(Hawkins_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Hawkins_County_dp05_18 <- inner_join(Hawkins_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    ##Johnson
+    
+    Johnson_County_dp02_18 <- inner_join(Johnson_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Johnson_County_dp03_18 <- inner_join(Johnson_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Johnson_County_dp04_18 <- inner_join(Johnson_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Johnson_County_dp05_18 <- inner_join(Johnson_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    ##Sullivan
+    
+    Sullivan_County_dp02_18 <- inner_join(Sullivan_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Sullivan_County_dp03_18 <- inner_join(Sullivan_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Sullivan_County_dp04_18 <- inner_join(Sullivan_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Sullivan_County_dp05_18 <- inner_join(Sullivan_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    ##Washington
+    
+    Washington_County_dp02_18 <- inner_join(Washington_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Washington_County_dp03_18 <- inner_join(Washington_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Washington_County_dp04_18 <- inner_join(Washington_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Washington_County_dp05_18 <- inner_join(Washington_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    ####2018####
+    
+    ##Unicoi
+    
+    Unicoi_County_dp02_18 <- inner_join(Unicoi_County_dp02_2018, dp_table_variables_18, by = "variable")
+    
+    Unicoi_County_dp03_18 <- inner_join(Unicoi_County_dp03_2018, dp_table_variables_18, by = "variable")
+    
+    Unicoi_County_dp04_18 <- inner_join(Unicoi_County_dp04_2018, dp_table_variables_18, by = "variable")
+    
+    Unicoi_County_dp05_18 <- inner_join(Unicoi_County_dp05_2018, dp_table_variables_18, by = "variable")
+    
+    #2018
+    
+    County_dp02_18 <- rbind(Carter_County_dp02_18, Greene_County_dp02_18, Hancock_County_dp02_18, Hawkins_County_dp02_18, Johnson_County_dp02_18, Sullivan_County_dp02_18, Washington_County_dp02_18, Unicoi_County_dp02_18)
+    
+    County_dp03_18 <- rbind(Carter_County_dp03_18, Greene_County_dp03_18, Hancock_County_dp03_18, Hawkins_County_dp03_18, Johnson_County_dp03_18, Sullivan_County_dp03_18, Washington_County_dp03_18, Unicoi_County_dp03_18)
+    
+    County_dp04_18 <- rbind(Carter_County_dp04_18, Greene_County_dp04_18, Hancock_County_dp04_18, Hawkins_County_dp04_18, Johnson_County_dp04_18, Sullivan_County_dp04_18, Washington_County_dp04_18, Unicoi_County_dp04_18)
+    
+    County_dp05_18 <- rbind(Carter_County_dp05_18, Greene_County_dp05_18, Hancock_County_dp05_18, Hawkins_County_dp05_18, Johnson_County_dp05_18, Sullivan_County_dp05_18, Washington_County_dp05_18, Unicoi_County_dp05_18)
+    
+    County_dp_2018 <- rbind(County_dp02_18, County_dp03_18, County_dp04_18, County_dp05_18) 
+
+
+```
+
+#### Including Plots
+
+Here's a plot
+
+```{r pressure, echo=FALSE}
+
+   
+    
+    race_vars_18 <- c("DP05_0063", "DP05_0064", "DP05_0065", "DP05_0066", "DP05_0067", "DP05_0068", "DP05_0069",
+                      "DP05_0071")
+    
+    race_percent_vars_18 <- c("DP05_0063P", "DP05_0064P", "DP05_0065P", "DP05_0066P", "DP05_0067P", "DP05_0068P", "DP05_0069P", 
+                              "DP05_0071P")
+    
+    race_vars_names_18 <- c("Total Population", "White", "African American", "American Indian or Alaskan Native",
+                            "Asian", "Native Hawaiian or Pacific Island", "Some other Race", "Hispanic of Any Race")
+    
+    race_percent_names_18 <- c("Percent Total Population", "Percent White", "Percent African American", "Percent American Indian or Alaskan Native",
+                               "Percent Asian", "Percent Native Hawaiian or Pacific Island", "Percent Some other Race", "Percent Hispanic of Any Race")
+    
+    df_race_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% race_vars_18)
+    
+    df_race_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% race_vars_18)
+    
+    df_race_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% race_percent_vars_18)
+    
+    df_race_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% race_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_race_tract_18 <- cbind(race_vars_names_18, df_race_tract_counts_18, df_race_tract_percent_18)
+    
+    df_race_county_18 <- cbind(race_vars_names_18, df_race_county_counts_18, df_race_county_percent_18)   
+    
+    trimmed_df_race_tract_18 <- df_race_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_race_county_18 <- df_race_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_race_tract_18 <- st_set_geometry(trimmed_df_race_tract_18, NULL)
+    
+    data_table_race_county_18 <- st_set_geometry(trimmed_df_race_county_18, NULL)
+    
+    
+    ##rename the columns 
+    
+    race_table_tract_names <- c("Racial Group", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    race_table_county_names <- c("Racial Group", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    
+    names(data_table_race_tract_18) <- race_table_tract_names
+    
+    names(data_table_race_county_18) <- race_table_county_names
+    
+       
+    
+    race_vars_18 <- c("DP05_0063", "DP05_0064", "DP05_0065", "DP05_0066", "DP05_0067", "DP05_0068", "DP05_0069",
+                      "DP05_0071")
+    
+    race_percent_vars_18 <- c("DP05_0063P", "DP05_0064P", "DP05_0065P", "DP05_0066P", "DP05_0067P", "DP05_0068P", "DP05_0069P", 
+                              "DP05_0071P")
+    
+    race_vars_names_18 <- c("Total Population", "White", "African American", "American Indian or Alaskan Native",
+                            "Asian", "Native Hawaiian or Pacific Island", "Some other Race", "Hispanic of Any Race")
+    
+    race_percent_names_18 <- c("Percent Total Population", "Percent White", "Percent African American", "Percent American Indian or Alaskan Native",
+                               "Percent Asian", "Percent Native Hawaiian or Pacific Island", "Percent Some other Race", "Percent Hispanic of Any Race")
+    
+    df_race_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% race_vars_18)
+    
+    df_race_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% race_vars_18)
+    
+    df_race_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% race_percent_vars_18)
+    
+    df_race_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% race_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_race_tract_18 <- cbind(race_vars_names_18, df_race_tract_counts_18, df_race_tract_percent_18)
+    
+    df_race_county_18 <- cbind(race_vars_names_18, df_race_county_counts_18, df_race_county_percent_18)   
+    
+    trimmed_df_race_tract_18 <- df_race_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_race_county_18 <- df_race_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_race_tract_18 <- st_set_geometry(trimmed_df_race_tract_18, NULL)
+    
+    data_table_race_county_18 <- st_set_geometry(trimmed_df_race_county_18, NULL)
+    
+    
+    ##rename the columns 
+    
+    race_table_tract_names <- c("Racial Group", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    race_table_county_names <- c("Racial Group", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    
+    names(data_table_race_tract_18) <- race_table_tract_names
+    
+    names(data_table_race_county_18) <- race_table_county_names
+    
+            wc_race_bar_18 <- data_table_race_county_18 %>%
+              filter(`Racial Group` != "Total Population") %>%
+              filter(County == "Washington County, Tennessee") %>%
+              ggplot(aes(x = `Racial Group`, y = `Percent`)) + 
+              ggtitle("Washington County, Tennessee")+
+              geom_col(fill = brewer.pal(n = 7, "Dark2"))
+          
+            wc_race_bar_18
+            
+           all_counties_race_plot <-  data_table_race_county_18 %>%
+              filter(`Racial Group` != "Total Population") %>%
+              ggplot(aes(x = `Racial Group`, y = Count, fill = County)) + 
+              geom_col()
+          
+           all_counties_race_plot
+
+```
+
+##### Here's a Table
+
+```{r age table, echo = FALSE}
+
+kable(data_table_race_county_18, caption = "Racial Profile for Upper East Tennessee, 2018") %>%
+  kable_styling(latex_options = "scale_down")
+
+```
+
+# Another Table
+
+```{r another table, echo = FALSE}
+
+kable(
+  data_table_race_county_18 %>%
+    filter(County == "Washington County, Tennessee"),
+  booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "scale_down"))
+  
+
+
+
+```

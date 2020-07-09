@@ -1,0 +1,3799 @@
+#POPULATION AND DEMOGRAHIC DATA FOR ALL OF UETHDA#
+
+  #Load Packages and Variable Names#
+  
+    pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report", "knitr", "rmarkdown", "kableExtra")
+    
+    lapply(pd_packages, library, character.only = TRUE)
+    
+    dp_variables_2018 <- load_variables(2018, "acs5/profile", cache = TRUE)    
+    
+    st_variables_2018 <- load_variables(2018, "acs5/subject", cache = TRUE)
+    
+    dp_variables_2013 <- load_variables(2013, "acs5/profile", cache = TRUE)
+    
+    st_variables_2013 <- load_variables(2013, "acs5/subject", cache = TRUE)
+    
+    new_names <- c("variable", "label", "concept")
+    
+    names(dp_variables_2018) <- new_names
+    
+    names(st_variables_2018) <- new_names
+    
+    names(dp_variables_2013) <- new_names
+    
+    names(st_variables_2013) <- new_names
+    
+  ####load the data#####
+    
+    ####data profiles####
+    ####2018####
+    ##carter##
+    
+    Carter_dp02_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Carter_dp03_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Carter_dp04_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Carter_dp05_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    
+    ##greene##
+    
+    
+    Greene_dp02_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Greene_dp03_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Greene_dp04_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Greene_dp05_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    ##hancock
+    
+    Hancock_dp02_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hancock_dp03_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hancock_dp04_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hancock_dp05_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    ##hawkins
+    
+    Hawkins_dp02_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_dp03_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_dp04_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_dp05_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    
+    ##johnson
+    
+    Johnson_dp02_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Johnson_dp03_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Johnson_dp04_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Johnson_dp05_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    ##sullivan
+    
+    Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_dp04_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_dp05_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    ##washington
+    
+    
+    Washington_dp02_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Washington_dp03_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Washington_dp04_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Washington_dp05_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    ##unicoi
+    
+    Unicoi_dp02_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_dp03_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_dp04_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_dp05_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    
+    ####2018####
+    
+    ##carter
+    
+    Carter_dp02_18 <- inner_join(Carter_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Carter_dp03_18 <- inner_join(Carter_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Carter_dp04_18 <- inner_join(Carter_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Carter_dp05_18 <- inner_join(Carter_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##greene
+    
+    Greene_dp02_18 <- inner_join(Greene_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Greene_dp03_18 <- inner_join(Greene_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Greene_dp04_18 <- inner_join(Greene_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Greene_dp05_18 <- inner_join(Greene_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##hancock
+    
+    Hancock_dp02_18 <- inner_join(Hancock_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Hancock_dp03_18 <- inner_join(Hancock_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Hancock_dp04_18 <- inner_join(Hancock_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Hancock_dp05_18 <- inner_join(Hancock_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##hawkins  
+    
+    Hawkins_dp02_18 <- inner_join(Hawkins_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Hawkins_dp03_18 <- inner_join(Hawkins_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Hawkins_dp04_18 <- inner_join(Hawkins_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Hawkins_dp05_18 <- inner_join(Hawkins_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##johnson
+    
+    Johnson_dp02_18 <- inner_join(Johnson_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Johnson_dp03_18 <- inner_join(Johnson_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Johnson_dp04_18 <- inner_join(Johnson_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Johnson_dp05_18 <- inner_join(Johnson_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##sullivan
+    
+    Sullivan_dp02_18 <- inner_join(Sullivan_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Sullivan_dp03_18 <- inner_join(Sullivan_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Sullivan_dp04_18 <- inner_join(Sullivan_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Sullivan_dp05_18 <- inner_join(Sullivan_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##washington
+    
+    Washington_dp02_18 <- inner_join(Washington_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Washington_dp03_18 <- inner_join(Washington_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Washington_dp04_18 <- inner_join(Washington_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Washington_dp05_18 <- inner_join(Washington_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ##unicoi
+    
+    Unicoi_dp02_18 <- inner_join(Unicoi_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Unicoi_dp03_18 <- inner_join(Unicoi_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Unicoi_dp04_18 <- inner_join(Unicoi_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Unicoi_dp05_18 <- inner_join(Unicoi_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    dp02_18 <- rbind(Carter_dp02_18, Greene_dp02_18, Hancock_dp02_18, Hawkins_dp02_18, Johnson_dp02_18, Sullivan_dp02_18, Washington_dp02_18, Unicoi_dp02_18)
+    
+    dp03_18 <- rbind(Carter_dp03_18, Greene_dp03_18, Hancock_dp03_18, Hawkins_dp03_18, Johnson_dp03_18, Sullivan_dp03_18, Washington_dp03_18, Unicoi_dp03_18)
+    
+    dp04_18 <- rbind(Carter_dp04_18, Greene_dp04_18, Hancock_dp04_18, Hawkins_dp04_18, Johnson_dp04_18, Sullivan_dp04_18, Washington_dp04_18, Unicoi_dp04_18)
+    
+    dp05_18 <- rbind(Carter_dp05_18, Greene_dp05_18, Hancock_dp05_18, Hawkins_dp05_18, Johnson_dp05_18, Sullivan_dp05_18, Washington_dp05_18, Unicoi_dp05_18)
+    
+    #2018#
+    
+    dp_2018 <- rbind(dp02_18, dp03_18, dp04_18, dp05_18)
+    
+    
+    #Carter
+    
+    #2018
+    
+    Carter_County_dp02_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Carter_County_dp03_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Carter_County_dp04_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Carter_County_dp05_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Greene
+    
+    #2018
+    
+    Greene_County_dp02_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Greene_County_dp03_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Greene_County_dp04_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Greene_County_dp05_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Hancock
+    
+    #2018
+    
+    Hancock_County_dp02_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hancock_County_dp03_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hancock_County_dp04_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hancock_County_dp05_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Hawkins
+    
+    #2018
+    
+    Hawkins_County_dp02_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_County_dp03_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_County_dp04_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_County_dp05_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Johnson
+    
+    #2018
+    
+    Johnson_County_dp02_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Johnson_County_dp03_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Johnson_County_dp04_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Johnson_County_dp05_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Sullivan
+    
+    #2018
+    
+    Sullivan_County_dp02_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_County_dp03_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_County_dp04_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_County_dp05_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Washington
+    
+    #2018
+    
+    Washington_County_dp02_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Washington_County_dp03_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Washington_County_dp04_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Washington_County_dp05_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    #Unicoi
+    
+    #2018
+    
+    Unicoi_County_dp02_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP02", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_County_dp03_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP03", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_County_dp04_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP04", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_County_dp05_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP05", year = 2018, geometry = TRUE, cache = TRUE)
+    
+    
+    ####2018####
+    
+    ##carter
+    
+    Carter_County_dp02_18 <- inner_join(Carter_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Carter_County_dp03_18 <- inner_join(Carter_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Carter_County_dp04_18 <- inner_join(Carter_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Carter_County_dp05_18 <- inner_join(Carter_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    ##Greene
+    
+    Greene_County_dp02_18 <- inner_join(Greene_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Greene_County_dp03_18 <- inner_join(Greene_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Greene_County_dp04_18 <- inner_join(Greene_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Greene_County_dp05_18 <- inner_join(Greene_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    ##Hancock
+    
+    Hancock_County_dp02_18 <- inner_join(Hancock_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Hancock_County_dp03_18 <- inner_join(Hancock_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Hancock_County_dp04_18 <- inner_join(Hancock_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Hancock_County_dp05_18 <- inner_join(Hancock_County_dp05_2018, dp_variables_2018, by = "variable")  
+    
+    ####2018####
+    
+    ##Hawkins
+    
+    Hawkins_County_dp02_18 <- inner_join(Hawkins_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Hawkins_County_dp03_18 <- inner_join(Hawkins_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Hawkins_County_dp04_18 <- inner_join(Hawkins_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Hawkins_County_dp05_18 <- inner_join(Hawkins_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    ##Johnson
+    
+    Johnson_County_dp02_18 <- inner_join(Johnson_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Johnson_County_dp03_18 <- inner_join(Johnson_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Johnson_County_dp04_18 <- inner_join(Johnson_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Johnson_County_dp05_18 <- inner_join(Johnson_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    ##Sullivan
+    
+    Sullivan_County_dp02_18 <- inner_join(Sullivan_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Sullivan_County_dp03_18 <- inner_join(Sullivan_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Sullivan_County_dp04_18 <- inner_join(Sullivan_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Sullivan_County_dp05_18 <- inner_join(Sullivan_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    ##Washington
+    
+    Washington_County_dp02_18 <- inner_join(Washington_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Washington_County_dp03_18 <- inner_join(Washington_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Washington_County_dp04_18 <- inner_join(Washington_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Washington_County_dp05_18 <- inner_join(Washington_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    ####2018####
+    
+    ##Unicoi
+    
+    Unicoi_County_dp02_18 <- inner_join(Unicoi_County_dp02_2018, dp_variables_2018, by = "variable")
+    
+    Unicoi_County_dp03_18 <- inner_join(Unicoi_County_dp03_2018, dp_variables_2018, by = "variable")
+    
+    Unicoi_County_dp04_18 <- inner_join(Unicoi_County_dp04_2018, dp_variables_2018, by = "variable")
+    
+    Unicoi_County_dp05_18 <- inner_join(Unicoi_County_dp05_2018, dp_variables_2018, by = "variable")
+    
+    #2018
+    
+    County_dp02_18 <- rbind(Carter_County_dp02_18, Greene_County_dp02_18, Hancock_County_dp02_18, Hawkins_County_dp02_18, Johnson_County_dp02_18, Sullivan_County_dp02_18, Washington_County_dp02_18, Unicoi_County_dp02_18)
+    
+    County_dp03_18 <- rbind(Carter_County_dp03_18, Greene_County_dp03_18, Hancock_County_dp03_18, Hawkins_County_dp03_18, Johnson_County_dp03_18, Sullivan_County_dp03_18, Washington_County_dp03_18, Unicoi_County_dp03_18)
+    
+    County_dp04_18 <- rbind(Carter_County_dp04_18, Greene_County_dp04_18, Hancock_County_dp04_18, Hawkins_County_dp04_18, Johnson_County_dp04_18, Sullivan_County_dp04_18, Washington_County_dp04_18, Unicoi_County_dp04_18)
+    
+    County_dp05_18 <- rbind(Carter_County_dp05_18, Greene_County_dp05_18, Hancock_County_dp05_18, Hawkins_County_dp05_18, Johnson_County_dp05_18, Sullivan_County_dp05_18, Washington_County_dp05_18, Unicoi_County_dp05_18)
+    
+    County_dp_2018 <- rbind(County_dp02_18, County_dp03_18, County_dp04_18, County_dp05_18) 
+    
+  ####2013####
+    
+    #carter
+    Carter_dp02_2013 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Carter_dp03_2013 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Carter_dp04_2013 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Carter_dp05_2013 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    ##greene##
+    
+    
+    Greene_dp02_2013 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Greene_dp03_2013 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Greene_dp04_2013 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Greene_dp05_2013 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    ##hancock
+    
+    Hancock_dp02_2013 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hancock_dp03_2013 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hancock_dp04_2013 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hancock_dp05_2013 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    ##hawkins
+    
+    Hawkins_dp02_2013 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_dp03_2013 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_dp04_2013 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_dp05_2013 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    
+    ##johnson
+    
+    Johnson_dp02_2013 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Johnson_dp03_2013 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Johnson_dp04_2013 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Johnson_dp05_2013 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    ##sullivan
+    
+    Sullivan_dp02_2013 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_dp03_2013 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_dp04_2013 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_dp05_2013 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    ##washington
+    
+    
+    Washington_dp02_2013 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Washington_dp03_2013 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Washington_dp04_2013 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Washington_dp05_2013 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    ##unicoi
+    
+    Unicoi_dp02_2013 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_dp03_2013 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_dp04_2013 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_dp05_2013 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    
+    ####2013####
+    
+    ##carter
+    
+    Carter_dp02_13 <- inner_join(Carter_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Carter_dp03_13 <- inner_join(Carter_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Carter_dp04_13 <- inner_join(Carter_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Carter_dp05_13 <- inner_join(Carter_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##greene
+    
+    Greene_dp02_13 <- inner_join(Greene_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Greene_dp03_13 <- inner_join(Greene_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Greene_dp04_13 <- inner_join(Greene_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Greene_dp05_13 <- inner_join(Greene_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##hancock
+    
+    Hancock_dp02_13 <- inner_join(Hancock_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Hancock_dp03_13 <- inner_join(Hancock_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Hancock_dp04_13 <- inner_join(Hancock_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Hancock_dp05_13 <- inner_join(Hancock_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##hawkins  
+    
+    Hawkins_dp02_13 <- inner_join(Hawkins_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Hawkins_dp03_13 <- inner_join(Hawkins_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Hawkins_dp04_13 <- inner_join(Hawkins_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Hawkins_dp05_13 <- inner_join(Hawkins_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##johnson
+    
+    Johnson_dp02_13 <- inner_join(Johnson_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Johnson_dp03_13 <- inner_join(Johnson_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Johnson_dp04_13 <- inner_join(Johnson_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Johnson_dp05_13 <- inner_join(Johnson_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##sullivan
+    
+    Sullivan_dp02_13 <- inner_join(Sullivan_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Sullivan_dp03_13 <- inner_join(Sullivan_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Sullivan_dp04_13 <- inner_join(Sullivan_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Sullivan_dp05_13 <- inner_join(Sullivan_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##washington
+    
+    Washington_dp02_13 <- inner_join(Washington_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Washington_dp03_13 <- inner_join(Washington_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Washington_dp04_13 <- inner_join(Washington_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Washington_dp05_13 <- inner_join(Washington_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ##unicoi
+    
+    Unicoi_dp02_13 <- inner_join(Unicoi_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Unicoi_dp03_13 <- inner_join(Unicoi_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Unicoi_dp04_13 <- inner_join(Unicoi_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Unicoi_dp05_13 <- inner_join(Unicoi_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    dp02_13 <- rbind(Carter_dp02_13, Greene_dp02_13, Hancock_dp02_13, Hawkins_dp02_13, Johnson_dp02_13, Sullivan_dp02_13, Washington_dp02_13, Unicoi_dp02_13)
+    
+    dp03_13 <- rbind(Carter_dp03_13, Greene_dp03_13, Hancock_dp03_13, Hawkins_dp03_13, Johnson_dp03_13, Sullivan_dp03_13, Washington_dp03_13, Unicoi_dp03_13)
+    
+    dp04_13 <- rbind(Carter_dp04_13, Greene_dp04_13, Hancock_dp04_13, Hawkins_dp04_13, Johnson_dp04_13, Sullivan_dp04_13, Washington_dp04_13, Unicoi_dp04_13)
+    
+    dp05_13 <- rbind(Carter_dp05_13, Greene_dp05_13, Hancock_dp05_13, Hawkins_dp05_13, Johnson_dp05_13, Sullivan_dp05_13, Washington_dp05_13, Unicoi_dp05_13)
+    
+    #2013#
+    
+    dp_2013 <- rbind(dp02_13, dp03_13, dp04_13, dp05_13)
+    
+    
+    #Carter
+    
+    #2013
+    
+    Carter_County_dp02_2013 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Carter_County_dp03_2013 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Carter_County_dp04_2013 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Carter_County_dp05_2013 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Greene
+    
+    #2013
+    
+    Greene_County_dp02_2013 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Greene_County_dp03_2013 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Greene_County_dp04_2013 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Greene_County_dp05_2013 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Hancock
+    
+    #2013
+    
+    Hancock_County_dp02_2013 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hancock_County_dp03_2013 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hancock_County_dp04_2013 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hancock_County_dp05_2013 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Hawkins
+    
+    #2013
+    
+    Hawkins_County_dp02_2013 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_County_dp03_2013 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_County_dp04_2013 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Hawkins_County_dp05_2013 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Johnson
+    
+    #2013
+    
+    Johnson_County_dp02_2013 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Johnson_County_dp03_2013 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Johnson_County_dp04_2013 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Johnson_County_dp05_2013 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Sullivan
+    
+    #2013
+    
+    Sullivan_County_dp02_2013 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_County_dp03_2013 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_County_dp04_2013 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Sullivan_County_dp05_2013 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Washington
+    
+    #2013
+    
+    Washington_County_dp02_2013 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Washington_County_dp03_2013 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Washington_County_dp04_2013 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Washington_County_dp05_2013 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    #Unicoi
+    
+    #2013
+    
+    Unicoi_County_dp02_2013 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP02", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_County_dp03_2013 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP03", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_County_dp04_2013 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP04", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    Unicoi_County_dp05_2013 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP05", year = 2013, geometry = TRUE, cache = TRUE)
+    
+    
+    ####2013####
+    
+    ##carter
+    
+    Carter_County_dp02_13 <- inner_join(Carter_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Carter_County_dp03_13 <- inner_join(Carter_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Carter_County_dp04_13 <- inner_join(Carter_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Carter_County_dp05_13 <- inner_join(Carter_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    ##Greene
+    
+    Greene_County_dp02_13 <- inner_join(Greene_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Greene_County_dp03_13 <- inner_join(Greene_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Greene_County_dp04_13 <- inner_join(Greene_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Greene_County_dp05_13 <- inner_join(Greene_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    ##Hancock
+    
+    Hancock_County_dp02_13 <- inner_join(Hancock_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Hancock_County_dp03_13 <- inner_join(Hancock_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Hancock_County_dp04_13 <- inner_join(Hancock_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Hancock_County_dp05_13 <- inner_join(Hancock_County_dp05_2013, dp_variables_2013, by = "variable")  
+    
+    ####2013####
+    
+    ##Hawkins
+    
+    Hawkins_County_dp02_13 <- inner_join(Hawkins_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Hawkins_County_dp03_13 <- inner_join(Hawkins_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Hawkins_County_dp04_13 <- inner_join(Hawkins_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Hawkins_County_dp05_13 <- inner_join(Hawkins_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    ##Johnson
+    
+    Johnson_County_dp02_13 <- inner_join(Johnson_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Johnson_County_dp03_13 <- inner_join(Johnson_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Johnson_County_dp04_13 <- inner_join(Johnson_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Johnson_County_dp05_13 <- inner_join(Johnson_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    ##Sullivan
+    
+    Sullivan_County_dp02_13 <- inner_join(Sullivan_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Sullivan_County_dp03_13 <- inner_join(Sullivan_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Sullivan_County_dp04_13 <- inner_join(Sullivan_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Sullivan_County_dp05_13 <- inner_join(Sullivan_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    ##Washington
+    
+    Washington_County_dp02_13 <- inner_join(Washington_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Washington_County_dp03_13 <- inner_join(Washington_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Washington_County_dp04_13 <- inner_join(Washington_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Washington_County_dp05_13 <- inner_join(Washington_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    ####2013####
+    
+    ##Unicoi
+    
+    Unicoi_County_dp02_13 <- inner_join(Unicoi_County_dp02_2013, dp_variables_2013, by = "variable")
+    
+    Unicoi_County_dp03_13 <- inner_join(Unicoi_County_dp03_2013, dp_variables_2013, by = "variable")
+    
+    Unicoi_County_dp04_13 <- inner_join(Unicoi_County_dp04_2013, dp_variables_2013, by = "variable")
+    
+    Unicoi_County_dp05_13 <- inner_join(Unicoi_County_dp05_2013, dp_variables_2013, by = "variable")
+    
+    #2013
+    
+    County_dp02_13 <- rbind(Carter_County_dp02_13, Greene_County_dp02_13, Hancock_County_dp02_13, Hawkins_County_dp02_13, Johnson_County_dp02_13, Sullivan_County_dp02_13, Washington_County_dp02_13, Unicoi_County_dp02_13)
+    
+    County_dp03_13 <- rbind(Carter_County_dp03_13, Greene_County_dp03_13, Hancock_County_dp03_13, Hawkins_County_dp03_13, Johnson_County_dp03_13, Sullivan_County_dp03_13, Washington_County_dp03_13, Unicoi_County_dp03_13)
+    
+    County_dp04_13 <- rbind(Carter_County_dp04_13, Greene_County_dp04_13, Hancock_County_dp04_13, Hawkins_County_dp04_13, Johnson_County_dp04_13, Sullivan_County_dp04_13, Washington_County_dp04_13, Unicoi_County_dp04_13)
+    
+    County_dp05_13 <- rbind(Carter_County_dp05_13, Greene_County_dp05_13, Hancock_County_dp05_13, Hawkins_County_dp05_13, Johnson_County_dp05_13, Sullivan_County_dp05_13, Washington_County_dp05_13, Unicoi_County_dp05_13)
+    
+    County_dp_2013 <- rbind(County_dp02_13, County_dp03_13, County_dp04_13, County_dp05_13) 
+    
+####pop estimates ####
+    
+    #Carter
+    
+    Carter_pop <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Carter_age <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Carter_race <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Carter_sex <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Carter_hisp <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+      
+      #population
+    
+        Carter_pop_10 <- Carter_pop %>%
+          filter(DATE == 1)
+        
+        Carter_pop_18 <- Carter_pop %>%
+          filter(DATE == 11)
+    
+        DATES <- c("2010 Census", "2010 Census")
+        
+        Carter_pop_10_2<- cbind(Carter_pop_10, DATES)
+        
+        DATES <- c("2018 ACS", "2018 ACS")
+        
+        Carter_pop_18_2 <- cbind(Carter_pop_18, DATES)
+        
+        Carter_pop_change <- rbind(Carter_pop_10_2, Carter_pop_18_2)
+        
+        Carter_pop_change <- Carter_pop_change[,-3]
+        
+        
+       #age groups
+        
+        age_numbs <- c(0, 1, 19, 26, 29, 31)
+        
+        age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+        
+        Carter_age_10 <- Carter_age %>%
+          filter(DATE == 1) %>%
+          filter(AGEGROUP %in% age_numbs)
+        
+        Carter_age_18 <- Carter_age %>%
+          filter(DATE == 11) %>%
+          filter(AGEGROUP %in% age_numbs)
+        
+        DATES <- rep("2010 Census", length(Carter_age_10$DATE))
+        
+        Carter_age_10_2 <- cbind(Carter_age_10, DATES, age_names)    
+        
+        DATES <- rep("2018 ACS", length(Carter_age_10$DATE))
+        
+        Carter_age_18_2 <-cbind(Carter_age_18, DATES, age_names)
+      
+        Carter_age_change <- rbind(Carter_age_10_2, Carter_age_18_2)
+        
+        Carter_age_change <- Carter_age_change[,-c(4,5)]
+        
+     #race
+        
+        race_nums <- c(6, 7, 8, 9, 10, 11)
+        
+        race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                        "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+        
+        
+        Carter_race_10 <- Carter_race %>%
+          filter(DATE == 1) %>%
+          filter(RACE %in% race_nums)
+        
+        Carter_race_18 <- Carter_race %>%
+          filter(DATE == 11) %>%
+          filter(RACE %in% race_nums)
+        
+        DATES <- rep("2010 Census", length(Carter_race_10$DATE))
+          
+        Carter_race_10_2 <- cbind(Carter_race_10, DATES, race_names)               
+        
+        DATES <- rep("2018 ACS", length(Carter_race_18$DATE))
+        
+        Carter_race_18_2 <- cbind(Carter_race_18, DATES, race_names)
+        
+        Carter_race_change <- rbind(Carter_race_10_2, Carter_race_18_2)             
+        
+        Carter_race_change <- Carter_race_change[,-c(4,5)]
+        
+    #sex
+        
+        sex_names <- c("Total", "Male", "Female")
+        
+        Carter_sex_10 <- Carter_sex %>%
+          filter(DATE == 1)
+        
+        Carter_sex_18 <- Carter_sex %>%
+          filter(DATE == 11)
+        
+        DATES <- rep("2010 Census", length(Carter_sex_10$DATE))
+  
+        Carter_sex_10_2 <- cbind(Carter_sex_10, DATES, sex_names)
+        
+        DATES <- rep("2018 ACS", length(Carter_sex_18$DATE))
+        
+        Carter_sex_18_2 <- cbind(Carter_sex_18, DATES, sex_names)
+        
+        Carter_sex_change <- rbind(Carter_sex_10_2, Carter_sex_18_2)
+        
+        Carter_sex_change <- Carter_sex_change[,-c(4,5)]
+        
+    #hisp
+        
+        hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+        
+        Carter_hisp_10 <- Carter_hisp %>%
+          filter(DATE == 1) 
+        
+        Carter_hisp_18 <- Carter_hisp %>%
+          filter(DATE == 11)
+        
+        DATES <- rep("2010 Census", length(Carter_hisp_10$DATE))
+        
+        Carter_hisp_10_2 <- cbind(Carter_hisp_10, DATES, hisp_names)
+        
+        DATES <- rep("2018 ACS", length(Carter_hisp_18$DATE))           
+        
+        Carter_hisp_18_2 <- cbind(Carter_hisp_18, DATES, hisp_names)
+        
+        Carter_hisp_change <- rbind(Carter_hisp_10_2, Carter_hisp_18_2)
+        
+        Carter_hisp_change <- Carter_hisp_change[,-c(4,5)]
+        
+                                  
+    #housing
+        
+    Carter_hous <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Carter_hous_10 <- Carter_hous %>%
+      filter(DATE == 1)
+    
+    Carter_hous_18 <- Carter_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Carter_hous_10$DATE))
+    
+    Carter_hous_10_2 <- cbind(Carter_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Carter_hous_18$DATE))
+    
+    Carter_hous_18_2 <- cbind(Carter_hous_18, DATES, hous_names)
+    
+    Carter_hous_change <- rbind(Carter_hous_10_2, Carter_hous_18_2)
+    
+    Carter_hous_change <- Carter_hous_change[,-c(3,4)]
+    
+  ####COUNTY LEVEL CHANGES FROM 2010 CENSUS TO 2018 ACS####
+    
+    #total pop
+    
+    Carter_pop_10_value <- Carter_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Carter_pop_18_value <- Carter_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Carter_pop_raw <- Carter_pop_18_value$value - Carter_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Carter_pop_raw) <- pop_names 
+    
+    Carter_pop_percent_change <- (((Carter_pop_18_value$value - Carter_pop_10_value$value) / Carter_pop_10_value$value) * 100) 
+    
+    names(Carter_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Carter_age_10_value <- Carter_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Carter_age_18_value <- Carter_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Carter_age_percent_change <- (((Carter_age_18_value$value - Carter_age_10_value$value) / Carter_age_10_value$value) * 100)
+    
+    names(Carter_age_percent_change) <- age_names
+    
+    Carter_age_raw <- Carter_age_18_value$value - Carter_age_10_value$value
+    
+    names(Carter_age_raw) <- age_names
+    
+      
+    #race
+    
+    Carter_race_10_value <- Carter_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Carter_race_18_value <- Carter_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Carter_race_percent_change <- (((Carter_race_18_value$value - Carter_race_10_value$value) / Carter_race_10_value$value) * 100)
+    
+    names(Carter_race_percent_change) <- race_names
+   
+    Carter_race_raw <- Carter_race_18_value$value - Carter_race_10_value$value
+    
+    names(Carter_race_raw) <- race_names
+    
+    #sex
+    
+    Carter_sex_10_value <- Carter_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Carter_sex_18_value <- Carter_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Carter_sex_percent_change <- (((Carter_sex_18_value$value - Carter_sex_10_value$value) / Carter_sex_10_value$value) * 100)
+    
+    names(Carter_sex_percent_change) <- sex_names
+    
+    Carter_sex_raw <- Carter_sex_18_value$value - Carter_sex_10_value$value
+    
+    names(Carter_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Carter_hisp_10_value <- Carter_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Carter_hisp_18_value <- Carter_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Carter_hisp_percent_change <- (((Carter_hisp_18_value$value - Carter_hisp_10_value$value) / Carter_hisp_10_value$value) * 100)
+    
+    names(Carter_hisp_percent_change) <- hisp_names
+    
+    Carter_hisp_raw <- Carter_hisp_18_value$value - Carter_hisp_10_value$value
+    
+    names(Carter_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Carter_hous_10_value <- Carter_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Carter_hous_18_value <- Carter_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Carter_hous_percent_change <- (((Carter_hous_18_value$value - Carter_hous_10_value$value) / Carter_hous_10_value$value) * 100)
+    
+    names(Carter_hous_percent_change) <- hous_names
+  
+    Carter_hous_raw <- Carter_hous_18_value$value - Carter_hous_10_value$value
+    
+    names(Carter_hous_raw) <- hous_names
+
+    #pop estimates 
+    
+    #Greene
+    
+    Greene_pop <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Greene_age <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Greene_race <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Greene_sex <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Greene_hisp <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Greene_pop_10 <- Greene_pop %>%
+      filter(DATE == 1)
+    
+    Greene_pop_18 <- Greene_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Greene_pop_10_2<- cbind(Greene_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Greene_pop_18_2 <- cbind(Greene_pop_18, DATES)
+    
+    Greene_pop_change <- rbind(Greene_pop_10_2, Greene_pop_18_2)
+    
+    Greene_pop_change <- Greene_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Greene_age_10 <- Greene_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Greene_age_18 <- Greene_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Greene_age_10$DATE))
+    
+    Greene_age_10_2 <- cbind(Greene_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Greene_age_10$DATE))
+    
+    Greene_age_18_2 <-cbind(Greene_age_18, DATES, age_names)
+    
+    Greene_age_change <- rbind(Greene_age_10_2, Greene_age_18_2)
+    
+    Greene_age_change <- Greene_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Greene_race_10 <- Greene_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Greene_race_18 <- Greene_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Greene_race_10$DATE))
+    
+    Greene_race_10_2 <- cbind(Greene_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Greene_race_18$DATE))
+    
+    Greene_race_18_2 <- cbind(Greene_race_18, DATES, race_names)
+    
+    Greene_race_change <- rbind(Greene_race_10_2, Greene_race_18_2)             
+    
+    Greene_race_change <- Greene_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Greene_sex_10 <- Greene_sex %>%
+      filter(DATE == 1)
+    
+    Greene_sex_18 <- Greene_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Greene_sex_10$DATE))
+    
+    Greene_sex_10_2 <- cbind(Greene_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Greene_sex_18$DATE))
+    
+    Greene_sex_18_2 <- cbind(Greene_sex_18, DATES, sex_names)
+    
+    Greene_sex_change <- rbind(Greene_sex_10_2, Greene_sex_18_2)
+    
+    Greene_sex_change <- Greene_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Greene_hisp_10 <- Greene_hisp %>%
+      filter(DATE == 1) 
+    
+    Greene_hisp_18 <- Greene_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Greene_hisp_10$DATE))
+    
+    Greene_hisp_10_2 <- cbind(Greene_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Greene_hisp_18$DATE))           
+    
+    Greene_hisp_18_2 <- cbind(Greene_hisp_18, DATES, hisp_names)
+    
+    Greene_hisp_change <- rbind(Greene_hisp_10_2, Greene_hisp_18_2)
+    
+    Greene_hisp_change <- Greene_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Greene_hous <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Greene_hous_10 <- Greene_hous %>%
+      filter(DATE == 1)
+    
+    Greene_hous_18 <- Greene_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Greene_hous_10$DATE))
+    
+    Greene_hous_10_2 <- cbind(Greene_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Greene_hous_18$DATE))
+    
+    Greene_hous_18_2 <- cbind(Greene_hous_18, DATES, hous_names)
+    
+    Greene_hous_change <- rbind(Greene_hous_10_2, Greene_hous_18_2)
+    
+    Greene_hous_change <- Greene_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Greene_pop_10_value <- Greene_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Greene_pop_18_value <- Greene_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Greene_pop_raw <- Greene_pop_18_value$value - Greene_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Greene_pop_raw) <- pop_names 
+    
+    Greene_pop_percent_change <- (((Greene_pop_18_value$value - Greene_pop_10_value$value) / Greene_pop_10_value$value) * 100) 
+    
+    names(Greene_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Greene_age_10_value <- Greene_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Greene_age_18_value <- Greene_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Greene_age_percent_change <- (((Greene_age_18_value$value - Greene_age_10_value$value) / Greene_age_10_value$value) * 100)
+    
+    names(Greene_age_percent_change) <- age_names
+    
+    Greene_age_raw <- Greene_age_18_value$value - Greene_age_10_value$value
+    
+    names(Greene_age_raw) <- age_names
+    
+    
+    #race
+    
+    Greene_race_10_value <- Greene_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Greene_race_18_value <- Greene_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Greene_race_percent_change <- (((Greene_race_18_value$value - Greene_race_10_value$value) / Greene_race_10_value$value) * 100)
+    
+    names(Greene_race_percent_change) <- race_names
+    
+    Greene_race_raw <- Greene_race_18_value$value - Greene_race_10_value$value
+    
+    names(Greene_race_raw) <- race_names
+    
+    #sex
+    
+    Greene_sex_10_value <- Greene_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Greene_sex_18_value <- Greene_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Greene_sex_percent_change <- (((Greene_sex_18_value$value - Greene_sex_10_value$value) / Greene_sex_10_value$value) * 100)
+    
+    names(Greene_sex_percent_change) <- sex_names
+    
+    Greene_sex_raw <- Greene_sex_18_value$value - Greene_sex_10_value$value
+    
+    names(Greene_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Greene_hisp_10_value <- Greene_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Greene_hisp_18_value <- Greene_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Greene_hisp_percent_change <- (((Greene_hisp_18_value$value - Greene_hisp_10_value$value) / Greene_hisp_10_value$value) * 100)
+    
+    names(Greene_hisp_percent_change) <- hisp_names
+    
+    Greene_hisp_raw <- Greene_hisp_18_value$value - Greene_hisp_10_value$value
+    
+    names(Greene_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Greene_hous_10_value <- Greene_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Greene_hous_18_value <- Greene_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Greene_hous_percent_change <- (((Greene_hous_18_value$value - Greene_hous_10_value$value) / Greene_hous_10_value$value) * 100)
+    
+    names(Greene_hous_percent_change) <- hous_names
+    
+    Greene_hous_raw <- Greene_hous_18_value$value - Greene_hous_10_value$value
+    
+    names(Greene_hous_raw) <- hous_names
+    
+    #pop estimates 
+    
+    #Johnson
+    
+    Johnson_pop <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Johnson_age <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Johnson_race <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Johnson_sex <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Johnson_hisp <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Johnson_pop_10 <- Johnson_pop %>%
+      filter(DATE == 1)
+    
+    Johnson_pop_18 <- Johnson_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Johnson_pop_10_2<- cbind(Johnson_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Johnson_pop_18_2 <- cbind(Johnson_pop_18, DATES)
+    
+    Johnson_pop_change <- rbind(Johnson_pop_10_2, Johnson_pop_18_2)
+    
+    Johnson_pop_change <- Johnson_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Johnson_age_10 <- Johnson_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Johnson_age_18 <- Johnson_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Johnson_age_10$DATE))
+    
+    Johnson_age_10_2 <- cbind(Johnson_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Johnson_age_10$DATE))
+    
+    Johnson_age_18_2 <-cbind(Johnson_age_18, DATES, age_names)
+    
+    Johnson_age_change <- rbind(Johnson_age_10_2, Johnson_age_18_2)
+    
+    Johnson_age_change <- Johnson_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Johnson_race_10 <- Johnson_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Johnson_race_18 <- Johnson_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Johnson_race_10$DATE))
+    
+    Johnson_race_10_2 <- cbind(Johnson_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Johnson_race_18$DATE))
+    
+    Johnson_race_18_2 <- cbind(Johnson_race_18, DATES, race_names)
+    
+    Johnson_race_change <- rbind(Johnson_race_10_2, Johnson_race_18_2)             
+    
+    Johnson_race_change <- Johnson_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Johnson_sex_10 <- Johnson_sex %>%
+      filter(DATE == 1)
+    
+    Johnson_sex_18 <- Johnson_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Johnson_sex_10$DATE))
+    
+    Johnson_sex_10_2 <- cbind(Johnson_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Johnson_sex_18$DATE))
+    
+    Johnson_sex_18_2 <- cbind(Johnson_sex_18, DATES, sex_names)
+    
+    Johnson_sex_change <- rbind(Johnson_sex_10_2, Johnson_sex_18_2)
+    
+    Johnson_sex_change <- Johnson_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Johnson_hisp_10 <- Johnson_hisp %>%
+      filter(DATE == 1) 
+    
+    Johnson_hisp_18 <- Johnson_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Johnson_hisp_10$DATE))
+    
+    Johnson_hisp_10_2 <- cbind(Johnson_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Johnson_hisp_18$DATE))           
+    
+    Johnson_hisp_18_2 <- cbind(Johnson_hisp_18, DATES, hisp_names)
+    
+    Johnson_hisp_change <- rbind(Johnson_hisp_10_2, Johnson_hisp_18_2)
+    
+    Johnson_hisp_change <- Johnson_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Johnson_hous <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Johnson_hous_10 <- Johnson_hous %>%
+      filter(DATE == 1)
+    
+    Johnson_hous_18 <- Johnson_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Johnson_hous_10$DATE))
+    
+    Johnson_hous_10_2 <- cbind(Johnson_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Johnson_hous_18$DATE))
+    
+    Johnson_hous_18_2 <- cbind(Johnson_hous_18, DATES, hous_names)
+    
+    Johnson_hous_change <- rbind(Johnson_hous_10_2, Johnson_hous_18_2)
+    
+    Johnson_hous_change <- Johnson_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Johnson_pop_10_value <- Johnson_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Johnson_pop_18_value <- Johnson_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Johnson_pop_raw <- Johnson_pop_18_value$value - Johnson_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Johnson_pop_raw) <- pop_names 
+    
+    Johnson_pop_percent_change <- (((Johnson_pop_18_value$value - Johnson_pop_10_value$value) / Johnson_pop_10_value$value) * 100) 
+    
+    names(Johnson_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Johnson_age_10_value <- Johnson_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Johnson_age_18_value <- Johnson_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Johnson_age_percent_change <- (((Johnson_age_18_value$value - Johnson_age_10_value$value) / Johnson_age_10_value$value) * 100)
+    
+    names(Johnson_age_percent_change) <- age_names
+    
+    Johnson_age_raw <- Johnson_age_18_value$value - Johnson_age_10_value$value
+    
+    names(Johnson_age_raw) <- age_names
+    
+    
+    #race
+    
+    Johnson_race_10_value <- Johnson_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Johnson_race_18_value <- Johnson_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Johnson_race_percent_change <- (((Johnson_race_18_value$value - Johnson_race_10_value$value) / Johnson_race_10_value$value) * 100)
+    
+    names(Johnson_race_percent_change) <- race_names
+    
+    Johnson_race_raw <- Johnson_race_18_value$value - Johnson_race_10_value$value
+    
+    names(Johnson_race_raw) <- race_names										
+    
+    #sex
+    
+    Johnson_sex_10_value <- Johnson_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Johnson_sex_18_value <- Johnson_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Johnson_sex_percent_change <- (((Johnson_sex_18_value$value - Johnson_sex_10_value$value) / Johnson_sex_10_value$value) * 100)
+    
+    names(Johnson_sex_percent_change) <- sex_names
+    
+    Johnson_sex_raw <- Johnson_sex_18_value$value - Johnson_sex_10_value$value
+    
+    names(Johnson_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Johnson_hisp_10_value <- Johnson_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Johnson_hisp_18_value <- Johnson_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Johnson_hisp_percent_change <- (((Johnson_hisp_18_value$value - Johnson_hisp_10_value$value) / Johnson_hisp_10_value$value) * 100)
+    
+    names(Johnson_hisp_percent_change) <- hisp_names
+    
+    Johnson_hisp_raw <- Johnson_hisp_18_value$value - Johnson_hisp_10_value$value
+    
+    names(Johnson_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Johnson_hous_10_value <- Johnson_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Johnson_hous_18_value <- Johnson_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Johnson_hous_percent_change <- (((Johnson_hous_18_value$value - Johnson_hous_10_value$value) / Johnson_hous_10_value$value) * 100)
+    
+    names(Johnson_hous_percent_change) <- hous_names
+    
+    Johnson_hous_raw <- Johnson_hous_18_value$value - Johnson_hous_10_value$value
+    
+    names(Johnson_hous_raw) <- hous_names
+    
+    #pop estimates 
+    
+    #Hancock
+    
+    Hancock_pop <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hancock_age <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hancock_race <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hancock_sex <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hancock_hisp <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Hancock_pop_10 <- Hancock_pop %>%
+      filter(DATE == 1)
+    
+    Hancock_pop_18 <- Hancock_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Hancock_pop_10_2<- cbind(Hancock_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Hancock_pop_18_2 <- cbind(Hancock_pop_18, DATES)
+    
+    Hancock_pop_change <- rbind(Hancock_pop_10_2, Hancock_pop_18_2)
+    
+    Hancock_pop_change <- Hancock_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Hancock_age_10 <- Hancock_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Hancock_age_18 <- Hancock_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Hancock_age_10$DATE))
+    
+    Hancock_age_10_2 <- cbind(Hancock_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Hancock_age_10$DATE))
+    
+    Hancock_age_18_2 <-cbind(Hancock_age_18, DATES, age_names)
+    
+    Hancock_age_change <- rbind(Hancock_age_10_2, Hancock_age_18_2)
+    
+    Hancock_age_change <- Hancock_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Hancock_race_10 <- Hancock_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Hancock_race_18 <- Hancock_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Hancock_race_10$DATE))
+    
+    Hancock_race_10_2 <- cbind(Hancock_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Hancock_race_18$DATE))
+    
+    Hancock_race_18_2 <- cbind(Hancock_race_18, DATES, race_names)
+    
+    Hancock_race_change <- rbind(Hancock_race_10_2, Hancock_race_18_2)             
+    
+    Hancock_race_change <- Hancock_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Hancock_sex_10 <- Hancock_sex %>%
+      filter(DATE == 1)
+    
+    Hancock_sex_18 <- Hancock_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Hancock_sex_10$DATE))
+    
+    Hancock_sex_10_2 <- cbind(Hancock_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Hancock_sex_18$DATE))
+    
+    Hancock_sex_18_2 <- cbind(Hancock_sex_18, DATES, sex_names)
+    
+    Hancock_sex_change <- rbind(Hancock_sex_10_2, Hancock_sex_18_2)
+    
+    Hancock_sex_change <- Hancock_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Hancock_hisp_10 <- Hancock_hisp %>%
+      filter(DATE == 1) 
+    
+    Hancock_hisp_18 <- Hancock_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Hancock_hisp_10$DATE))
+    
+    Hancock_hisp_10_2 <- cbind(Hancock_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Hancock_hisp_18$DATE))           
+    
+    Hancock_hisp_18_2 <- cbind(Hancock_hisp_18, DATES, hisp_names)
+    
+    Hancock_hisp_change <- rbind(Hancock_hisp_10_2, Hancock_hisp_18_2)
+    
+    Hancock_hisp_change <- Hancock_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Hancock_hous <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Hancock_hous_10 <- Hancock_hous %>%
+      filter(DATE == 1)
+    
+    Hancock_hous_18 <- Hancock_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Hancock_hous_10$DATE))
+    
+    Hancock_hous_10_2 <- cbind(Hancock_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Hancock_hous_18$DATE))
+    
+    Hancock_hous_18_2 <- cbind(Hancock_hous_18, DATES, hous_names)
+    
+    Hancock_hous_change <- rbind(Hancock_hous_10_2, Hancock_hous_18_2)
+    
+    Hancock_hous_change <- Hancock_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Hancock_pop_10_value <- Hancock_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Hancock_pop_18_value <- Hancock_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Hancock_pop_raw <- Hancock_pop_18_value$value - Hancock_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Hancock_pop_raw) <- pop_names 
+    
+    Hancock_pop_percent_change <- (((Hancock_pop_18_value$value - Hancock_pop_10_value$value) / Hancock_pop_10_value$value) * 100) 
+    
+    names(Hancock_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Hancock_age_10_value <- Hancock_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Hancock_age_18_value <- Hancock_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Hancock_age_percent_change <- (((Hancock_age_18_value$value - Hancock_age_10_value$value) / Hancock_age_10_value$value) * 100)
+    
+    names(Hancock_age_percent_change) <- age_names
+    
+    Hancock_age_raw <- Hancock_age_18_value$value - Hancock_age_10_value$value
+    
+    names(Hancock_age_raw) <- age_names
+    
+    
+    #race
+    
+    Hancock_race_10_value <- Hancock_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hancock_race_18_value <- Hancock_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hancock_race_percent_change <- (((Hancock_race_18_value$value - Hancock_race_10_value$value) / Hancock_race_10_value$value) * 100)
+    
+    names(Hancock_race_percent_change) <- race_names
+    
+    Hancock_race_raw <- Hancock_race_18_value$value - Hancock_race_10_value$value
+    
+    names(Hancock_race_raw) <- race_names	
+    
+    #sex
+    
+    Hancock_sex_10_value <- Hancock_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hancock_sex_18_value <- Hancock_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hancock_sex_percent_change <- (((Hancock_sex_18_value$value - Hancock_sex_10_value$value) / Hancock_sex_10_value$value) * 100)
+    
+    names(Hancock_sex_percent_change) <- sex_names
+    
+    Hancock_sex_raw <- Hancock_sex_18_value$value - Hancock_sex_10_value$value
+    
+    names(Hancock_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Hancock_hisp_10_value <- Hancock_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hancock_hisp_18_value <- Hancock_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hancock_hisp_percent_change <- (((Hancock_hisp_18_value$value - Hancock_hisp_10_value$value) / Hancock_hisp_10_value$value) * 100)
+    
+    names(Hancock_hisp_percent_change) <- hisp_names
+    
+    Hancock_hisp_raw <- Hancock_hisp_18_value$value - Hancock_hisp_10_value$value
+    
+    names(Hancock_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Hancock_hous_10_value <- Hancock_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hancock_hous_18_value <- Hancock_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hancock_hous_percent_change <- (((Hancock_hous_18_value$value - Hancock_hous_10_value$value) / Hancock_hous_10_value$value) * 100)
+    
+    names(Hancock_hous_percent_change) <- hous_names
+    
+    Hancock_hous_raw <- Hancock_hous_18_value$value - Hancock_hous_10_value$value
+    
+    names(Hancock_hous_raw) <- hous_names
+    
+    #pop estimates 
+    
+    #Hawkins
+    
+    Hawkins_pop <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hawkins_age <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hawkins_race <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hawkins_sex <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Hawkins_hisp <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Hawkins_pop_10 <- Hawkins_pop %>%
+      filter(DATE == 1)
+    
+    Hawkins_pop_18 <- Hawkins_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Hawkins_pop_10_2<- cbind(Hawkins_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Hawkins_pop_18_2 <- cbind(Hawkins_pop_18, DATES)
+    
+    Hawkins_pop_change <- rbind(Hawkins_pop_10_2, Hawkins_pop_18_2)
+    
+    Hawkins_pop_change <- Hawkins_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Hawkins_age_10 <- Hawkins_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Hawkins_age_18 <- Hawkins_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Hawkins_age_10$DATE))
+    
+    Hawkins_age_10_2 <- cbind(Hawkins_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Hawkins_age_10$DATE))
+    
+    Hawkins_age_18_2 <-cbind(Hawkins_age_18, DATES, age_names)
+    
+    Hawkins_age_change <- rbind(Hawkins_age_10_2, Hawkins_age_18_2)
+    
+    Hawkins_age_change <- Hawkins_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Hawkins_race_10 <- Hawkins_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Hawkins_race_18 <- Hawkins_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Hawkins_race_10$DATE))
+    
+    Hawkins_race_10_2 <- cbind(Hawkins_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Hawkins_race_18$DATE))
+    
+    Hawkins_race_18_2 <- cbind(Hawkins_race_18, DATES, race_names)
+    
+    Hawkins_race_change <- rbind(Hawkins_race_10_2, Hawkins_race_18_2)             
+    
+    Hawkins_race_change <- Hawkins_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Hawkins_sex_10 <- Hawkins_sex %>%
+      filter(DATE == 1)
+    
+    Hawkins_sex_18 <- Hawkins_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Hawkins_sex_10$DATE))
+    
+    Hawkins_sex_10_2 <- cbind(Hawkins_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Hawkins_sex_18$DATE))
+    
+    Hawkins_sex_18_2 <- cbind(Hawkins_sex_18, DATES, sex_names)
+    
+    Hawkins_sex_change <- rbind(Hawkins_sex_10_2, Hawkins_sex_18_2)
+    
+    Hawkins_sex_change <- Hawkins_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Hawkins_hisp_10 <- Hawkins_hisp %>%
+      filter(DATE == 1) 
+    
+    Hawkins_hisp_18 <- Hawkins_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Hawkins_hisp_10$DATE))
+    
+    Hawkins_hisp_10_2 <- cbind(Hawkins_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Hawkins_hisp_18$DATE))           
+    
+    Hawkins_hisp_18_2 <- cbind(Hawkins_hisp_18, DATES, hisp_names)
+    
+    Hawkins_hisp_change <- rbind(Hawkins_hisp_10_2, Hawkins_hisp_18_2)
+    
+    Hawkins_hisp_change <- Hawkins_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Hawkins_hous <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Hawkins_hous_10 <- Hawkins_hous %>%
+      filter(DATE == 1)
+    
+    Hawkins_hous_18 <- Hawkins_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Hawkins_hous_10$DATE))
+    
+    Hawkins_hous_10_2 <- cbind(Hawkins_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Hawkins_hous_18$DATE))
+    
+    Hawkins_hous_18_2 <- cbind(Hawkins_hous_18, DATES, hous_names)
+    
+    Hawkins_hous_change <- rbind(Hawkins_hous_10_2, Hawkins_hous_18_2)
+    
+    Hawkins_hous_change <- Hawkins_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Hawkins_pop_10_value <- Hawkins_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Hawkins_pop_18_value <- Hawkins_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Hawkins_pop_raw <- Hawkins_pop_18_value$value - Hawkins_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Hawkins_pop_raw) <- pop_names 
+    
+    Hawkins_pop_percent_change <- (((Hawkins_pop_18_value$value - Hawkins_pop_10_value$value) / Hawkins_pop_10_value$value) * 100) 
+    
+    names(Hawkins_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Hawkins_age_10_value <- Hawkins_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Hawkins_age_18_value <- Hawkins_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Hawkins_age_percent_change <- (((Hawkins_age_18_value$value - Hawkins_age_10_value$value) / Hawkins_age_10_value$value) * 100)
+    
+    names(Hawkins_age_percent_change) <- age_names
+    
+    Hawkins_age_raw <- Hawkins_age_18_value$value - Hawkins_age_10_value$value
+    
+    names(Hawkins_age_raw) <- age_names
+    
+    
+    #race
+    
+    Hawkins_race_10_value <- Hawkins_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hawkins_race_18_value <- Hawkins_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hawkins_race_percent_change <- (((Hawkins_race_18_value$value - Hawkins_race_10_value$value) / Hawkins_race_10_value$value) * 100)
+    
+    names(Hawkins_race_percent_change) <- race_names
+    
+    Hawkins_race_raw <- Hawkins_race_18_value$value - Hawkins_race_10_value$value
+    
+    names(Hawkins_race_raw) <- race_names	
+    
+    #sex
+    
+    Hawkins_sex_10_value <- Hawkins_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hawkins_sex_18_value <- Hawkins_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hawkins_sex_percent_change <- (((Hawkins_sex_18_value$value - Hawkins_sex_10_value$value) / Hawkins_sex_10_value$value) * 100)
+    
+    names(Hawkins_sex_percent_change) <- sex_names
+    
+    Hawkins_sex_raw <- Hawkins_sex_18_value$value - Hawkins_sex_10_value$value
+    
+    names(Hawkins_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Hawkins_hisp_10_value <- Hawkins_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hawkins_hisp_18_value <- Hawkins_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hawkins_hisp_percent_change <- (((Hawkins_hisp_18_value$value - Hawkins_hisp_10_value$value) / Hawkins_hisp_10_value$value) * 100)
+    
+    names(Hawkins_hisp_percent_change) <- hisp_names
+    
+    Hawkins_hisp_raw <- Hawkins_hisp_18_value$value - Hawkins_hisp_10_value$value
+    
+    names(Hawkins_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Hawkins_hous_10_value <- Hawkins_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Hawkins_hous_18_value <- Hawkins_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Hawkins_hous_percent_change <- (((Hawkins_hous_18_value$value - Hawkins_hous_10_value$value) / Hawkins_hous_10_value$value) * 100)
+    
+    names(Hawkins_hous_percent_change) <- hous_names
+    
+    Hawkins_hous_raw <- Hawkins_hous_18_value$value - Hawkins_hous_10_value$value
+    
+    names(Hawkins_hous_raw) <- hous_names
+    
+    #pop estimates 
+    
+    #Sullivan
+    
+    Sullivan_pop <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Sullivan_age <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Sullivan_race <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Sullivan_sex <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Sullivan_hisp <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Sullivan_pop_10 <- Sullivan_pop %>%
+      filter(DATE == 1)
+    
+    Sullivan_pop_18 <- Sullivan_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Sullivan_pop_10_2<- cbind(Sullivan_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Sullivan_pop_18_2 <- cbind(Sullivan_pop_18, DATES)
+    
+    Sullivan_pop_change <- rbind(Sullivan_pop_10_2, Sullivan_pop_18_2)
+    
+    Sullivan_pop_change <- Sullivan_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Sullivan_age_10 <- Sullivan_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Sullivan_age_18 <- Sullivan_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Sullivan_age_10$DATE))
+    
+    Sullivan_age_10_2 <- cbind(Sullivan_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Sullivan_age_10$DATE))
+    
+    Sullivan_age_18_2 <-cbind(Sullivan_age_18, DATES, age_names)
+    
+    Sullivan_age_change <- rbind(Sullivan_age_10_2, Sullivan_age_18_2)
+    
+    Sullivan_age_change <- Sullivan_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Sullivan_race_10 <- Sullivan_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Sullivan_race_18 <- Sullivan_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Sullivan_race_10$DATE))
+    
+    Sullivan_race_10_2 <- cbind(Sullivan_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Sullivan_race_18$DATE))
+    
+    Sullivan_race_18_2 <- cbind(Sullivan_race_18, DATES, race_names)
+    
+    Sullivan_race_change <- rbind(Sullivan_race_10_2, Sullivan_race_18_2)             
+    
+    Sullivan_race_change <- Sullivan_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Sullivan_sex_10 <- Sullivan_sex %>%
+      filter(DATE == 1)
+    
+    Sullivan_sex_18 <- Sullivan_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Sullivan_sex_10$DATE))
+    
+    Sullivan_sex_10_2 <- cbind(Sullivan_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Sullivan_sex_18$DATE))
+    
+    Sullivan_sex_18_2 <- cbind(Sullivan_sex_18, DATES, sex_names)
+    
+    Sullivan_sex_change <- rbind(Sullivan_sex_10_2, Sullivan_sex_18_2)
+    
+    Sullivan_sex_change <- Sullivan_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Sullivan_hisp_10 <- Sullivan_hisp %>%
+      filter(DATE == 1) 
+    
+    Sullivan_hisp_18 <- Sullivan_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Sullivan_hisp_10$DATE))
+    
+    Sullivan_hisp_10_2 <- cbind(Sullivan_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Sullivan_hisp_18$DATE))           
+    
+    Sullivan_hisp_18_2 <- cbind(Sullivan_hisp_18, DATES, hisp_names)
+    
+    Sullivan_hisp_change <- rbind(Sullivan_hisp_10_2, Sullivan_hisp_18_2)
+    
+    Sullivan_hisp_change <- Sullivan_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Sullivan_hous <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Sullivan_hous_10 <- Sullivan_hous %>%
+      filter(DATE == 1)
+    
+    Sullivan_hous_18 <- Sullivan_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Sullivan_hous_10$DATE))
+    
+    Sullivan_hous_10_2 <- cbind(Sullivan_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Sullivan_hous_18$DATE))
+    
+    Sullivan_hous_18_2 <- cbind(Sullivan_hous_18, DATES, hous_names)
+    
+    Sullivan_hous_change <- rbind(Sullivan_hous_10_2, Sullivan_hous_18_2)
+    
+    Sullivan_hous_change <- Sullivan_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Sullivan_pop_10_value <- Sullivan_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Sullivan_pop_18_value <- Sullivan_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Sullivan_pop_raw <- Sullivan_pop_18_value$value - Sullivan_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Sullivan_pop_raw) <- pop_names 
+    
+    Sullivan_pop_percent_change <- (((Sullivan_pop_18_value$value - Sullivan_pop_10_value$value) / Sullivan_pop_10_value$value) * 100) 
+    
+    names(Sullivan_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Sullivan_age_10_value <- Sullivan_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Sullivan_age_18_value <- Sullivan_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Sullivan_age_percent_change <- (((Sullivan_age_18_value$value - Sullivan_age_10_value$value) / Sullivan_age_10_value$value) * 100)
+    
+    names(Sullivan_age_percent_change) <- age_names
+    
+    Sullivan_age_raw <- Sullivan_age_18_value$value - Sullivan_age_10_value$value
+    
+    names(Sullivan_age_raw) <- age_names
+    
+    
+    #race
+    
+    Sullivan_race_10_value <- Sullivan_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Sullivan_race_18_value <- Sullivan_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Sullivan_race_percent_change <- (((Sullivan_race_18_value$value - Sullivan_race_10_value$value) / Sullivan_race_10_value$value) * 100)
+    
+    names(Sullivan_race_percent_change) <- race_names
+    
+    Sullivan_race_raw <- Sullivan_race_18_value$value - Sullivan_race_10_value$value
+    
+    names(Sullivan_race_raw) <- race_names	
+    
+    #sex
+    
+    Sullivan_sex_10_value <- Sullivan_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Sullivan_sex_18_value <- Sullivan_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Sullivan_sex_percent_change <- (((Sullivan_sex_18_value$value - Sullivan_sex_10_value$value) / Sullivan_sex_10_value$value) * 100)
+    
+    names(Sullivan_sex_percent_change) <- sex_names
+    
+    Sullivan_sex_raw <- Sullivan_sex_18_value$value - Sullivan_sex_10_value$value
+    
+    names(Sullivan_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Sullivan_hisp_10_value <- Sullivan_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Sullivan_hisp_18_value <- Sullivan_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Sullivan_hisp_percent_change <- (((Sullivan_hisp_18_value$value - Sullivan_hisp_10_value$value) / Sullivan_hisp_10_value$value) * 100)
+    
+    names(Sullivan_hisp_percent_change) <- hisp_names
+    
+    Sullivan_hisp_raw <- Sullivan_hisp_18_value$value - Sullivan_hisp_10_value$value
+    
+    names(Sullivan_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Sullivan_hous_10_value <- Sullivan_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Sullivan_hous_18_value <- Sullivan_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Sullivan_hous_percent_change <- (((Sullivan_hous_18_value$value - Sullivan_hous_10_value$value) / Sullivan_hous_10_value$value) * 100)
+    
+    names(Sullivan_hous_percent_change) <- hous_names
+    
+    Sullivan_hous_raw <- Sullivan_hous_18_value$value - Sullivan_hous_10_value$value
+    
+    names(Sullivan_hous_raw) <- hous_names
+    
+    #pop estimates 
+    
+    #Washington
+    
+    Washington_pop <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Washington_age <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Washington_race <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Washington_sex <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Washington_hisp <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Washington_pop_10 <- Washington_pop %>%
+      filter(DATE == 1)
+    
+    Washington_pop_18 <- Washington_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Washington_pop_10_2<- cbind(Washington_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Washington_pop_18_2 <- cbind(Washington_pop_18, DATES)
+    
+    Washington_pop_change <- rbind(Washington_pop_10_2, Washington_pop_18_2)
+    
+    Washington_pop_change <- Washington_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Washington_age_10 <- Washington_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Washington_age_18 <- Washington_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Washington_age_10$DATE))
+    
+    Washington_age_10_2 <- cbind(Washington_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Washington_age_10$DATE))
+    
+    Washington_age_18_2 <-cbind(Washington_age_18, DATES, age_names)
+    
+    Washington_age_change <- rbind(Washington_age_10_2, Washington_age_18_2)
+    
+    Washington_age_change <- Washington_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Washington_race_10 <- Washington_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Washington_race_18 <- Washington_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Washington_race_10$DATE))
+    
+    Washington_race_10_2 <- cbind(Washington_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Washington_race_18$DATE))
+    
+    Washington_race_18_2 <- cbind(Washington_race_18, DATES, race_names)
+    
+    Washington_race_change <- rbind(Washington_race_10_2, Washington_race_18_2)             
+    
+    Washington_race_change <- Washington_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Washington_sex_10 <- Washington_sex %>%
+      filter(DATE == 1)
+    
+    Washington_sex_18 <- Washington_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Washington_sex_10$DATE))
+    
+    Washington_sex_10_2 <- cbind(Washington_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Washington_sex_18$DATE))
+    
+    Washington_sex_18_2 <- cbind(Washington_sex_18, DATES, sex_names)
+    
+    Washington_sex_change <- rbind(Washington_sex_10_2, Washington_sex_18_2)
+    
+    Washington_sex_change <- Washington_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Washington_hisp_10 <- Washington_hisp %>%
+      filter(DATE == 1) 
+    
+    Washington_hisp_18 <- Washington_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Washington_hisp_10$DATE))
+    
+    Washington_hisp_10_2 <- cbind(Washington_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Washington_hisp_18$DATE))           
+    
+    Washington_hisp_18_2 <- cbind(Washington_hisp_18, DATES, hisp_names)
+    
+    Washington_hisp_change <- rbind(Washington_hisp_10_2, Washington_hisp_18_2)
+    
+    Washington_hisp_change <- Washington_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Washington_hous <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Washington_hous_10 <- Washington_hous %>%
+      filter(DATE == 1)
+    
+    Washington_hous_18 <- Washington_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Washington_hous_10$DATE))
+    
+    Washington_hous_10_2 <- cbind(Washington_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Washington_hous_18$DATE))
+    
+    Washington_hous_18_2 <- cbind(Washington_hous_18, DATES, hous_names)
+    
+    Washington_hous_change <- rbind(Washington_hous_10_2, Washington_hous_18_2)
+    
+    Washington_hous_change <- Washington_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Washington_pop_10_value <- Washington_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Washington_pop_18_value <- Washington_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Washington_pop_raw <- Washington_pop_18_value$value - Washington_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Washington_pop_raw) <- pop_names 
+    
+    Washington_pop_percent_change <- (((Washington_pop_18_value$value - Washington_pop_10_value$value) / Washington_pop_10_value$value) * 100) 
+    
+    names(Washington_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Washington_age_10_value <- Washington_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Washington_age_18_value <- Washington_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Washington_age_percent_change <- (((Washington_age_18_value$value - Washington_age_10_value$value) / Washington_age_10_value$value) * 100)
+    
+    names(Washington_age_percent_change) <- age_names
+    
+    Washington_age_raw <- Washington_age_18_value$value - Washington_age_10_value$value
+    
+    names(Washington_age_raw) <- age_names
+    
+    
+    #race
+    
+    Washington_race_10_value <- Washington_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Washington_race_18_value <- Washington_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Washington_race_percent_change <- (((Washington_race_18_value$value - Washington_race_10_value$value) / Washington_race_10_value$value) * 100)
+    
+    names(Washington_race_percent_change) <- race_names
+    
+    Washington_race_raw <- Washington_race_18_value$value - Washington_race_10_value$value
+    
+    names(Washington_race_raw) <- race_names	
+    
+    #sex
+    
+    Washington_sex_10_value <- Washington_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Washington_sex_18_value <- Washington_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Washington_sex_percent_change <- (((Washington_sex_18_value$value - Washington_sex_10_value$value) / Washington_sex_10_value$value) * 100)
+    
+    names(Washington_sex_percent_change) <- sex_names
+    
+    Washington_sex_raw <- Washington_sex_18_value$value - Washington_sex_10_value$value
+    
+    names(Washington_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Washington_hisp_10_value <- Washington_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Washington_hisp_18_value <- Washington_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Washington_hisp_percent_change <- (((Washington_hisp_18_value$value - Washington_hisp_10_value$value) / Washington_hisp_10_value$value) * 100)
+    
+    names(Washington_hisp_percent_change) <- hisp_names
+    
+    Washington_hisp_raw <- Washington_hisp_18_value$value - Washington_hisp_10_value$value
+    
+    names(Washington_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Washington_hous_10_value <- Washington_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Washington_hous_18_value <- Washington_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Washington_hous_percent_change <- (((Washington_hous_18_value$value - Washington_hous_10_value$value) / Washington_hous_10_value$value) * 100)
+    
+    names(Washington_hous_percent_change) <- hous_names
+    
+    Washington_hous_raw <- Washington_hous_18_value$value - Washington_hous_10_value$value
+    
+    names(Washington_hous_raw) <- hous_names
+    
+    #pop estimates 
+    
+    #Unicoi
+    
+    Unicoi_pop <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Unicoi_age <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Unicoi_race <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Unicoi_sex <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Unicoi_hisp <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Unicoi_pop_10 <- Unicoi_pop %>%
+      filter(DATE == 1)
+    
+    Unicoi_pop_18 <- Unicoi_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Unicoi_pop_10_2<- cbind(Unicoi_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Unicoi_pop_18_2 <- cbind(Unicoi_pop_18, DATES)
+    
+    Unicoi_pop_change <- rbind(Unicoi_pop_10_2, Unicoi_pop_18_2)
+    
+    Unicoi_pop_change <- Unicoi_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Unicoi_age_10 <- Unicoi_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Unicoi_age_18 <- Unicoi_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Unicoi_age_10$DATE))
+    
+    Unicoi_age_10_2 <- cbind(Unicoi_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Unicoi_age_10$DATE))
+    
+    Unicoi_age_18_2 <-cbind(Unicoi_age_18, DATES, age_names)
+    
+    Unicoi_age_change <- rbind(Unicoi_age_10_2, Unicoi_age_18_2)
+    
+    Unicoi_age_change <- Unicoi_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Unicoi_race_10 <- Unicoi_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Unicoi_race_18 <- Unicoi_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Unicoi_race_10$DATE))
+    
+    Unicoi_race_10_2 <- cbind(Unicoi_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Unicoi_race_18$DATE))
+    
+    Unicoi_race_18_2 <- cbind(Unicoi_race_18, DATES, race_names)
+    
+    Unicoi_race_change <- rbind(Unicoi_race_10_2, Unicoi_race_18_2)             
+    
+    Unicoi_race_change <- Unicoi_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Unicoi_sex_10 <- Unicoi_sex %>%
+      filter(DATE == 1)
+    
+    Unicoi_sex_18 <- Unicoi_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Unicoi_sex_10$DATE))
+    
+    Unicoi_sex_10_2 <- cbind(Unicoi_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Unicoi_sex_18$DATE))
+    
+    Unicoi_sex_18_2 <- cbind(Unicoi_sex_18, DATES, sex_names)
+    
+    Unicoi_sex_change <- rbind(Unicoi_sex_10_2, Unicoi_sex_18_2)
+    
+    Unicoi_sex_change <- Unicoi_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Unicoi_hisp_10 <- Unicoi_hisp %>%
+      filter(DATE == 1) 
+    
+    Unicoi_hisp_18 <- Unicoi_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Unicoi_hisp_10$DATE))
+    
+    Unicoi_hisp_10_2 <- cbind(Unicoi_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Unicoi_hisp_18$DATE))           
+    
+    Unicoi_hisp_18_2 <- cbind(Unicoi_hisp_18, DATES, hisp_names)
+    
+    Unicoi_hisp_change <- rbind(Unicoi_hisp_10_2, Unicoi_hisp_18_2)
+    
+    Unicoi_hisp_change <- Unicoi_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    Unicoi_hous <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )    
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Unicoi_hous_10 <- Unicoi_hous %>%
+      filter(DATE == 1)
+    
+    Unicoi_hous_18 <- Unicoi_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Unicoi_hous_10$DATE))
+    
+    Unicoi_hous_10_2 <- cbind(Unicoi_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Unicoi_hous_18$DATE))
+    
+    Unicoi_hous_18_2 <- cbind(Unicoi_hous_18, DATES, hous_names)
+    
+    Unicoi_hous_change <- rbind(Unicoi_hous_10_2, Unicoi_hous_18_2)
+    
+    Unicoi_hous_change <- Unicoi_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Unicoi_pop_10_value <- Unicoi_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Unicoi_pop_18_value <- Unicoi_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Unicoi_pop_raw <- Unicoi_pop_18_value$value - Unicoi_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Unicoi_pop_raw) <- pop_names 
+    
+    Unicoi_pop_percent_change <- (((Unicoi_pop_18_value$value - Unicoi_pop_10_value$value) / Unicoi_pop_10_value$value) * 100) 
+    
+    names(Unicoi_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Unicoi_age_10_value <- Unicoi_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Unicoi_age_18_value <- Unicoi_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Unicoi_age_percent_change <- (((Unicoi_age_18_value$value - Unicoi_age_10_value$value) / Unicoi_age_10_value$value) * 100)
+    
+    names(Unicoi_age_percent_change) <- age_names
+    
+    Unicoi_age_raw <- Unicoi_age_18_value$value - Unicoi_age_10_value$value
+    
+    names(Unicoi_age_raw) <- age_names
+    
+    
+    #race
+    
+    Unicoi_race_10_value <- Unicoi_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Unicoi_race_18_value <- Unicoi_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Unicoi_race_percent_change <- (((Unicoi_race_18_value$value - Unicoi_race_10_value$value) / Unicoi_race_10_value$value) * 100)
+    
+    names(Unicoi_race_percent_change) <- race_names
+    
+    Unicoi_race_raw <- Unicoi_race_18_value$value - Unicoi_race_10_value$value
+    
+    names(Unicoi_race_raw) <- race_names	
+    
+    #sex
+    
+    Unicoi_sex_10_value <- Unicoi_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Unicoi_sex_18_value <- Unicoi_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Unicoi_sex_percent_change <- (((Unicoi_sex_18_value$value - Unicoi_sex_10_value$value) / Unicoi_sex_10_value$value) * 100)
+    
+    names(Unicoi_sex_percent_change) <- sex_names
+    
+    Unicoi_sex_raw <- Unicoi_sex_18_value$value - Unicoi_sex_10_value$value
+    
+    names(Unicoi_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Unicoi_hisp_10_value <- Unicoi_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Unicoi_hisp_18_value <- Unicoi_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Unicoi_hisp_percent_change <- (((Unicoi_hisp_18_value$value - Unicoi_hisp_10_value$value) / Unicoi_hisp_10_value$value) * 100)
+    
+    names(Unicoi_hisp_percent_change) <- hisp_names
+    
+    Unicoi_hisp_raw <- Unicoi_hisp_18_value$value - Unicoi_hisp_10_value$value
+    
+    names(Unicoi_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Unicoi_hous_10_value <- Unicoi_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Unicoi_hous_18_value <- Unicoi_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Unicoi_hous_percent_change <- (((Unicoi_hous_18_value$value - Unicoi_hous_10_value$value) / Unicoi_hous_10_value$value) * 100)
+    
+    names(Unicoi_hous_percent_change) <- hous_names
+    
+    Unicoi_hous_raw <- Unicoi_hous_18_value$value - Unicoi_hous_10_value$value
+    
+    names(Unicoi_hous_raw) <- hous_names
+   
+    #Tennessee  
+    
+    Tennessee_pop <- get_estimates(geography = "state", state = "TN", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Tennessee_age <- get_estimates(geography = "state", state = "TN", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Tennessee_race <- get_estimates(geography = "state", state = "TN", product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Tennessee_sex <- get_estimates(geography = "state", state = "TN", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Tennessee_hisp <- get_estimates(geography = "state", state = "TN", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    Tennessee_hous <- get_estimates(geography = "state", state = "TN", product = "housing", time_series = TRUE, year = 2018, geometry = TRUE )
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    Tennessee_pop_10 <- Tennessee_pop %>%
+      filter(DATE == 1)
+    
+    Tennessee_pop_18 <- Tennessee_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    Tennessee_pop_10_2<- cbind(Tennessee_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    Tennessee_pop_18_2 <- cbind(Tennessee_pop_18, DATES)
+    
+    Tennessee_pop_change <- rbind(Tennessee_pop_10_2, Tennessee_pop_18_2)
+    
+    Tennessee_pop_change <- Tennessee_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    Tennessee_age_10 <- Tennessee_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    Tennessee_age_18 <- Tennessee_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(Tennessee_age_10$DATE))
+    
+    Tennessee_age_10_2 <- cbind(Tennessee_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(Tennessee_age_10$DATE))
+    
+    Tennessee_age_18_2 <-cbind(Tennessee_age_18, DATES, age_names)
+    
+    Tennessee_age_change <- rbind(Tennessee_age_10_2, Tennessee_age_18_2)
+    
+    Tennessee_age_change <- Tennessee_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    Tennessee_race_10 <- Tennessee_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    Tennessee_race_18 <- Tennessee_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(Tennessee_race_10$DATE))
+    
+    Tennessee_race_10_2 <- cbind(Tennessee_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(Tennessee_race_18$DATE))
+    
+    Tennessee_race_18_2 <- cbind(Tennessee_race_18, DATES, race_names)
+    
+    Tennessee_race_change <- rbind(Tennessee_race_10_2, Tennessee_race_18_2)             
+    
+    Tennessee_race_change <- Tennessee_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    Tennessee_sex_10 <- Tennessee_sex %>%
+      filter(DATE == 1)
+    
+    Tennessee_sex_18 <- Tennessee_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Tennessee_sex_10$DATE))
+    
+    Tennessee_sex_10_2 <- cbind(Tennessee_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(Tennessee_sex_18$DATE))
+    
+    Tennessee_sex_18_2 <- cbind(Tennessee_sex_18, DATES, sex_names)
+    
+    Tennessee_sex_change <- rbind(Tennessee_sex_10_2, Tennessee_sex_18_2)
+    
+    Tennessee_sex_change <- Tennessee_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    Tennessee_hisp_10 <- Tennessee_hisp %>%
+      filter(DATE == 1) 
+    
+    Tennessee_hisp_18 <- Tennessee_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Tennessee_hisp_10$DATE))
+    
+    Tennessee_hisp_10_2 <- cbind(Tennessee_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(Tennessee_hisp_18$DATE))           
+    
+    Tennessee_hisp_18_2 <- cbind(Tennessee_hisp_18, DATES, hisp_names)
+    
+    Tennessee_hisp_change <- rbind(Tennessee_hisp_10_2, Tennessee_hisp_18_2)
+    
+    Tennessee_hisp_change <- Tennessee_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    Tennessee_hous_10 <- Tennessee_hous %>%
+      filter(DATE == 1)
+    
+    Tennessee_hous_18 <- Tennessee_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(Tennessee_hous_10$DATE))
+    
+    Tennessee_hous_10_2 <- cbind(Tennessee_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(Tennessee_hous_18$DATE))
+    
+    Tennessee_hous_18_2 <- cbind(Tennessee_hous_18, DATES, hous_names)
+    
+    Tennessee_hous_change <- rbind(Tennessee_hous_10_2, Tennessee_hous_18_2)
+    
+    Tennessee_hous_change <- Tennessee_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    Tennessee_pop_10_value <- Tennessee_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    Tennessee_pop_18_value <- Tennessee_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    Tennessee_pop_raw <- Tennessee_pop_18_value$value - Tennessee_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(Tennessee_pop_raw) <- pop_names 
+    
+    Tennessee_pop_percent_change <- (((Tennessee_pop_18_value$value - Tennessee_pop_10_value$value) / Tennessee_pop_10_value$value) * 100) 
+    
+    names(Tennessee_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    Tennessee_age_10_value <- Tennessee_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    Tennessee_age_18_value <- Tennessee_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    Tennessee_age_percent_change <- (((Tennessee_age_18_value$value - Tennessee_age_10_value$value) / Tennessee_age_10_value$value) * 100)
+    
+    names(Tennessee_age_percent_change) <- age_names
+    
+    Tennessee_age_raw <- Tennessee_age_18_value$value - Tennessee_age_10_value$value
+    
+    names(Tennessee_age_raw) <- age_names
+    
+    
+    #race
+    
+    Tennessee_race_10_value <- Tennessee_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    Tennessee_race_18_value <- Tennessee_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Tennessee_race_percent_change <- (((Tennessee_race_18_value$value - Tennessee_race_10_value$value) / Tennessee_race_10_value$value) * 100)
+    
+    names(Tennessee_race_percent_change) <- race_names
+    
+    Tennessee_race_raw <- Tennessee_race_18_value$value - Tennessee_race_10_value$value
+    
+    names(Tennessee_race_raw) <- race_names
+    
+    #sex
+    
+    Tennessee_sex_10_value <- Tennessee_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    Tennessee_sex_18_value <- Tennessee_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Tennessee_sex_percent_change <- (((Tennessee_sex_18_value$value - Tennessee_sex_10_value$value) / Tennessee_sex_10_value$value) * 100)
+    
+    names(Tennessee_sex_percent_change) <- sex_names
+    
+    Tennessee_sex_raw <- Tennessee_sex_18_value$value - Tennessee_sex_10_value$value
+    
+    names(Tennessee_sex_raw) <- sex_names
+    
+    #hisp
+    
+    Tennessee_hisp_10_value <- Tennessee_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    Tennessee_hisp_18_value <- Tennessee_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Tennessee_hisp_percent_change <- (((Tennessee_hisp_18_value$value - Tennessee_hisp_10_value$value) / Tennessee_hisp_10_value$value) * 100)
+    
+    names(Tennessee_hisp_percent_change) <- hisp_names
+    
+    Tennessee_hisp_raw <- Tennessee_hisp_18_value$value - Tennessee_hisp_10_value$value
+    
+    names(Tennessee_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    Tennessee_hous_10_value <- Tennessee_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    Tennessee_hous_18_value <- Tennessee_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    Tennessee_hous_percent_change <- (((Tennessee_hous_18_value$value - Tennessee_hous_10_value$value) / Tennessee_hous_10_value$value) * 100)
+    
+    names(Tennessee_hous_percent_change) <- hous_names
+    
+    Tennessee_hous_raw <- Tennessee_hous_18_value$value - Tennessee_hous_10_value$value
+    
+    names(Tennessee_hous_raw) <- hous_names
+    
+    #us  
+    
+    us_pop <- get_estimates(geography = "us", product = "population", time_series = TRUE, year = 2018)
+    
+    us_age <- get_estimates(geography = "us", product = "characteristics", breakdown = c("AGEGROUP"),  time_series = TRUE, year = 2018)
+    
+    us_race <- get_estimates(geography = "us",  product = "characteristics", breakdown = c("RACE"),  time_series = TRUE, year = 2018)
+    
+    us_sex <- get_estimates(geography = "us", product = "characteristics", breakdown = c("SEX"),  time_series = TRUE, year = 2018)
+    
+    us_hisp <- get_estimates(geography = "us", product = "characteristics", breakdown = c("HISP"),  time_series = TRUE, year = 2018)
+    
+    us_hous <- get_estimates(geography = "us", product = "housing", time_series = TRUE, year = 2018)
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    ###filter the 2010 census and 2018 estimate##
+    
+    #population
+    
+    us_pop_10 <- us_pop %>%
+      filter(DATE == 1)
+    
+    us_pop_18 <- us_pop %>%
+      filter(DATE == 11)
+    
+    DATES <- c("2010 Census", "2010 Census")
+    
+    us_pop_10_2<- cbind(us_pop_10, DATES)
+    
+    DATES <- c("2018 ACS", "2018 ACS")
+    
+    us_pop_18_2 <- cbind(us_pop_18, DATES)
+    
+    us_pop_change <- rbind(us_pop_10_2, us_pop_18_2)
+    
+    us_pop_change <- us_pop_change[,-3]
+    
+    
+    #age groups
+    
+    age_numbs <- c(0, 1, 19, 26, 29, 31)
+    
+    age_names <- c("All Ages", "Age < 5", "Age < 18", "Age 65+", "Age 18+", "Median Age")
+    
+    us_age_10 <- us_age %>%
+      filter(DATE == 1) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    us_age_18 <- us_age %>%
+      filter(DATE == 11) %>%
+      filter(AGEGROUP %in% age_numbs)
+    
+    DATES <- rep("2010 Census", length(us_age_10$DATE))
+    
+    us_age_10_2 <- cbind(us_age_10, DATES, age_names)    
+    
+    DATES <- rep("2018 ACS", length(us_age_10$DATE))
+    
+    us_age_18_2 <-cbind(us_age_18, DATES, age_names)
+    
+    us_age_change <- rbind(us_age_10_2, us_age_18_2)
+    
+    us_age_change <- us_age_change[,-c(4,5)]
+    
+    #race
+    
+    race_nums <- c(6, 7, 8, 9, 10, 11)
+    
+    race_names <- c("Two or More Races", "White Alone or in Combination", "Black Alone or in Combination", "American Indian and Alaska Native alone or in combination",
+                    "Asian alone or in combination", "Native Hawaiian and Other Pacific Islander alone or in combination")
+    
+    
+    us_race_10 <- us_race %>%
+      filter(DATE == 1) %>%
+      filter(RACE %in% race_nums)
+    
+    us_race_18 <- us_race %>%
+      filter(DATE == 11) %>%
+      filter(RACE %in% race_nums)
+    
+    DATES <- rep("2010 Census", length(us_race_10$DATE))
+    
+    us_race_10_2 <- cbind(us_race_10, DATES, race_names)               
+    
+    DATES <- rep("2018 ACS", length(us_race_18$DATE))
+    
+    us_race_18_2 <- cbind(us_race_18, DATES, race_names)
+    
+    us_race_change <- rbind(us_race_10_2, us_race_18_2)             
+    
+    us_race_change <- us_race_change[,-c(4,5)]
+    
+    #sex
+    
+    sex_names <- c("Total", "Male", "Female")
+    
+    us_sex_10 <- us_sex %>%
+      filter(DATE == 1)
+    
+    us_sex_18 <- us_sex %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(us_sex_10$DATE))
+    
+    us_sex_10_2 <- cbind(us_sex_10, DATES, sex_names)
+    
+    DATES <- rep("2018 ACS", length(us_sex_18$DATE))
+    
+    us_sex_18_2 <- cbind(us_sex_18, DATES, sex_names)
+    
+    us_sex_change <- rbind(us_sex_10_2, us_sex_18_2)
+    
+    us_sex_change <- us_sex_change[,-c(4,5)]
+    
+    #hisp
+    
+    hisp_names <- c("Total", "Non-Hispanic", "Hispanic")
+    
+    us_hisp_10 <- us_hisp %>%
+      filter(DATE == 1) 
+    
+    us_hisp_18 <- us_hisp %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(us_hisp_10$DATE))
+    
+    us_hisp_10_2 <- cbind(us_hisp_10, DATES, hisp_names)
+    
+    DATES <- rep("2018 ACS", length(us_hisp_18$DATE))           
+    
+    us_hisp_18_2 <- cbind(us_hisp_18, DATES, hisp_names)
+    
+    us_hisp_change <- rbind(us_hisp_10_2, us_hisp_18_2)
+    
+    us_hisp_change <- us_hisp_change[,-c(4,5)]
+    
+    
+    #housing
+    
+    hous_names <- "Housing Unit Estimate"
+    
+    us_hous_10 <- us_hous %>%
+      filter(DATE == 1)
+    
+    us_hous_18 <- us_hous %>%
+      filter(DATE == 11)
+    
+    DATES <- rep("2010 Census", length(us_hous_10$DATE))
+    
+    us_hous_10_2 <- cbind(us_hous_10, DATES, hous_names)
+    
+    DATES <- rep("2018 ACS", length(us_hous_18$DATE))
+    
+    us_hous_18_2 <- cbind(us_hous_18, DATES, hous_names)
+    
+    us_hous_change <- rbind(us_hous_10_2, us_hous_18_2)
+    
+    us_hous_change <- us_hous_change[,-c(3,4)]
+    
+    ####percent changes calculations####
+    
+    #total pop
+    
+    us_pop_10_value <- us_pop_change %>% 
+      filter(DATES == "2010 Census") %>% 
+      select(value)
+    
+    us_pop_18_value <- us_pop_change %>% 
+      filter(DATES == "2018 ACS") %>% 
+      select(value)
+    
+    us_pop_raw <- us_pop_18_value$value - us_pop_10_value$value
+    
+    pop_names <- c("Population", "Pop. Density")
+    
+    names(us_pop_raw) <- pop_names 
+    
+    us_pop_percent_change <- (((us_pop_18_value$value - us_pop_10_value$value) / us_pop_10_value$value) * 100) 
+    
+    names(us_pop_percent_change) <- pop_names
+    
+    #age groups
+    
+    us_age_10_value <- us_age_change %>% 
+      filter(DATES == "2010 Census")
+    
+    us_age_18_value <- us_age_change %>% 
+      filter(DATES == "2018 ACS")
+    
+    us_age_percent_change <- (((us_age_18_value$value - us_age_10_value$value) / us_age_10_value$value) * 100)
+    
+    names(us_age_percent_change) <- age_names
+    
+    us_age_raw <- us_age_18_value$value - us_age_10_value$value
+    
+    names(us_age_raw) <- age_names
+    
+    
+    #race
+    
+    us_race_10_value <- us_race_change %>%
+      filter(DATES == "2010 Census")
+    
+    us_race_18_value <- us_race_change %>%
+      filter(DATES == "2018 ACS")
+    
+    us_race_percent_change <- (((us_race_18_value$value - us_race_10_value$value) / us_race_10_value$value) * 100)
+    
+    names(us_race_percent_change) <- race_names
+    
+    us_race_raw <- us_race_18_value$value - us_race_10_value$value
+    
+    names(us_race_raw) <- race_names
+    
+    
+    #sex
+    
+    us_sex_10_value <- us_sex_change %>%
+      filter(DATES == "2010 Census")
+    
+    us_sex_18_value <- us_sex_change %>%
+      filter(DATES == "2018 ACS")
+    
+    us_sex_percent_change <- (((us_sex_18_value$value - us_sex_10_value$value) / us_sex_10_value$value) * 100)
+    
+    names(us_sex_percent_change) <- sex_names
+    
+    us_sex_raw <- us_sex_18_value$value - us_sex_10_value$value
+    
+    names(us_sex_raw) <- sex_names
+    
+    #hisp
+    
+    us_hisp_10_value <- us_hisp_change %>%
+      filter(DATES == "2010 Census")
+    
+    us_hisp_18_value <- us_hisp_change %>%
+      filter(DATES == "2018 ACS")
+    
+    us_hisp_percent_change <- (((us_hisp_18_value$value - us_hisp_10_value$value) / us_hisp_10_value$value) * 100)
+    
+    names(us_hisp_percent_change) <- hisp_names
+    
+    us_hisp_raw <- us_hisp_18_value$value - us_hisp_10_value$value
+    
+    names(us_hisp_raw) <- hisp_names
+    
+    #housing
+    
+    us_hous_10_value <- us_hous_change %>%
+      filter(DATES == "2010 Census")
+    
+    us_hous_18_value <- us_hous_change %>%
+      filter(DATES == "2018 ACS")
+    
+    us_hous_percent_change <- (((us_hous_18_value$value - us_hous_10_value$value) / us_hous_10_value$value) * 100)
+    
+    names(us_hous_percent_change) <- hous_names
+    
+    us_hous_raw <- us_hous_18_value$value - us_hous_10_value$value
+    
+    names(us_hous_raw) <- hous_names
+    
+    ####bind everything together####
+    
+    #population
+    
+    population_changes <- rbind(us_pop_raw, Tennessee_pop_raw, Carter_pop_raw, Greene_pop_raw, Johnson_pop_raw, Hancock_pop_raw, Hawkins_pop_raw, Sullivan_pop_raw, Washington_pop_raw, Unicoi_pop_raw)
+    
+    population_percent_changes <- rbind(us_pop_percent_change, Tennessee_pop_percent_change, Carter_pop_percent_change, Greene_pop_percent_change, Johnson_pop_percent_change, Hancock_pop_percent_change,
+                                        Hawkins_pop_percent_change, Sullivan_pop_percent_change, Washington_pop_percent_change, Unicoi_pop_percent_change)
+
+    pop_changes <- as.data.frame(cbind(population_changes, population_percent_changes), row.names = c("United States", "Tennessee", "Carter County", "Greene County", "Johnson County", "Hancock County", "Hawkins County",
+                                                                                                      "Sullivan County", "Washington County", "Unicoi County"))    
+    
+    names(pop_changes) <- c("Population Change", "Pop. Density Change", "Pop. Percent Change", "Pop. Density Percent Change")    
+    
+    population_changes_2010_2018 <- round(pop_changes[,c(1,2,3,4)],2)
+    
+    population_changes_2010_2018    
+    
+    #age group
+    
+    age_group_changes <- rbind(us_age_raw, Tennessee_age_raw, Carter_age_raw, Greene_age_raw, Johnson_age_raw, Hancock_age_raw, Hawkins_age_raw, Sullivan_age_raw, Washington_age_raw, Unicoi_age_raw)
+    
+    age_group_percent_changes <- rbind(us_age_percent_change, Tennessee_age_percent_change, Carter_age_percent_change, Greene_age_percent_change, Johnson_age_percent_change, Hancock_age_percent_change,
+                                       Hawkins_age_percent_change, Sullivan_age_percent_change, Washington_age_percent_change, Unicoi_age_percent_change)
+    
+    age_changes <- as.data.frame(cbind(age_group_changes, age_group_percent_changes), row.names = c("United States", "Tennessee", "Carter County", "Greene County", "Johnson County", "Hancock County", "Hawkins County",
+                                                                                                         "Sullivan County", "Washington County", "Unicoi County"))
+    
+    names(age_changes) <- c("Total Change: All Ages", "Total Change: Age 0-5 Years", "Total Change: Age under 18 Years", "Total Change: Age over 65 Years", "Total Change: Age over 18 Years", "Median Age Change",
+                            "Percent Change: All Ages", "Percent Change: Age 0-5 Years", "Percent Change: Age under 18 Years", "Percent Change: Age over 65 Years", "Percent Change: Age over 18 Years", "Median Age Percent Change")   
+    
+    age_group_changes_2010_2018 <- round(age_changes, 2)
+    
+    #race changes
+    
+    race_group_changes <- rbind(us_race_raw, Tennessee_race_raw, Carter_race_raw, Greene_race_raw, Johnson_race_raw, Hancock_race_raw, Hawkins_race_raw, Sullivan_race_raw, Washington_race_raw, Unicoi_race_raw)
+    
+    race_group_percent_changes <- rbind(us_race_percent_change, Tennessee_race_percent_change, Carter_race_percent_change, Greene_race_percent_change, Johnson_race_percent_change, Hancock_race_percent_change,
+                                        Hawkins_race_percent_change, Sullivan_race_percent_change, Washington_race_percent_change, Unicoi_race_percent_change)
+    
+    race_changes <- as.data.frame(cbind(race_group_changes, race_group_percent_changes), row.names = c("United States", "Tennessee", "Carter County", "Greene County", "Johnson County", "Hancock County", "Hawkins County",
+                                                                                                       "Sullivan County", "Washington County", "Unicoi County"))
+    names(race_changes) <- c("Total Change: Two or more Races", "Total Change: White", "Total Change: African American", "Total Change: American Indian or Alaska Native", "Total Change: Asian", "Total Change: Native Hawaiian or Pacific Islander",
+                             "Percent Change: Two or more Races", "Percent Change: White", "Percent Change: African American", "Percent Change: American Indian or Alaska Native", "Percent Change: Asian", "Percent Change: Native Hawaiian or Pacific Islander")
+    
+    race_changes <- race_changes[,c(2:6, 1, 8:12, 7)]
+
+    race_changes_2010_2018 <- round(race_changes, 2)    
+    
+    #sex
+    
+    sex_group_changes <- rbind(us_sex_raw, Tennessee_sex_raw, Carter_sex_raw, Greene_sex_raw, Johnson_sex_raw, Hancock_sex_raw, Hawkins_sex_raw, Sullivan_sex_raw, Washington_sex_raw, Unicoi_sex_raw)
+    
+    sex_group_percent_changes <- rbind(us_sex_percent_change, Tennessee_sex_percent_change, Carter_sex_percent_change, Greene_sex_percent_change, Johnson_sex_percent_change, Hancock_sex_percent_change,
+                                       Hawkins_sex_percent_change, Sullivan_sex_percent_change, Washington_sex_percent_change, Unicoi_sex_percent_change)
+    
+    sex_changes <- as.data.frame(cbind(sex_group_changes, sex_group_percent_changes), row.names = c("United States", "Tennessee", "Carter County", "Greene County", "Johnson County", "Hancock County", "Hawkins County",
+                                                                                                    "Sullivan County", "Washington County", "Unicoi County"))
+    names(sex_changes) <- c("Total Change: All", "Total Change: Male", "Total Change: Female", "Percent Change: All", "Percent Change: Male", "Percent CHange: Female")
+      
+    sex_changes_2010_2018 <- round(sex_changes, 2)
+    
+    #hisp
+    
+    hisp_group_changes <- rbind(us_hisp_raw, Tennessee_hisp_raw, Carter_hisp_raw, Greene_hisp_raw, Johnson_hisp_raw, Hancock_hisp_raw, Hawkins_hisp_raw, Sullivan_hisp_raw, Washington_hisp_raw, Unicoi_hisp_raw)
+    
+    hisp_group_percent_changes <- rbind(us_hisp_percent_change, Tennessee_hisp_percent_change, Carter_hisp_percent_change, Greene_hisp_percent_change, Johnson_hisp_percent_change, Hancock_hisp_percent_change,
+                                        Hawkins_hisp_percent_change, Sullivan_hisp_percent_change, Washington_hisp_percent_change, Unicoi_hisp_percent_change)
+    
+    hisp_changes <- as.data.frame(cbind(hisp_group_changes, hisp_group_percent_changes), row.names = c("United States", "Tennessee", "Carter County", "Greene County", "Johnson County", "Hancock County", "Hawkins County",
+                                                                                                       "Sullivan County", "Washington County", "Unicoi County"))
+    
+    names(hisp_changes) <- c("Total Change: All", "Total Change: Non-Hispanic", "Total Change: Hispanic", "Percent Change: All", "Percent Change: Non-Hispanic", "Percent Change: Hispanic")
+    
+    hisp_changes_2010_2018 <- round(hisp_changes, 2)
+    
+    #housing
+    
+    hous_group_changes <- rbind(us_hous_raw, Tennessee_hous_raw, Carter_hous_raw, Greene_hous_raw, Johnson_hous_raw, Hancock_hous_raw, Hawkins_hous_raw, Sullivan_hous_raw, Washington_hous_raw, Unicoi_hous_raw)
+    
+    hous_group_percent_changes <- rbind(us_hous_percent_change, Tennessee_hous_percent_change, Carter_hous_percent_change, Greene_hous_percent_change, Johnson_hous_percent_change, Hancock_hous_percent_change,
+                                        Hawkins_hous_percent_change, Sullivan_hous_percent_change, Washington_hous_percent_change, Unicoi_hous_percent_change)
+    
+    hous_changes <- as.data.frame(cbind(hous_group_changes, hous_group_percent_changes), row.names = c("United States", "Tennessee", "Carter County", "Greene County", "Johnson County", "Hancock County", "Hawkins County",
+                                                                                                       "Sullivan County", "Washington County", "Unicoi County"))
+    names(hous_changes) <- c("Total Housing Unit Estimate Change", "Percent Housing Unit Estimate Change")
+    
+    hous_changes_2010_2018 <- round(hous_changes, 2)
+    
+  #####need the totals for a 2010 table and 2018 table####
+    
+    #pop
+    
+    pop_2010 <- rbind(Tennessee_pop_10[1,], Carter_pop_10[1,], Greene_pop_10[1,], Johnson_pop_10[1,], Hancock_pop_10[1,], Hawkins_pop_10[1,], Sullivan_pop_10[1,], Washington_pop_10[1,], Unicoi_pop_10[1,])
+    
+    population_2010 <- pop_2010[,c(2,5)]
+    
+    names(population_2010) <- c("Location", "Census 2010 Population", "geometry")
+    
+    pop_2018 <- rbind(Tennessee_pop_18[1,], Carter_pop_18[1,], Greene_pop_18[1,], Johnson_pop_18[1,], Hancock_pop_18[1,], Hawkins_pop_18[1,], Sullivan_pop_18[1,], Washington_pop_18[1,], Unicoi_pop_18[1,])
+    
+    population_2018 <- pop_2018[,c(2,5)]
+    
+    names(population_2018) <- c("Location", "ACS 2018 Estimate", "geometry")
+    
+    population_2018_no_sf <- st_set_geometry(population_2018, NULL)
+    
+    population_2018_no_sf
+    
+    population_table <- left_join(population_2010, population_2018_no_sf, by = "Location")
+  
+    pretty_population_table <- st_set_geometry(population_table, NULL)
+    
+    us1 <- us_pop_10[1,]
+    us2 <- us1[,c(1,5)]
+    
+    names(us2)<- c("Location", "Census 2010 Population")
+    
+    us3 <- us_pop_18[1,]
+    us4 <- us3[,c(1,5)]
+    
+    names(us4) <- c("Location", "ACS 2018 Estimate")
+    
+    us_pop_table <- left_join(us2, us4, by = "Location")
+    
+    us_pop_table
+    
+    total_pop_table <- rbind(us_pop_table, pretty_population_table)
+    
+    population_data_table <- datatable(total_pop_table)
+    
+    Location <- c("United States", "Tennessee", "Carter County, Tennessee", "Greene County, Tennessee", "Johnson County, Tennessee", "Hancock County, Tennessee", "Hawkins County, Tennessee", "Sullivan County, Tennessee", "Washington County, Tennessee", "Unicoi County, Tennessee")
+    
+    p1 <- cbind(Location, population_changes_2010_2018)
+    p2 <- p1[,c(1,2,4)]
+    p2
+    rownames(p2) <- c()
+    
+    final_pop_table <- cbind(total_pop_table, p2[,-1])
+    
+    final_pop_data_table <- datatable(final_pop_table, caption = "Population",   extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = 
+        list('copy', 'print',list( 
+          extend = 'collection',
+          buttons = c('csv', 'excel', 'pdf'),
+          text = 'Download',
+          filename = "Population"
+        ))))
+      
+    
+    final_pop_data_table
+    
+    ###will need to kable this to make a better pdf when its in markdown and rendered
+    
+    
+    ####age by county####
+    ag_2010 <- as.data.frame(rbind(us_age_10_value$value, Tennessee_age_10_value$value, Carter_age_10_value$value, Greene_age_10_value$value, Johnson_age_10_value$value,
+                             Hancock_age_10_value$value, Hawkins_age_10_value$value, Sullivan_age_10_value$value, Washington_age_10_value$value, Unicoi_age_10_value$value))
+    
+    age_names_2010 <- c("2010 Census: All Ages", "2010 Census: Age 0-5 Years", "2010 Census: Age under 18 Years", "2010 Census: Age over 65 Years", "2010 Census: Age over 18 Years", "2010 Census: Median Age")
+                          
+    
+    names(ag_2010) <- age_names_2010
+    
+    age_groups_2010 <- cbind(Location, ag_2010)
+    
+    age_groups_2010
+    
+    
+    
+    ag_2018 <- as.data.frame(rbind(us_age_18_value$value, Tennessee_age_18_value$value, Carter_age_18_value$value, Greene_age_18_value$value, Johnson_age_18_value$value,
+                                   Hancock_age_18_value$value, Hawkins_age_18_value$value, Sullivan_age_18_value$value, Washington_age_18_value$value, Unicoi_age_18_value$value))
+    
+    age_names_2018 <- c("2018 ACS: All Ages", "2018 ACS: Age 0-5 Years", "2018 ACS: Age under 18 Years", "2018 ACS: Age over 65 Years", "2018 ACS: Age over 18 Years", "2018 ACS: Median Age")
+    
+    names(ag_2018) <- age_names_2018
+    
+    age_groups_2018 <- cbind(Location, ag_2018)
+    
+    names(age_groups_2010) 
+    
+    names(age_groups_2018)
+    
+    names(age_group_changes_2010_2018)
+    dim(age_group_changes_2010_2018)
+    
+    
+    age_groups_for_table <- cbind(age_groups_2010[,c(1,3,5,7)], age_groups_2018[,c(3,5,7)], age_group_changes_2010_2018[,c(2,4,6,8,10,12)])
+    
+    row.names(age_groups_for_table) <- c()
+    
+    ###final busy table
+    
+    datatable(age_groups_for_table)
+    
+    
+    ##race##
+
+    rg_2010 <- as.data.frame(rbind(us_race_10_value$value, Tennessee_race_10_value$value, Carter_race_10_value$value, Greene_race_10_value$value, Johnson_race_10_value$value,
+                                   Hancock_race_10_value$value, Hawkins_race_10_value$value, Sullivan_race_10_value$value, Washington_race_10_value$value, Unicoi_race_10_value$value))
+    
+    race_names_2010 <- c("2010 Census: Two or More Races", "2010 Census: White", "2010 Census: African American", "2010 Census: American Indian or Alaskan Native",
+                         "2010 Census: Asian", "2010 Census: Native Hawaiian or Pacific Islander")
+      
+    names(rg_2010) <- race_names_2010
+    
+    race_groups_2010 <- cbind(Location, rg_2010)
+    
+    race_groups_2010
+    
+    
+    arg_2018 <- as.data.frame(rbind(us_race_18_value$value, Tennessee_race_18_value$value, Carter_race_18_value$value, Greene_race_18_value$value, Johnson_race_18_value$value,
+                                   Hancock_race_18_value$value, Hawkins_race_18_value$value, Sullivan_race_18_value$value, Washington_race_18_value$value, Unicoi_race_18_value$value))
+    
+    race_names_2018 <- c("2018 ACS: Two or More Races", "2018 ACS: White", "2018 ACS: African American", "2018 ACS: American Indian or Alaskan Native",
+                         "2018 ACS: Asian", "2018 ACS: Native Hawaiian or Pacific Islander")
+    
+    names(rg_2018) <- race_names_2018
+    
+    race_groups_2018 <- cbind(Location, rg_2018)
+    
+    
+    race_groups_2010 <- race_groups_2010[,c(1,3:7,2)] 
+    
+    race_groups_2018 <- race_groups_2018[,c(1,3:7,2)]
+    
+    race_changes_2010_2018
+    
+    race_groups_for_table <- cbind(race_groups_2010, race_groups_2018[,-1], race_changes_2010_2018[,-1])
+    
+    rownames(race_groups_for_table) <- c()
+    
+    datatable(race_groups_for_table)
+    
+    #sex
+    
+    
+    sx_2010 <- as.data.frame(rbind(us_sex_10_value$value, Tennessee_sex_10_value$value, Carter_sex_10_value$value, Greene_sex_10_value$value, Johnson_sex_10_value$value,
+                                   Hancock_sex_10_value$value, Hawkins_sex_10_value$value, Sullivan_sex_10_value$value, Washington_sex_10_value$value, Unicoi_sex_10_value$value))
+    
+    
+    sex_names_2010 <- c("2010 Census: Total", "2010 Census: Male", "2010 Census: Female")
+    
+    names(sx_2010) <- sex_names_2010
+    
+    sex_groups_2010 <- cbind(Location, sx_2010)
+    
+    
+    sx_2018 <- as.data.frame(rbind(us_sex_18_value$value, Tennessee_sex_18_value$value, Carter_sex_18_value$value, Greene_sex_18_value$value, Johnson_sex_18_value$value,
+                                   Hancock_sex_18_value$value, Hawkins_sex_18_value$value, Sullivan_sex_18_value$value, Washington_sex_18_value$value, Unicoi_sex_18_value$value))
+    
+    
+    sex_names_2018 <- c("2018 ACS: Total", "2018 ACS: Male", "2018 ACS: Female")
+    
+    names(sx_2018) <- sex_names_2018
+    
+    sex_groups_2018 <- cbind(Location, sx_2018)
+    
+    sex_groups_2018
+    
+    sex_groups_for_table <- cbind(sex_groups_2010, sex_groups_2018[,-1], sex_changes_2010_2018[,-1])
+    
+    rownames(sex_groups_for_table) <- c()
+    
+    datatable(sex_groups_for_table)
+    
+    #hisp
+    
+    hispanic_2010 <- as.data.frame(rbind(us_hisp_10_value$value, Tennessee_hisp_10_value$value, Carter_hisp_10_value$value, Greene_hisp_10_value$value, Johnson_hisp_10_value$value,
+                                         Hancock_hisp_10_value$value, Hawkins_hisp_10_value$value, Sullivan_hisp_10_value$value, Washington_hisp_10_value$value, Unicoi_hisp_10_value$value))
+    
+    
+    hisp_names_2010 <- c("2010 Census: Total", "2010 Census: Non-Hispanic", "2010 Census: Hispanic")
+    
+    names(hispanic_2010) <- hisp_names_2010
+    
+    hisp_groups_2010 <- cbind(Location, hispanic_2010)
+    
+
+    
+    hispanic_2018 <- as.data.frame(rbind(us_hisp_18_value$value, Tennessee_hisp_18_value$value, Carter_hisp_18_value$value, Greene_hisp_18_value$value, Johnson_hisp_18_value$value,
+                                         Hancock_hisp_18_value$value, Hawkins_hisp_18_value$value, Sullivan_hisp_18_value$value, Washington_hisp_18_value$value, Unicoi_hisp_18_value$value))
+    
+    
+    hisp_names_2018 <- c("2018 ACS: Total", "2018 ACS: Non-Hispanic", "2018 ACS: Hispanic")
+    
+    names(hispanic_2018) <- hisp_names_2018
+    
+    hisp_groups_2018 <- cbind(Location, hispanic_2018)
+    
+    
+    hisp_groups_for_table <- cbind(hisp_groups_2010, hisp_groups_2018[,-1], hisp_changes_2010_2018[,-1])
+    
+    rownames(hisp_groups_for_table) <- c()
+    
+    datatable(hisp_groups_for_table)
+    
+    #hous
+    
+    housing_2010 <- as.data.frame(rbind(us_hous_10_value$value, Tennessee_hous_10_value$value, Carter_hous_10_value$value, Greene_hous_10_value$value, Johnson_hous_10_value$value,
+                                        Hancock_hous_10_value$value, Hawkins_hous_10_value$value, Sullivan_hous_10_value$value, Washington_hous_10_value$value, Unicoi_hous_10_value$value))
+    
+    hous_names_2010 <- c("2010 Census: Housing Units")
+    
+    names(housing_2010) <- hous_names_2010
+    
+    hous_groups_2010 <- cbind(Location, housing_2010)
+    
+    
+    
+    housing_2018 <- as.data.frame(rbind(us_hous_18_value$value, Tennessee_hous_18_value$value, Carter_hous_18_value$value, Greene_hous_18_value$value, Johnson_hous_18_value$value,
+                                        Hancock_hous_18_value$value, Hawkins_hous_18_value$value, Sullivan_hous_18_value$value, Washington_hous_18_value$value, Unicoi_hous_18_value$value))
+    
+    
+    hous_names_2018 <- c("2018 ACS: Housing Units Estimate")
+    
+    names(housing_2018) <- hous_names_2018
+    
+    hous_groups_2018 <- cbind(Location, housing_2018)
+    
+    hous_groups_2018
+    
+    hous_groups_for_table <- cbind(hous_groups_2010, hous_groups_2018[,-1], hous_changes_2010_2018)
+    
+    hous_table_names <- c("Location", "2010 Census: Housing Units", "2018 ACS: Housing Unit Estimates", "Total Housing Unit Change", "Percent Housing Unit Change")
+    
+    names(hous_groups_for_table) <- hous_table_names
+    
+    rownames(hous_groups_for_table) <- c()
+
+    datatable(hous_groups_for_table)    
+    
+
+####components of population change####
+    
+    us_components <- get_estimates(geography = "us", product = "components", time_series = TRUE, year = 2018)
+    
+    us_components_07012017to06302018 <- us_components %>%
+      filter(PERIOD == 9)
+    
+    View(us_components_07012017to06302018)
+    options(scipen = 999)
+    
+    tn_components <- get_estimates(geography = "state", state = "TN", product = "components", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+  
+    
+    carter_componenets <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "components", time_series = TRUE, year = 2018, geometry = TRUE)
+    
+    
+        
+####PROFILE OF 2018 FOR COUNTY LEVEL####
+    
+    View(County_dp_2018)
+    
+####PROFILE OF 2018 FOR TRACT LEVEL####
+    
+    View(dp_2018)
+    

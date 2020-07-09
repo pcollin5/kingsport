@@ -1,0 +1,340 @@
+---
+title: "Components Markdown PDF"
+author: "Paul Collins"
+date: "6/29/2020"
+output: pdf_document
+---
+```{r code, echo = FALSE}
+pd_packages <- c("tidyverse", "tidycensus", "leaflet", "mapview", "DT", "sf", "report", "knitr", "rmarkdown", "kableExtra", "RColorBrewer", "tigris")
+
+lapply(pd_packages, library, character.only = TRUE)
+
+dp_variables_2018 <- load_variables(2018, "acs5/profile", cache = TRUE)    
+
+st_variables_2018 <- load_variables(2018, "acs5/subject", cache = TRUE)
+
+new_names <- c("variable", "label", "concept")
+
+names(dp_variables_2018) <- new_names
+
+names(st_variables_2018) <- new_names
+
+##us
+
+us_pop <- get_estimates(geography = "us", product = "population", time_series = TRUE, year = 2018)
+
+us_natural <- get_estimates(geography = "us", variables = "NATURALINC", time_series = TRUE, year = 2018)
+
+us_mig <- get_estimates(geography = "us", variables = "NETMIG", time_series = TRUE, year = 2018)
+
+us_natural_change <-us_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("NAME", "variable", Net)
+
+us_migration_change <-us_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("NAME", "variable", Net)
+
+us_component_changes <- rbind(us_natural_change, us_migration_change)
+
+
+
+##Tennessee
+
+Tennessee_pop <- get_estimates(geography = "state", state = "TN", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+tn_natural <- get_estimates(geography = "state", state = "TN", variables = "NATURALINC", time_series = TRUE, year = 2018)
+
+tn_mig <- get_estimates(geography = "state", state = "TN", variables = "NETMIG", time_series = TRUE, year = 2018)
+
+tn_natural_change <- tn_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("NAME", "variable", Net)
+
+tn_migration_change <- tn_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("NAME", "variable", Net)
+
+tn_component_changes <- rbind(tn_natural_change, tn_migration_change)
+
+
+##carter county
+
+Carter_pop <- get_estimates(geography = "county", state = "TN", county = "Carter", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Carter_natural <- get_estimates(geography = "county", state = "TN", county = "Carter", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Carter_mig <- get_estimates(geography = "county", state = "TN", county = "Carter", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Carter_natural_change <- Carter_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Carter_migration_change <- Carter_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Carter_component_changes <- rbind(Carter_natural_change, Carter_migration_change)
+
+Carter_changes_for_table <- Carter_component_changes[,c(2,3,4)]
+
+Carter_changes_for_table <- st_set_geometry(Carter_changes_for_table, NULL)
+
+Carter_component_changes$Location <- "Carter"  
+
+##Greene county
+Greene_pop <- get_estimates(geography = "county", state = "TN", county = "Greene", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Greene_natural <- get_estimates(geography = "county", state = "TN", county = "Greene", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Greene_mig <- get_estimates(geography = "county", state = "TN", county = "Greene", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Greene_natural_change <- Greene_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Greene_migration_change <- Greene_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Greene_component_changes <- rbind(Greene_natural_change, Greene_migration_change)
+
+Greene_changes_for_table <- Greene_component_changes[,c(2,3,4)]
+
+Greene_changes_for_table <- st_set_geometry(Greene_changes_for_table, NULL)
+
+Greene_component_changes$Location <- "Greene"
+
+##Johnson county
+Johnson_pop <- get_estimates(geography = "county", state = "TN", county = "Johnson", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Johnson_natural <- get_estimates(geography = "county", state = "TN", county = "Johnson", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Johnson_mig <- get_estimates(geography = "county", state = "TN", county = "Johnson", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Johnson_natural_change <- Johnson_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Johnson_migration_change <- Johnson_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Johnson_component_changes <- rbind(Johnson_natural_change, Johnson_migration_change)
+
+Johnson_changes_for_table <- Johnson_component_changes[,c(2,3,4)]
+
+Johnson_changes_for_table <- st_set_geometry(Johnson_changes_for_table, NULL)
+
+Johnson_component_changes$Location <- "Johnson"
+
+##Hancock county
+
+Hancock_pop <- get_estimates(geography = "county", state = "TN", county = "Hancock", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Hancock_natural <- get_estimates(geography = "county", state = "TN", county = "Hancock", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Hancock_mig <- get_estimates(geography = "county", state = "TN", county = "Hancock", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Hancock_natural_change <- Hancock_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Hancock_migration_change <- Hancock_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Hancock_component_changes <- rbind(Hancock_natural_change, Hancock_migration_change)
+
+Hancock_changes_for_table <- Hancock_component_changes[,c(2,3,4)]
+
+Hancock_changes_for_table <- st_set_geometry(Hancock_changes_for_table, NULL)
+
+Hancock_component_changes$Location <- "Hancock"
+
+##Hawkins county
+
+Hawkins_pop <- get_estimates(geography = "county", state = "TN", county = "Hawkins", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Hawkins_natural <- get_estimates(geography = "county", state = "TN", county = "Hawkins", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Hawkins_mig <- get_estimates(geography = "county", state = "TN", county = "Hawkins", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Hawkins_natural_change <- Hawkins_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Hawkins_migration_change <- Hawkins_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Hawkins_component_changes <- rbind(Hawkins_natural_change, Hawkins_migration_change)
+
+Hawkins_changes_for_table <- Hawkins_component_changes[,c(2,3,4)]
+
+Hawkins_changes_for_table <- st_set_geometry(Hawkins_changes_for_table, NULL)
+
+Hawkins_component_changes$Location <- "Hawkins"
+
+##Sullivan county
+
+Sullivan_pop <- get_estimates(geography = "county", state = "TN", county = "Sullivan", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Sullivan_natural <- get_estimates(geography = "county", state = "TN", county = "Sullivan", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Sullivan_mig <- get_estimates(geography = "county", state = "TN", county = "Sullivan", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Sullivan_natural_change <- Sullivan_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Sullivan_migration_change <- Sullivan_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Sullivan_component_changes <- rbind(Sullivan_natural_change, Sullivan_migration_change)
+
+Sullivan_changes_for_table <- Sullivan_component_changes[,c(2,3,4)]
+
+Sullivan_changes_for_table <- st_set_geometry(Sullivan_changes_for_table, NULL)
+
+Sullivan_component_changes$Location <- "Sullivan"
+
+##Washington county
+
+Washington_pop <- get_estimates(geography = "county", state = "TN", county = "Washington", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+
+Washington_natural <- get_estimates(geography = "county", state = "TN", county = "Washington", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Washington_mig <- get_estimates(geography = "county", state = "TN", county = "Washington", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Washington_natural_change <- Washington_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Washington_migration_change <- Washington_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Washington_component_changes <- rbind(Washington_natural_change, Washington_migration_change)
+
+Washington_changes_for_table <- Washington_component_changes[,c(2,3,4)]
+
+Washington_changes_for_table <- st_set_geometry(Washington_changes_for_table, NULL)
+
+Washington_component_changes$Location <- "Washington"
+
+##Unicoi county
+
+Unicoi_pop <- get_estimates(geography = "county", state = "TN", county = "Unicoi", product = "population", time_series = TRUE, year = 2018, geometry = TRUE)
+
+Unicoi_natural <- get_estimates(geography = "county", state = "TN", county = "Unicoi", variables = c("NATURALINC"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Unicoi_mig <- get_estimates(geography = "county", state = "TN", county = "Unicoi", variables = c("NETMIG"), time_series = TRUE, year = 2018, geometry = TRUE)
+
+Unicoi_natural_change <- Unicoi_natural %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Unicoi_migration_change <- Unicoi_mig %>%
+  mutate("Net" = sum(value)) %>%
+  filter(PERIOD == 9) %>%
+  select("GEOID", "NAME", "variable", `Net`, geometry)
+
+Unicoi_component_changes <- rbind(Unicoi_natural_change, Unicoi_migration_change)
+
+Unicoi_changes_for_table <- Unicoi_component_changes[,c(2,3,4)]
+
+Unicoi_changes_for_table <- st_set_geometry(Unicoi_changes_for_table, NULL)
+
+Unicoi_component_changes$Location <- "Unicoi"
+
+
+###combine it into a table###
+
+combinde_component_table <- rbind(us_component_changes, tn_component_changes, Carter_changes_for_table, Greene_changes_for_table, Johnson_changes_for_table, Hancock_changes_for_table,
+                                  Hawkins_changes_for_table, Sullivan_changes_for_table, Washington_changes_for_table, Unicoi_changes_for_table)
+
+fixed_1 <-combinde_component_table %>%
+  filter(variable== "NATURALINC") %>%
+  mutate("Natural Increase" = Net) %>%
+  mutate("Location" = NAME) %>%
+  select("Location", `Natural Increase`)
+
+fixed_2 <- combinde_component_table %>%
+  filter(variable == "NETMIG") %>%
+  mutate("Net Migration" = Net) %>%
+  mutate("Location" = NAME) %>%
+  select("Location", `Net Migration`)
+
+temp <- full_join(by = "Location", fixed_1, fixed_2)
+
+
+
+### shorten the county names 
+
+
+final <- temp %>%
+  mutate("Total Change" = `Natural Increase` + `Net Migration`) %>%
+  select("Location", `Total Change`, `Natural Increase`, `Net Migration`)
+
+
+
+combinde_component_table %>%
+  filter(!(NAME == "United States"| NAME == "Tennessee")) %>%
+  ggplot(aes(x = NAME, y = Net, fill = variable)) +
+  geom_bar(stat = "identity")
+
+Location <- c("US", "US", "TN", "TN", "Carter", "Carter", "Greene", "Greene", "Johnson", "Johnson", "Hancock", "Hancock", 
+              "Hawkins", "Hawkins", "Sullivan", "Sullivan", "Washington", "Washington", "Unicoi", "Unicoi")
+
+combined_table <- cbind(Location, combinde_component_table)
+
+Measure <- c("Natural Increase", "Net Migration", "Natural Increase", "Net Migration", "Natural Increase", "Net Migration", "Natural Increase", "Net Migration",
+             "Natural Increase", "Net Migration", "Natural Increase", "Net Migration", "Natural Increase", "Net Migration", "Natural Increase", "Net Migration",
+             "Natural Increase", "Net Migration", "Natural Increase", "Net Migration")
+bar_table <- cbind(combined_table, Measure)
+
+
+components_county_bar_chart <- bar_table %>%
+  filter(!(NAME == "United States"| NAME == "Tennessee")) %>%
+  ggplot(aes(x = Location, y = Net, fill = Measure)) +
+  geom_bar(stat = "identity")
+
+
+### kable this component change table ###
+
+```
+
+```{r table, echo = FALSE}
+
+kable_components_change <- final %>%
+  mutate("Total Change" = cell_spec(`Total Change`, color = ifelse(`Total Change` < 0, "red", "green"))) %>%
+  mutate("Natural Increase" = cell_spec(`Natural Increase`, color = ifelse(`Natural Increase` < 0, "red", "green"))) %>%
+  mutate("Net Migration" = cell_spec(`Net Migration`, color = ifelse(`Net Migration` < 0, "red", "green"))) %>%
+  kable("latex", booktabs = TRUE, escape = FALSE)%>%
+  kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+
+kable_components_change
+
+```

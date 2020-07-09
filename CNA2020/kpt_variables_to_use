@@ -1,0 +1,368 @@
+
+#dp05
+#sex, age, race, housing units etc. DO05 FOR 2018, 2013 is different
+	#age
+		DP05_0001 - total population
+		DP05_0002 - male
+		DP05_0003 - female
+		DP05_0005 - under 5
+		DP05_0006 - 5-9
+		DP05_0007 - 10-14
+		DP05_0008 - 15-19
+		DP05_0009 - 20-24
+		DP05_0010 - 25-34
+		DP05_0011 - 35-44
+		DP05_0012 - 45-54
+		DP05_0013 - 55-59
+		DP05_0014 - 60-64
+		DP05_0015 - 65-74
+		DP05_0016 - 75-84
+		DP05_0017 - 85+
+		DP05_0018 - median age
+		DP05_0019 - under 18
+		DP05_0020 - 16 +
+		DP05_0021 - 18 +
+		DP05_0022 - 21 +
+		DP05_0023 - 62 +
+		DP05_0024 - 65 +
+		DP05_0026 - 18 + male
+		DP05_0027 - 18 + female
+		DP05_0030 - 65 + male
+		DP05_0031 - 65 + female
+		
+		
+		
+		
+		
+	
+	#race alone or in combination with one or more other races
+		DP05_0063 - total
+		DP05_0064 - white
+		DP05_0065 - black or AA
+		DP05_0066 - american indian or alaskan native
+		DP05_0067 - asian
+		DP05_0068 - native hawaiian or pacific islander
+		DP05_0069 - some other race
+		DP05_0070 - total SAME NUMBER AS 0063
+		DP05_0071 - hispanic of any race
+	
+	#housing and voting
+		DP05_0086 - total housing units
+		DP05_0088 - voting age males
+		DP05_0089 - voting age females
+		
+#dp02 social characteristics 
+	#household
+		DP02_0001 - total households
+		DP02_0002 - family households
+		DP02_0003 - family households with own children under 18
+		DP02_0004 - maried couple family households
+		DP02_0007 - male household no wife children under 18 
+		DP02_0009 - female household no wife children under 18
+		DP02_0012 - households householder 65+ living alone
+		DP02_0013 - total households with children under 18
+		DP02_0015 - average household size
+		DP02_0016 - average family size
+		DP02_0017 - population in households
+		DP02_0020 - children in households
+		DP02_0024 - marital status males > 15
+		DP02_0030 - marital status females > 15
+		DP02_0036 - women birth past 12 months
+		DP02_0037 - unmarried women birth past 12 months
+		DP02_0044 - number of grandparents living with grandchildren under 18, grandparents responsible for children 
+		DP02_0045 - number of grandparents living with grandchildren under 1, grandparents responsible for children
+		DP02_0046 - number of grandparents living with grandchildren 1-2 years old, grandparents responsible for children
+		DP02_0047 - number of grandparents living with grandchildren 3-4 years old, grandparents responsible for children
+		DP02_0048 - number of grandparents living with grandchildren 5+ years old, grandparents responsible for children
+		DP02_0050 - number of FEMALE grandparents living with grandchildren under 18, grandparents responsible for children
+		
+	#education
+		DP02_0052 - number of children > 3 enrolled in school
+		DP02_0053 - nursery school, preschool
+		DP02_0054 - kindergarten
+		DP02_0055 - grades 1-8
+		DP02_0056 - grades 9-12
+		DP02_0057 - college or grad school
+		DP02_0058 - population 25+
+		DP02_0059 - 25+ educational attainment less than 9th grade 
+		DP02_0060 - 25+ educaitonal atainment 9-12, no diploma
+		DP02_0061 - 25+ highschool graduate or equivalent
+		DP02_0062 - 25+ some college, no degree
+		DP02_0063 - associates degree
+		DP02_0064 - bachelors degree
+		DP02_0065 - grad degree
+		DP02_0066 - highshcool degree or higher
+		DP02_0067 - bachelors degree or higher
+	
+	#disability status
+		DP02_0070 - total civilian noninstitutionalized population
+		DP02_0071 - total civilian noninstitutionalized population with a disability
+		DP02_0072 - total civilian noninstitutionalized population under 18
+		DP02_0073 - total civilian noninstitutionalized population under 18 with a disability
+		DP02_0074 - total civilian noninstitutionalized population 18-64
+		DP02_0075 - total civilian noninstitutionalized population 18-64 with a disability
+		DP02_0076 - total civilian noninstitutionalized population 65 +
+		DP02_0077 - total civilian noninstitutionalized population 65 + with a disability
+	
+	#resident movement paterns
+		DP02_0079 - residence 1 year ago in same household
+		DP02_0080 - residence 1 year ago different house in the us
+		DP02_0081 - residence 1 year ago different house same county
+		DP02_0082 - residence 1 year ago different house different county
+		DP02_0083 - residence 1 year ago different house same state
+		DP02_0084 - residence 1 year ago different house different state
+		DP02_0085 - residence 1 year ago different house abroad
+	
+	#place of birth
+		DP02_0088 - born in US
+		DP02_0089 - born in state of residence
+		DP02_0090 - born in different state of residence
+		DP02_0092 - foreign born
+		DP02_0093 - foreign born total population
+		DP02_0094 - foreign born naturalized citizens
+		DP02_0095 _ foreign born not a citizen
+		DP02_0101 - foreign born entered us entered 2010 or later
+		DP02_0102 - foreign born entered before 2010
+		DP02_0104 - foregin born europe
+		DP02_0105 - foreign born asia
+		DP02_0106 - foreign born africa
+		DP02_0108 - foregin born latin american
+		DP02_0109 - foreign born north american 
+	
+	#language spoken at home
+		DP02_0112 - population over 5 language other than english
+		DP02_0113 - population over 5 english less than "very well"
+		DP02_0114 - population over 5 spanish primary language 
+		DP02_0115 - population over 5 spanish primary english less than "very well"
+	
+	#computers
+		DP02_0150 - total households
+		DP02_0151 - with a computers
+		DP02_0152 - with broadband internet subscription
+			
+#DP03 ECONOMIC CHARACTERISTICS
+		DP03_0001 - population 16+
+		DP03_0002 - population 16+ in labor force
+		DP03_0003 - population 16+ in civilian labor force
+		DP03_0004 - population 16+ in civilian labor force employed
+		DP03_0005 - population 16+ in civilian labor force unemployed
+		DP03_0007 - population 16+ not in labor force
+		DP03_0009 - unemployement rate
+		DP03_0012 - female 16+	civilian labor force
+		DP03_0013 - females 16+ civilian labor force employed
+		DP03_0014 - own children of the house holder under 6 
+		DP03_0015 - own children of the house holder under 6 all parents in labor force
+		DP03_0016 - own children of the house holder 6-17 
+		DP03_0017 - own children of the house holder 6-17 all parents in labor force 
+		
+	#workers transportation
+		DP03_0018 - total workers 16 and older
+		DP03_0019 - workers driving to work alone
+		DP03_0020 - workers carpooled
+		DP03_0021 - workers public transit
+		DP03_0022 - workers walked
+		DP03_0024 - workers worked at home
+		DP03_0025 - mean travel time to work
+		
+	#occupation type
+		DP03_0026 - civilian employed population 
+		DP03_0027 - management, business, science, and art occupations
+		DP03_0028 - service occupations
+		DP03_0029 - sales and office 
+		DP03_0030 - natural resources, construction, maintenance
+		DP03_0031 - production, transportation, material moving
+	#industry type
+		DP03_0033 - agriculture, forestry, fising and hunting, mining
+		DP03_0034 - construction
+		DP03_0035 - manufacturing
+		DP03_0036 - wholesale trade
+		DP03_0037 - retail trade
+		DP03_0038 - transportation and warehousing, utilities
+		DP03_0039 - information 
+		DP03_0040 - finance and insurance, real estate and rental and leasing
+		DP03_0041 - professional, scientific, and management, and administrative and waste management services
+		DP03_0042 - educational services, and healthcare and socail assistance
+		DP03_0043 - arts, entertainment, and recreation, and acommodaiton and food services
+		DP03_0044 - other
+		DP03_0045 - public administration
+		DP03_0048 - government workers 
+		DP03_0049 - self employed in own business
+	
+	#income and benefits
+		DP03_0051 - total households
+		DP03_0052 - income less than 10000
+		DP03_0053 - income 10000-14999
+		DP03_0054 - income 15000-24999
+		DP03_0055 - income 25000-34999
+		DP03_0056 - income 35000-49000
+		DP03_0057 - income 50000-74999
+		DP03_0058 - income 75000-99999
+		DP03_0059 - income 100000-149999
+		DP03_0060 - income 150000-199999
+		DP03_0061 - income 200000+
+		DP03_0062 - median household income
+		DP03_0063 - mean household income
+		DP03_0064 - total households with earnings
+		DP03_0065 - total households with earnings mean earnings
+		DP03_0066 - total households with social security
+		DP03_0067 - total households with social security mean social security income
+		DP03_0072 - total households with cash public assistance income
+		DP03_0073 - total households with cash public assistance income mean cash public assistance income	
+		DP03_0074 - total households with foodstamps/SNAP in past 12 months
+		DP03_0088 - per capita income 
+		DP03_0092 - median earnings for workers
+		DP03_0093 - median earnings for male full time year round workers
+		DP03_0094 - median earnings for female full time year round workers
+		
+	#health insurance coverage
+		DP03_0095 - civilian noninstiutionalized population
+		DP03_0096 - population with health insurance coverage
+		DP03_0097 - population with private health insurance
+		DP03_0098 - population with public health insurance coverage
+		DP03_0099 - population with no health insurance coverage
+		DP03_0100 - population < 19 
+		DP03_0101 - population < 19 no health insurance coverage
+		DP03_0102 - population 19-64
+		DP03_0104 - population 19-64 employed 
+		DP03_0105 - population 19-64 employed with health insurance coverage
+		DP03_0106 - population 19-64 employed with private health insurance coverage
+		DP03_0107 - populaiton 19-64 employed with public health insurance coverage 	
+		DP03_0108 - population 19-64 employed with no health insurance coverage
+		DP03-0109 - population 19-64 unemployed 
+		DP03_0110 - population 19-64 unemployed with health insurance
+		DP03_0111 - population 19-64 unemployed with private health insurance
+		DP03_0112 - population 19-64 unemployed with public health insurance
+		DP03_0113 - populaiton 19-64 unemployed with no health insurance
+	
+	#poverty
+		DP03_0119 - percentage of all families below poverty level past 12 months
+		DP03_0120 - percentage of all families below poverty level past 12 months with children under 18	
+		DP03_0121 - percentage of all families below poverty level past 12 months with related children of the householder under 5 years only
+		DP03_0122 - percentage of married families below poverty level past 12 months
+		DP03_0123 - percentage of married families below poverty level past 12 months with children below 18
+		DP03_0124 - percentage of married families below poverty level past 12 months with children under 5
+		DP03_0125 - percentage of families below poverty level past 12 months female no husband
+		DP03_0126 - percentage of families below poverty level past 12 months female no husband with children below 18
+		DP03_0127 - percentage of families below poverty level past 12 months female no husband with children under 5
+		DP03_0128 - percentage of all people below poverty level past 12 months
+		DP03_0129 - percentage of all people below poverty level past 12 months under 18
+		DP03_0131 - percentage of all people below poverty level past 12 months under 5
+		DP03_0132 - percentage of all people below poverty level past 12 months under 5-17
+		DP03_0133 - percentage of all people below poverty level past 12 months 18 +
+		DP03_0134 - percentage of all people below poverty level past 12 months  18-64
+		DP03_0135 - percentage of all people below poverty level past 12 months 65+
+
+#DP04 HOUSING CHARACTERISTICS
+	
+	#housing units
+		DP04_0001 - total housing units
+		DP04_0002 - occupied housing units
+		DP04_0003 - vacant housing units
+		DP04_0004 - homeowner vacancy rate
+		DP04_0005 - rental vacancy rate
+		DP04_0014 - mobile home
+		DP04_0017 - built 2014 or later
+		DP04_0018 - built 2010-2013
+		DP04_0019 - built 2000-2009
+		DP04_0020 - built 1990-1999
+		DP04_0021 - built 1980-1989
+		DP04_0022 - built 1970-1979
+		DP04_0023 - built 1960-1969
+		DP04_0024 - built 1950-1959
+		DP04_0025 - built 1940-1949
+		DP04_0026 - built 1939 or earlier
+		DP04_0037 - median number of rooms
+		DP04_0046 - owner occupied housing units
+		DP04_0047 - renter occupied housing units
+		DP04_0048 - average houshold size of owner occupied units
+		DP04_0049 - average household size of renter occupied units
+		DP04_0051 - occupied housing units moved into 2017 or later
+		DP04_0052 - occupied housing units moved into 2015-2016
+		DP04_0053 - occupied housing units moved into 2010-2014
+		DP04_0054 - occupied housing units moved into 2000-2009
+		DP04_0055 - occupied housing units moved into 1990-1999
+		DP04_0056 - occupied housing units moved into 1989 and earlier
+		DP04_0057 - occupied housing units
+		
+		
+			*****this is important, pick these variables out about cars/transportation 
+	#transportation vars#
+		DP04_0057 - occupied housing units
+		DP04_0058 - OHU No vehicles available 
+		DP04_0059 - OHU 1 vehicle available
+		DP04_0060 - OHU 2 vehicles available
+		DP04_0061 - OHU 3 or more vehicles available
+		
+	#workers transportation
+		DP03_0018 - total workers 16+ 
+		DP03_0019 - workers driving to work alone
+		DP03_0020 - workers carpooled
+		DP03_0021 - workers public transit
+		DP03_0022 - workers walked
+		DP03_0023 - other means
+		DP03_0024 - workers worked at home
+		DP03_0025 - mean travel time to work		
+
+		
+		
+	#heating 	
+		DP04_0062 - occupied housing units 
+		DP04_0063 - occupied housing units utility gas
+		DP04_0064 - occupied housing units bottled, tank, or lp gas
+		DP04_0065 - occupied housing units electricty heating
+		DP04_0066 - occupied housing units fuel oil, kerosene
+		DP04_0067 - occupied housing units coal or coke
+		DP04_0068 - occupied housing units wood
+		DP04_0069 - occupied housing units solar 
+		DP04_0070 - occupied housing units other fuel
+		DP04_0071 - occupied housing units no fuel used
+		
+	#random 
+		DP04_0073 - occupied housing units lacking complete plumping 
+		DP04_0074 - occupied housing units lacking complete kitchen
+		DP04_0075 - occupied housing units no telephone service available
+		DP04_0079 - occupied housing units >1.51 occupants per rooms
+		DP04_0080 - owner occupied housing units
+		DP04_0081 - owner occupied housing units value < 50000
+		DP04_0082 - ownder occupied housing units value 50000-99999
+		DP04_0083 - owner occupied housing units value 100000-149999
+		DP04_0084 - owner occupied housing units value 150000-199999
+		DP04_0085 - owner occupied housing units value 200000-299999
+		DP04_0086 - owner occupied housing units value 300000-499999
+		DP04_0087 - owner occupied housing units value 500000-999999
+		DP04_0088 - owner occupied housing units value 1000000+
+		DP04_0089 - owner occupied housing units median value
+		DP04_0091 - owner occupied housing units with a mortgage
+		DP04_0092 - owner occupied housing units without a mortgage
+		DP04_0094 - housing units with a mortgage less than 500
+		DP04_0095 - housing units with a mortgage 500-999
+	
+	#affordability
+		#home owners
+		DP04_0110 - housing units with a mortgage
+		DP04_0111 - housing units with a mortgage SMOCAPI less than 20 percentage
+		DP04_0112 - housing units with a mortgage SMOCAPI 20-24.9 percentage
+		DP04_0113 - housing units with a mortgage SMOCAPI 25-29.9 percent 
+		DP04_0114 - housing units with a mortgage SMOCAPI 30-34.9 percent
+		DP04_0115 - housing units with a mortgage SMOCAPI 35+ percent 
+		DP04_0123 - housing units without a mortgage SMOCAPI 30-34.9 percent
+		DP04_0124 - housing units without a mortgage SMOCAPI 35+ percent
+		
+		#renters
+		DP04_0126 - occupied units paying rental
+		DP04_0127 - occupied units paying rent <500
+		DP04_0128 - occupied units paying rent 500-999
+		DP04_0129 - occupied units paying rent 1000-1499
+		DP04_0130 - occupied units paying rent 1500-1999
+		DP04_0131 - occupied units paying rent 2000-2499
+		DP04_0132 - occupied units paying rent 2500-2999
+		DP04_0133 - occupied units paying rent 3000+
+		DP04_0134 - occupied units median rent
+		DP04_0137 - GRAPI < 15%
+		DP04_0138 - GRAPI 15-19.9%
+		DP04_0139 - GRAPI 20-24.9%
+		DP04_0140 - GRAPI 25-29.9%
+		DP04_0141 - GRAPI 30-34.9%
+		DP04_0142 - GRAPI >35%
+		
+		

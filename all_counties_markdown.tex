@@ -1,0 +1,351 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Demographic, Social, Economic, and Housing Characteristics for Upper East Tennessee},
+  pdfauthor={Paul Collins},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Demographic, Social, Economic, and Housing Characteristics for Upper
+East Tennessee}
+\author{Paul Collins}
+\date{02/25/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+This is the report so far. It is only tables and maps that are an
+information overload mess, but provide some information on the census
+tracts. The Economic Opportunity Zone tracts in the Tax
+Credit/Investment program from the government for Sullivan and Hawkins
+County 428.02, 433.02, 402, 430, 427.01, 427.02, 506.01, and 504. You
+can search each data table by those numbers and it will show that data.
+Please ignore any spelling/grammar errors, I haven't proof read any of
+this. There's still a couple sections I need to include before I start
+building the narative, highlighting key points, and testing for
+statistical significance between things (a lot of that depends on the
+direction we want to go with this, but I have ideas, and will give you
+all the options during the 2/28/2020 meeting). I know for sure poverty,
+SNAP, and children characterists are things I want to breakdown even
+further. I should be finished with the main part of this by 2/28/2020,
+but no promises. Will update and upload when I get more finished.
+
+\hypertarget{age-demographics}{%
+\section{Age Demographics}\label{age-demographics}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/data for data tables-1.pdf}
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Age Group & Count Estimate & Count Margin of Error & Percent of Total
+Population & Percent Margin of Error\tabularnewline
+\midrule
+\endhead
+Total Population & 53323.0 & 366.0 & 53323.0 & NA\tabularnewline
+Age Under 5 Years & 3179.0 & 352.0 & 6.0 & 0.7\tabularnewline
+Age 5-9 Years & 3029.0 & 384.0 & 5.7 & 0.7\tabularnewline
+Age 10-14 Years & 3014.0 & 367.0 & 5.7 & 0.7\tabularnewline
+Age 15-19 Years & 2973.0 & 349.0 & 5.6 & 0.7\tabularnewline
+Age 20-24 Years & 2701.0 & 290.0 & 5.1 & 0.5\tabularnewline
+Age 25-34 Years & 6192.0 & 487.0 & 11.6 & 0.9\tabularnewline
+Age 35-44 Years & 6104.0 & 460.0 & 11.4 & 0.9\tabularnewline
+Age 45-54 Years & 6963.0 & 419.0 & 13.1 & 0.8\tabularnewline
+Age 55-59 Years & 3382.0 & 313.0 & 6.3 & 0.6\tabularnewline
+Age 60-64 Years & 3717.0 & 369.0 & 7.0 & 0.7\tabularnewline
+Age 65-74 Years & 6372.0 & 453.0 & 11.9 & 0.8\tabularnewline
+Age 75-84 Years & 3982.0 & 332.0 & 7.5 & 0.6\tabularnewline
+Age 85+ Years & 1715.0 & 205.0 & 3.2 & 0.4\tabularnewline
+Median Age & 44.1 & 1.3 & NA & NA\tabularnewline
+Age 18+ Years & 42320.0 & 596.0 & 79.4 & 1.1\tabularnewline
+Age 65+ Years & 12069.0 & 546.0 & 22.6 & 1.0\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{map-of-median-age}{%
+\subsection{Map of Median Age}\label{map-of-median-age}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/median age map-1.pdf}
+
+\hypertarget{racial-demographics}{%
+\section{Racial Demographics}\label{racial-demographics}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/Racial Demographics-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/Racial Demographics-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/Racial Demographics-3.pdf}
+
+\hypertarget{percent-white-population-map}{%
+\subsection{Percent White Population
+Map}\label{percent-white-population-map}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/white people map-1.pdf}
+
+\hypertarget{social-characteristics}{%
+\section{Social Characteristics}\label{social-characteristics}}
+
+\#\# Household Characteristics
+
+\includegraphics{all_counties_markdown_files/figure-latex/household characteristics-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/household characteristics-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/household characteristics-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/single mothers map-1.pdf}
+
+\#\# Education Information
+
+\includegraphics{all_counties_markdown_files/figure-latex/education data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/education data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/education data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/education maps-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/education maps-2.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/Disability data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/Disability data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/Disability data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/Percent Disability Map-1.pdf}
+
+\hypertarget{residence-1-year-ago}{%
+\subsection{Residence 1 Year Ago}\label{residence-1-year-ago}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/residence 1 year ago-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/residence 1 year ago-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/residence 1 year ago-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/different state map-1.pdf}
+
+\hypertarget{birthplace-information}{%
+\section{Birthplace Information}\label{birthplace-information}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/birthplace data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/birthplace data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/birthplace data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/birthplace map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/foreign born map-1.pdf}
+
+\hypertarget{primary-language-spoken}{%
+\section{Primary Language Spoken}\label{primary-language-spoken}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/language data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/language data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/language data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/language map-1.pdf}
+
+\hypertarget{computer-and-internet-access}{%
+\section{Computer and Internet
+Access}\label{computer-and-internet-access}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/computers and internet-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/computers and internet-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/computers and internet-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/internet map-1.pdf}
+
+\hypertarget{economic-characteristics}{%
+\section{Economic Characteristics}\label{economic-characteristics}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/workforce data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/workforce data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/workforce data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/unemployment map-1.pdf}
+
+\hypertarget{worker-transportation-details}{%
+\section{Worker Transportation
+Details}\label{worker-transportation-details}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/worker transportation data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/worker transportation data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/worker transportation data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/mean commute time map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/percent public transit map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/occupation type data table-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/occupation type data table-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/occupation type data table-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/service industry map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/industry type data table-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/industry type data table-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/industry type data table-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/self employed map-1.pdf}
+
+\hypertarget{income-and-benefits}{%
+\section{Income and Benefits}\label{income-and-benefits}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/income and benefits data table-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/income and benefits data table-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/income and benefits data table-3.pdf}
+
+\hypertarget{median-and-mean-household-income-maps}{%
+\section{Median and Mean Household Income
+Maps}\label{median-and-mean-household-income-maps}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/household income maps-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/household income maps-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/household income maps-3.pdf}
+
+\hypertarget{very-low-income-and-public-benefits-maps}{%
+\section{Very Low Income and Public Benefits
+Maps}\label{very-low-income-and-public-benefits-maps}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/targeted population maps-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/targeted population maps-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/targeted population maps-3.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/targeted population maps-4.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/targeted population maps-5.pdf}
+
+\hypertarget{health-insurance}{%
+\section{Health Insurance}\label{health-insurance}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/health insurance data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/health insurance data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/health insurance data tables-3.pdf}
+
+\hypertarget{uninsured-map}{%
+\section{Uninsured Map}\label{uninsured-map}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/uninsured map-1.pdf}
+
+\hypertarget{publically-insured-map}{%
+\section{Publically Insured Map}\label{publically-insured-map}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/publically insured map-1.pdf}
+
+\hypertarget{poverty}{%
+\section{Poverty}\label{poverty}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/poverty data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/poverty data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/poverty data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/poverty map 1 -1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/all families in poverty-1.pdf}
+
+\hypertarget{housing-characteristics}{%
+\section{Housing Characteristics}\label{housing-characteristics}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/housing units data table-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/housing units data table-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/housing units data table-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/renter map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/rental vacancy map-1.pdf}
+
+\hypertarget{housing-affordability}{%
+\section{Housing Affordability}\label{housing-affordability}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/housing affordability data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/housing affordability data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/housing affordability data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/median rent map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/grapi above 30\% map-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/grapi above 30\% map-2.pdf}
+
+\begin{verbatim}
+## although coordinates are longitude/latitude, st_intersects assumes that they are planar
+## although coordinates are longitude/latitude, st_intersects assumes that they are planar
+## although coordinates are longitude/latitude, st_intersects assumes that they are planar
+\end{verbatim}
+
+\includegraphics{all_counties_markdown_files/figure-latex/grapi above 30\% map-3.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/grapi above 30\% map-4.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/grapi above 30\% map-5.pdf}
+
+\hypertarget{vehicles-per-occupied-housing-units}{%
+\section{Vehicles per Occupied Housing
+Units}\label{vehicles-per-occupied-housing-units}}
+
+\includegraphics{all_counties_markdown_files/figure-latex/vehicles per housing units data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/vehicles per housing units data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/vehicles per housing units data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/zero vehicles per housing units map-1.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/heating data tables-1.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/heating data tables-2.pdf}
+\includegraphics{all_counties_markdown_files/figure-latex/heating data tables-3.pdf}
+
+\includegraphics{all_counties_markdown_files/figure-latex/no heat map-1.pdf}
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+\end{document}

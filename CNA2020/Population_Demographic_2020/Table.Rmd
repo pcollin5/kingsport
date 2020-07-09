@@ -1,0 +1,12 @@
+|Location                     | Census 2010 Population| ACS 2018 Estimate| Population Change| Pop. Percent Change|
+|:----------------------------|----------------------:|-----------------:|-----------------:|-------------------:|
+|United States                |              308745538|         327167434|          18421896|                5.97|
+|Tennessee                    |                6346105|           6770010|            423905|                6.68|
+|Carter County, Tennessee     |                  57424|             56351|             -1073|               -1.87|
+|Greene County, Tennessee     |                  68831|             69087|               256|                0.37|
+|Johnson County, Tennessee    |                  18244|             17778|              -466|               -2.55|
+|Hancock County, Tennessee    |                   6819|              6549|              -270|               -3.96|
+|Hawkins County, Tennessee    |                  56833|             56530|              -303|               -0.53|
+|Sullivan County, Tennessee   |                 156823|            157668|               845|                0.54|
+|Washington County, Tennessee |                 122979|            128607|              5628|                4.58|
+|Unicoi County, Tennessee     |                  18313|             17761|              -552|               -3.01|

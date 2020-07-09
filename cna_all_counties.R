@@ -1,0 +1,2609 @@
+####load packages####
+
+packages <- c("acs", "tidyverse", "tidycensus", "tigris", "leaflet", "mapview", "tmap", "DT", "sf", "gganimate", "report", "ipumsr", "xtable", "knitr", "RColorBrewer")
+
+lapply(packages, library, character.only = TRUE)
+
+
+####load the data#####
+
+dp_table_variables_18 <- load_variables(2018, "acs5/profile", cache = TRUE)
+
+new_names_18 <- c("variable", "label", "concept")
+
+names(dp_table_variables_18) <- new_names_18
+
+####data profiles####
+
+##carter##
+
+Carter_dp02_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Carter_dp03_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Carter_dp04_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Carter_dp05_2018 <- get_acs(geography = "tract", county = "Carter", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+##greene##
+
+
+Greene_dp02_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Greene_dp03_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Greene_dp04_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Greene_dp05_2018 <- get_acs(geography = "tract", county = "Greene", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+##hancock
+
+Hancock_dp02_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Hancock_dp03_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Hancock_dp04_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Hancock_dp05_2018 <- get_acs(geography = "tract", county = "Hancock", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+##hawkins
+
+Hawkins_dp02_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Hawkins_dp03_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Hawkins_dp04_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Hawkins_dp05_2018 <- get_acs(geography = "tract", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+
+##johnson
+
+Johnson_dp02_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Johnson_dp03_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Johnson_dp04_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Johnson_dp05_2018 <- get_acs(geography = "tract", county = "Johnson", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+##sullivan
+
+Sullivan_dp02_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Sullivan_dp03_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Sullivan_dp04_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Sullivan_dp05_2018 <- get_acs(geography = "tract", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+##washington
+
+
+Washington_dp02_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Washington_dp03_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Washington_dp04_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Washington_dp05_2018 <- get_acs(geography = "tract", county = "Washington", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+##unicoi
+
+Unicoi_dp02_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Unicoi_dp03_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Unicoi_dp04_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Unicoi_dp05_2018 <- get_acs(geography = "tract", county = "Unicoi", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+
+###2018##
+
+##carter
+
+Carter_dp02_18 <- inner_join(Carter_dp02_2018, dp_table_variables, by = "variable")
+
+Carter_dp03_18 <- inner_join(Carter_dp03_2018, dp_table_variables, by = "variable")
+
+Carter_dp04_18 <- inner_join(Carter_dp04_2018, dp_table_variables, by = "variable")
+
+Carter_dp05_18 <- inner_join(Carter_dp05_2018, dp_table_variables, by = "variable")
+
+##greene
+
+Greene_dp02_18 <- inner_join(Greene_dp02_2018, dp_table_variables, by = "variable")
+
+Greene_dp03_18 <- inner_join(Greene_dp03_2018, dp_table_variables, by = "variable")
+
+Greene_dp04_18 <- inner_join(Greene_dp04_2018, dp_table_variables, by = "variable")
+
+Greene_dp05_18 <- inner_join(Greene_dp05_2018, dp_table_variables, by = "variable")
+
+##hancock
+
+Hancock_dp02_18 <- inner_join(Hancock_dp02_2018, dp_table_variables, by = "variable")
+
+Hancock_dp03_18 <- inner_join(Hancock_dp03_2018, dp_table_variables, by = "variable")
+
+Hancock_dp04_18 <- inner_join(Hancock_dp04_2018, dp_table_variables, by = "variable")
+
+Hancock_dp05_18 <- inner_join(Hancock_dp05_2018, dp_table_variables, by = "variable")
+
+##hawkins  
+
+Hawkins_dp02_18 <- inner_join(Hawkins_dp02_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp03_18 <- inner_join(Hawkins_dp03_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp04_18 <- inner_join(Hawkins_dp04_2018, dp_table_variables, by = "variable")
+
+Hawkins_dp05_18 <- inner_join(Hawkins_dp05_2018, dp_table_variables, by = "variable")
+
+##johnson
+
+Johnson_dp02_18 <- inner_join(Johnson_dp02_2018, dp_table_variables, by = "variable")
+
+Johnson_dp03_18 <- inner_join(Johnson_dp03_2018, dp_table_variables, by = "variable")
+
+Johnson_dp04_18 <- inner_join(Johnson_dp04_2018, dp_table_variables, by = "variable")
+
+Johnson_dp05_18 <- inner_join(Johnson_dp05_2018, dp_table_variables, by = "variable")
+
+##sullivan
+
+Sullivan_dp02_18 <- inner_join(Sullivan_dp02_2018, dp_table_variables, by = "variable")
+
+Sullivan_dp03_18 <- inner_join(Sullivan_dp03_2018, dp_table_variables, by = "variable")
+
+Sullivan_dp04_18 <- inner_join(Sullivan_dp04_2018, dp_table_variables, by = "variable")
+
+Sullivan_dp05_18 <- inner_join(Sullivan_dp05_2018, dp_table_variables, by = "variable")
+
+##washington
+
+Washington_dp02_18 <- inner_join(Washington_dp02_2018, dp_table_variables, by = "variable")
+
+Washington_dp03_18 <- inner_join(Washington_dp03_2018, dp_table_variables, by = "variable")
+
+Washington_dp04_18 <- inner_join(Washington_dp04_2018, dp_table_variables, by = "variable")
+
+Washington_dp05_18 <- inner_join(Washington_dp05_2018, dp_table_variables, by = "variable")
+
+##unicoi
+
+Unicoi_dp02_18 <- inner_join(Unicoi_dp02_2018, dp_table_variables, by = "variable")
+
+Unicoi_dp03_18 <- inner_join(Unicoi_dp03_2018, dp_table_variables, by = "variable")
+
+Unicoi_dp04_18 <- inner_join(Unicoi_dp04_2018, dp_table_variables, by = "variable")
+
+Unicoi_dp05_18 <- inner_join(Unicoi_dp05_2018, dp_table_variables, by = "variable")
+
+##2018##
+
+dp02_18 <- rbind(Carter_dp02_18, Greene_dp02_18, Hancock_dp02_18, Hawkins_dp02_18, Johnson_dp02_18, Sullivan_dp02_18, Washington_dp02_18, Unicoi_dp02_18)
+
+dp03_18 <- rbind(Carter_dp03_18, Greene_dp03_18, Hancock_dp03_18, Hawkins_dp03_18, Johnson_dp03_18, Sullivan_dp03_18, Washington_dp03_18, Unicoi_dp03_18)
+
+dp04_18 <- rbind(Carter_dp04_18, Greene_dp04_18, Hancock_dp04_18, Hawkins_dp04_18, Johnson_dp04_18, Sullivan_dp04_18, Washington_dp04_18, Unicoi_dp04_18)
+
+dp05_18 <- rbind(Carter_dp05_18, Greene_dp05_18, Hancock_dp05_18, Hawkins_dp05_18, Johnson_dp05_18, Sullivan_dp05_18, Washington_dp05_18, Unicoi_dp05_18)
+
+#2018#
+
+dp_2018 <- rbind(dp02_18, dp03_18, dp04_18, dp05_18)
+
+
+#Carter
+
+#2018
+
+Carter_County_dp02_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Carter_County_dp03_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Carter_County_dp04_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Carter_County_dp05_2018 <- get_acs(geography = "county", county = "Carter", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Greene
+
+#2018
+
+Greene_County_dp02_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Greene_County_dp03_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Greene_County_dp04_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Greene_County_dp05_2018 <- get_acs(geography = "county", county = "Greene", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Hancock
+
+#2018
+
+Hancock_County_dp02_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Hancock_County_dp03_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Hancock_County_dp04_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Hancock_County_dp05_2018 <- get_acs(geography = "county", county = "Hancock", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Hawkins
+
+#2018
+
+Hawkins_County_dp02_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp03_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp04_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Hawkins_County_dp05_2018 <- get_acs(geography = "county", county = "Hawkins", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Johnson
+
+#2018
+
+Johnson_County_dp02_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Johnson_County_dp03_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Johnson_County_dp04_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Johnson_County_dp05_2018 <- get_acs(geography = "county", county = "Johnson", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Sullivan
+
+#2018
+
+Sullivan_County_dp02_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp03_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp04_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Sullivan_County_dp05_2018 <- get_acs(geography = "county", county = "Sullivan", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Washington
+
+#2018
+
+Washington_County_dp02_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Washington_County_dp03_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Washington_County_dp04_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Washington_County_dp05_2018 <- get_acs(geography = "county", county = "Washington", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+#Unicoi
+
+#2018
+
+Unicoi_County_dp02_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP02", year = 2018, geometry = TRUE)
+
+Unicoi_County_dp03_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP03", year = 2018, geometry = TRUE)
+
+Unicoi_County_dp04_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP04", year = 2018, geometry = TRUE)
+
+Unicoi_County_dp05_2018 <- get_acs(geography = "county", county = "Unicoi", state = "TN", table = "DP05", year = 2018, geometry = TRUE)
+
+
+####2018##
+
+##carter
+
+Carter_County_dp02_18 <- inner_join(Carter_County_dp02_2018, dp_table_variables, by = "variable")
+
+Carter_County_dp03_18 <- inner_join(Carter_County_dp03_2018, dp_table_variables, by = "variable")
+
+Carter_County_dp04_18 <- inner_join(Carter_County_dp04_2018, dp_table_variables, by = "variable")
+
+Carter_County_dp05_18 <- inner_join(Carter_County_dp05_2018, dp_table_variables, by = "variable")
+
+####2018##
+
+##Greene
+
+Greene_County_dp02_18 <- inner_join(Greene_County_dp02_2018, dp_table_variables, by = "variable")
+
+Greene_County_dp03_18 <- inner_join(Greene_County_dp03_2018, dp_table_variables, by = "variable")
+
+Greene_County_dp04_18 <- inner_join(Greene_County_dp04_2018, dp_table_variables, by = "variable")
+
+Greene_County_dp05_18 <- inner_join(Greene_County_dp05_2018, dp_table_variables, by = "variable")
+
+####2018##
+
+##Hancock
+
+Hancock_County_dp02_18 <- inner_join(Hancock_County_dp02_2018, dp_table_variables, by = "variable")
+
+Hancock_County_dp03_18 <- inner_join(Hancock_County_dp03_2018, dp_table_variables, by = "variable")
+
+Hancock_County_dp04_18 <- inner_join(Hancock_County_dp04_2018, dp_table_variables, by = "variable")
+
+Hancock_County_dp05_18 <- inner_join(Hancock_County_dp05_2018, dp_table_variables, by = "variable")  
+
+####2018
+
+##Hawkins
+
+Hawkins_County_dp02_18 <- inner_join(Hawkins_County_dp02_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp03_18 <- inner_join(Hawkins_County_dp03_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp04_18 <- inner_join(Hawkins_County_dp04_2018, dp_table_variables, by = "variable")
+
+Hawkins_County_dp05_18 <- inner_join(Hawkins_County_dp05_2018, dp_table_variables, by = "variable")
+
+####2018##
+
+##Johnson
+
+Johnson_County_dp02_18 <- inner_join(Johnson_County_dp02_2018, dp_table_variables, by = "variable")
+
+Johnson_County_dp03_18 <- inner_join(Johnson_County_dp03_2018, dp_table_variables, by = "variable")
+
+Johnson_County_dp04_18 <- inner_join(Johnson_County_dp04_2018, dp_table_variables, by = "variable")
+
+Johnson_County_dp05_18 <- inner_join(Johnson_County_dp05_2018, dp_table_variables, by = "variable")
+
+####2018##
+
+##Sullivan
+
+Sullivan_County_dp02_18 <- inner_join(Sullivan_County_dp02_2018, dp_table_variables, by = "variable")
+
+Sullivan_County_dp03_18 <- inner_join(Sullivan_County_dp03_2018, dp_table_variables, by = "variable")
+
+Sullivan_County_dp04_18 <- inner_join(Sullivan_County_dp04_2018, dp_table_variables, by = "variable")
+
+Sullivan_County_dp05_18 <- inner_join(Sullivan_County_dp05_2018, dp_table_variables, by = "variable")
+
+####2018##
+
+##Washington
+
+Washington_County_dp02_18 <- inner_join(Washington_County_dp02_2018, dp_table_variables, by = "variable")
+
+Washington_County_dp03_18 <- inner_join(Washington_County_dp03_2018, dp_table_variables, by = "variable")
+
+Washington_County_dp04_18 <- inner_join(Washington_County_dp04_2018, dp_table_variables, by = "variable")
+
+Washington_County_dp05_18 <- inner_join(Washington_County_dp05_2018, dp_table_variables, by = "variable")
+
+####2018##
+
+##Unicoi
+
+Unicoi_County_dp02_18 <- inner_join(Unicoi_County_dp02_2018, dp_table_variables, by = "variable")
+
+Unicoi_County_dp03_18 <- inner_join(Unicoi_County_dp03_2018, dp_table_variables, by = "variable")
+
+Unicoi_County_dp04_18 <- inner_join(Unicoi_County_dp04_2018, dp_table_variables, by = "variable")
+
+Unicoi_County_dp05_18 <- inner_join(Unicoi_County_dp05_2018, dp_table_variables, by = "variable")
+
+#2018
+
+County_dp02_18 <- rbind(Carter_County_dp02_18, Greene_County_dp02_18, Hancock_County_dp02_18, Hawkins_County_dp02_18, Johnson_County_dp02_18, Sullivan_County_dp02_18, Washington_County_dp02_18, Unicoi_County_dp02_18)
+
+County_dp03_18 <- rbind(Carter_County_dp03_18, Greene_County_dp03_18, Hancock_County_dp03_18, Hawkins_County_dp03_18, Johnson_County_dp03_18, Sullivan_County_dp03_18, Washington_County_dp03_18, Unicoi_County_dp03_18)
+
+County_dp04_18 <- rbind(Carter_County_dp04_18, Greene_County_dp04_18, Hancock_County_dp04_18, Hawkins_County_dp04_18, Johnson_County_dp04_18, Sullivan_County_dp04_18, Washington_County_dp04_18, Unicoi_County_dp04_18)
+
+County_dp05_18 <- rbind(Carter_County_dp05_18, Greene_County_dp05_18, Hancock_County_dp05_18, Hawkins_County_dp05_18, Johnson_County_dp05_18, Sullivan_County_dp05_18, Washington_County_dp05_18, Unicoi_County_dp05_18)
+
+County_dp_2018 <- rbind(County_dp02_18, County_dp03_18, County_dp04_18, County_dp05_18) 
+
+
+####Demographics####
+
+    # Age
+    
+    age_vars_18 <- c("DP05_0001",  "DP05_0005",  "DP05_0006",  "DP05_0007",  "DP05_0008",  "DP05_0009",
+                 "DP05_0010",  "DP05_0011",  "DP05_0012",  "DP05_0013",  "DP05_0014", 
+                 "DP05_0015",  "DP05_0016",  "DP05_0017",  "DP05_0018",  "DP05_0021",  "DP05_0024")
+
+    age_vars_percent_18 <- c("DP05_0001P", "DP05_0005P",  "DP05_0006P", "DP05_0007P",  "DP05_0008P", 
+                         "DP05_0009P",  "DP05_0010P",  "DP05_0011P", "DP05_0012P",  "DP05_0013P",  "DP05_0014P",
+                         "DP05_0015P", "DP05_0016P",  "DP05_0017P",  "DP05_0018P",  "DP05_0021P", 
+                         "DP05_0024P")
+
+    age_col_dt_names_reg <- c("Total Population",  
+                          "Age Under 5 Years", "Age 5-9 Years", "Age 10-14 Years",  "Age 15-19 Years", 
+                          "Age 20-24 Years",  "Age 25-34 Years",  "Age 35-44 Years",  
+                          "Age 45-54 Years",  "Age 55-59 Years",  "Age 60-64 Years", 
+                          "Age 65-74 Years",  "Age 75-84 Years",  "Age 85+ Years",  
+                          "Median Age", "Age 18+ Years",  "Age 65+ Years")
+    
+    
+    dt_age_tract_counts <- dp_2018 %>%
+      filter(variable %in% age_vars_18)
+    
+    dt_age_county_counts <- County_dp_2018 %>%
+      filter(variable %in% age_vars_18)
+    
+    dt_age_tract_percent <- dp_2018 %>%
+      filter(variable %in% age_vars_percent_18)
+    
+    dt_age_county_percent <- County_dp_2018 %>%
+      filter(variable %in% age_vars_percent_18)
+    
+    #making data tables for the age variables
+    
+    #census tracts data table
+    
+    age_tract_df <- cbind(age_col_dt_names_reg, dt_age_tract_counts, dt_age_tract_percent)
+    
+    age_tract_dt <- age_tract_df[,c(1,3,5,6,12,13)]
+    
+    age_dt <- st_set_geometry(age_tract_dt, NULL)
+    
+    age_dt_names <- c("Age Group", "Census Tract", "Count Estimate", "Count Margin of Error", "Percent of Total Population", "Percent Margin of Error")
+    
+    names(age_dt) <- age_dt_names
+    
+    age_data_table <- datatable(age_dt, caption = "Tract Level Age Group Profile for Upper East Tennessee 2018")  
+    
+    age_data_table
+    
+    
+    #county data table
+    
+    dt_age_county_counts <- County_dp_2018 %>%
+      filter(variable %in% age_vars_18)
+    
+    dt_age_county_percent <- County_dp_2018 %>%
+      filter(variable %in% age_vars_percent_18)
+    
+    age_county_df <- cbind(age_col_dt_names_reg, dt_age_county_counts, dt_age_county_percent)
+    
+    age_county_dt <- age_county_df[,c(1,3,5,6,12,13)]
+    
+    age_county_dt <- st_set_geometry(age_county_dt, NULL)
+    
+    age_dt_county_names <- c("Age Group", "County", "Count Estimate", "Count Margin of Error", "Percent of Total Population", "Percent Margin of Error")
+    
+    names(age_county_dt) <- age_dt_county_names
+    
+    age_county_data_table <- datatable(age_county_dt, caption = "County Level Age Group Profile for Upper East Tennessee 2018")
+    
+    age_county_data_table
+    
+        #age group plot
+        
+       age_group_plot <-  age_county_dt %>%
+          filter(`Age Group` != "Total Population") %>%
+          filter(`Age Group` != "Median Age") %>%
+          filter(`Age Group` != "Age 18+ Years") %>%
+          filter(`Age Group` != "Age 65+ Years") %>%
+          ggplot(aes(x = `Age Group`, y = `Count Estimate`, fill = County)) +
+          geom_col()+
+          scale_x_discrete()
+       
+       age_group_plot   
+    
+    #race 
+    
+    
+    race_vars_18 <- c("DP05_0063", "DP05_0064", "DP05_0065", "DP05_0066", "DP05_0067", "DP05_0068", "DP05_0069",
+                      "DP05_0071")
+    
+    race_percent_vars_18 <- c("DP05_0063P", "DP05_0064P", "DP05_0065P", "DP05_0066P", "DP05_0067P", "DP05_0068P", "DP05_0069P", 
+                              "DP05_0071P")
+    
+    race_vars_names_18 <- c("Total Population", "White", "African American", "American Indian or Alaskan Native",
+                            "Asian", "Native Hawaiian or Pacific Island", "Some other Race", "Hispanic of Any Race")
+    
+    race_percent_names_18 <- c("Percent Total Population", "Percent White", "Percent African American", "Percent American Indian or Alaskan Native",
+                               "Percent Asian", "Percent Native Hawaiian or Pacific Island", "Percent Some other Race", "Percent Hispanic of Any Race")
+    
+    df_race_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% race_vars_18)
+    
+    df_race_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% race_vars_18)
+    
+    df_race_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% race_percent_vars_18)
+    
+    df_race_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% race_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_race_tract_18 <- cbind(race_vars_names_18, df_race_tract_counts_18, df_race_tract_percent_18)
+    
+    df_race_county_18 <- cbind(race_vars_names_18, df_race_county_counts_18, df_race_county_percent_18)   
+    
+    trimmed_df_race_tract_18 <- df_race_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_race_county_18 <- df_race_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_race_tract_18 <- st_set_geometry(trimmed_df_race_tract_18, NULL)
+    
+    data_table_race_county_18 <- st_set_geometry(trimmed_df_race_county_18, NULL)
+    
+    
+    ##rename the columns 
+    
+    race_table_tract_names <- c("Racial Group", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    race_table_county_names <- c("Racial Group", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    
+    names(data_table_race_tract_18) <- race_table_tract_names
+    
+    names(data_table_race_county_18) <- race_table_county_names
+    
+    ##make the data tables
+    
+    race_tract_data_table_18 <- datatable(data_table_race_tract_18, caption = "Racial Breakdown of Census Tract Groups for Upper East Tennessee 2018")
+    
+    race_county_data_table_18 <- datatable(data_table_race_county_18, caption = "Racial Breakdown for Upper East Tennessee 2018")
+    
+    race_tract_data_table_18
+    
+    race_county_data_table_18
+    
+        ## county level bar chart
+          
+            wc_race_bar_18 <- data_table_race_county_18 %>%
+              filter(`Racial Group` != "Total Population") %>%
+              filter(County == "Washington County, Tennessee") %>%
+              ggplot(aes(x = `Racial Group`, y = `Percent`)) + 
+              ggtitle("Washington County, Tennessee")+
+              geom_col(fill = brewer.pal(n = 7, "Dark2"))
+          
+            wc_race_bar_18
+            
+            data_table_race_county_18 %>%
+              filter(`Racial Group` != "Total Population") %>%
+              filter(County == "Washington County, Tennessee") %>%
+              ggplot(aes(x = `Racial Group`)) + 
+              ggtitle("Washington County, Tennessee")+
+              geom_dotplot(fill = brewer.pal(n = 7, "Dark2"))
+            
+           all_counties_race_plot <-  data_table_race_county_18 %>%
+              filter(`Racial Group` != "Total Population") %>%
+              ggplot(aes(x = `Racial Group`, y = Count, fill = County)) + 
+              geom_col()
+          
+           all_counties_race_plot
+           
+    ###make a map of white
+    
+    race_tract_map_names <- c("Race", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    race_county_map_names <- c("Race", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_race_county_18) <- race_county_map_names
+    
+    names(trimmed_df_race_tract_18) <- race_tract_map_names
+    
+    percent_white_county <- trimmed_df_race_county_18 %>%
+      filter(Race == "White")
+    
+    percent_white_tract <- trimmed_df_race_tract_18 %>%
+      filter(Race == "White")
+    
+    
+    white_people_map <- mapview(list(percent_white_county,percent_white_tract),
+                                zcol = list("Percent", "Percent"),
+                                layer.name = list("Percent White County", "Percent White Tract"),
+                                legend = list(FALSE, TRUE))
+    white_people_map
+    
+    
+    
+    ##median age map
+    
+    median_age_county <- County_dp_2018 %>%
+      filter(variable == "DP05_0018")
+    
+    median_age_tract <- dp_2018 %>%
+      filter(variable == "DP05_0018")
+    
+    map_names_county_median_age <- c("County", "Median Age", "Margin of Error", "geometry" )
+    
+    map_names_tract_median_age <- c("Census Tract", "Median Age", "Margin of Error", "geometry" )
+    
+    trimmed_median_age_tract <- median_age_tract[,c(2,4,5)]
+    
+    trimmed_median_age_county <- median_age_county[,c(2,4,5)]
+    
+    names(trimmed_median_age_county) <- map_names_county_median_age
+    
+    names(trimmed_median_age_tract) <- map_names_tract_median_age
+    
+    median_age_map <- mapview(list(trimmed_median_age_county, trimmed_median_age_tract),
+                              zcol = list("Median Age", "Median Age"),
+                              layer.name = list("Median Age County", "Median Age Tract"),
+                              legend = list(FALSE, TRUE))
+    median_age_map
+    
+   
+#### Social Characteristics ####
+    ###households##
+    
+    household_vars_18 <- c("DP02_0001", "DP02_0002", "DP02_0003", "DP02_0004", "DP02_0007", "DP02_0009", "DP02_0012", "DP02_0013",
+                           "DP02_0015", "DP02_0016", "DP02_0017", "DP02_0020", "DP02_0044", "DP02_0045", "DP02_0046", "DP02_0047",
+                           "DP02_0048", "DP02_0050")
+    
+    household_percent_vars_18 <- c("DP02_0001P", "DP02_0002P", "DP02_0003P", "DP02_0004P", "DP02_0007P", "DP02_0009P", "DP02_0012P", "DP02_0013P",
+                                   "DP02_0015P", "DP02_0016P", "DP02_0017P", "DP02_0020P", "DP02_0044P", "DP02_0045P", "DP02_0046P", "DP02_0047P",
+                                   "DP02_0048P", "DP02_0050P")
+    
+    household_vars_names_18 <- c("Total Households", "Family Households", "Family Households with Children under 18", "Married Couple Family Households",
+                                 "Single Male Households with Children under 18", "Single Female Households with Children under 18", "Households of Age 65 or Greater Living Alone",
+                                 "Total Households with Children under 18", "Average Household Size", "Average Family Size", "Population in Households", "Children in Households", 
+                                 "Number of Grandparents Living With and Responsible for Children under 18 Years Old", "Number of Grandparents Living With and Responsible for Children under 1 Year Old",
+                                 "Number of Grandparents Living With and Responsible for Children 1-2 Years Old", "Number of Grandparents Living With and Responsible for Children 3-4 Years Old",
+                                 "Number of Grandparents Living With and Responsible for Children 5+ Years Old", "Number of Female Grandparents Living With and Responsible for Children under 18 Years Old")
+    
+    
+    df_household_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% household_vars_18)
+    
+    df_household_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% household_vars_18)
+    
+    df_household_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% household_percent_vars_18)
+    
+    df_household_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% household_percent_vars_18)
+
+    
+    
+    ##combine the percents into one table
+    
+    df_household_tract_18 <- cbind(household_vars_names_18, df_household_tract_counts_18, df_household_tract_percent_18)
+    
+    df_household_county_18 <- cbind(household_vars_names_18, df_household_county_counts_18, df_household_county_percent_18)    
+    
+    
+    trimmed_df_household_tract_18 <- df_household_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_household_county_18 <- df_household_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_household_tract_18 <- st_set_geometry(trimmed_df_household_tract_18, NULL)
+    
+    data_table_household_county_18 <- st_set_geometry(trimmed_df_household_county_18, NULL)
+    
+    
+    ##rename the columns 
+    
+    
+    household_table_tract_names <- c("Household Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    household_table_county_names <- c("Household Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_household_tract_18) <- household_table_tract_names
+    
+    names(data_table_household_county_18) <- household_table_county_names
+    
+    ##make the data tables
+    
+    household_tract_data_table_18 <- datatable(data_table_household_tract_18, caption = "Household Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    household_county_data_table_18 <- datatable(data_table_household_county_18, caption = "Household Characteristics County Level for Upper East Tennessee 2018")
+    
+    household_tract_data_table_18  
+    
+    household_county_data_table_18
+    
+    
+    #single female household map
+    
+    
+    household_tract_map_names <- c("Household Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    household_county_map_names <- c("Household Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_household_county_18) <- household_county_map_names
+    
+    names(trimmed_df_household_tract_18) <- household_tract_map_names
+    
+    percent_single_mothers_county <- trimmed_df_household_county_18 %>%
+      filter(`Household Measure` == "Single Female Households with Children under 18")
+    
+    percent_single_mothers_tract <- trimmed_df_household_tract_18 %>%
+      filter(`Household Measure` == "Single Female Households with Children under 18")
+    
+    single_mothers_map <- mapview(list(percent_single_mothers_county,percent_single_mothers_tract),
+                                  zcol = list("Percent", "Percent"),
+                                  layer.name = list("Percent Single Mothers County", "Percent Single Mothers Tract"),
+                                  legend = list(FALSE, TRUE))
+    
+    single_mothers_map  
+    
+    
+    ##education 
+    
+    education_vars_18 <- c("DP02_0052", "DP02_0053", "DP02_0054", "DP02_0055", "DP02_0056", "DP02_0057", "DP02_0058", "DP02_0059", "DP02_0060",
+                           "DP02_0061", "DP02_0062", "DP02_0063", "DP02_0064", "DP02_0065", "DP02_0066", "DP02_0067")
+    
+    education_percent_vars_18 <- c("DP02_0052P", "DP02_0053P", "DP02_0054P", "DP02_0055P", "DP02_0056P", "DP02_0057P", "DP02_0058P", "DP02_0059P", "DP02_0060P",
+                                   "DP02_0061P", "DP02_0062P", "DP02_0063P", "DP02_0064P", "DP02_0065P", "DP02_0066P", "DP02_0067P")
+    
+    education_vars_names_18 <- c("Number of Children Greater than 3 Years of Age Enrolled in School", "Number of Children Enrolled in Nursery School or Preschool",
+                                 "Number of Children Enrolled in Kindergarten", "Number of Children Enrolled in Grades 1-8", "Number of Children Enrolled in Grades 9-12",
+                                 "Number of People Enrolled in  College or Graduate School", "Total Population 25 Years and Up", "25 Years and Up: Educational Attainment less than 9th Grade",
+                                 "25 Years and Up Educational Attainment: Grade 9-12, No Diploma", "25 Years and Up Educational Attainment: Highschool Diploma or Equivalent", 
+                                 "25 Years and Up Educational Attainment: Some College, no Degree", "25 Years and Up Educational Attainment: Associates Degree", "25 Years and Up Educational Attainment: Bachelors Degree",
+                                 "25 Years and Up Educational Attainment: Graduate Degree", "25 Years and Up Educational Attainment: Highschool Degree or Higher", "25 Years and Up Educational Attainment: Bachelors Degree or Higher")
+    
+    df_education_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% education_vars_18)
+    
+    df_education_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% education_vars_18)
+    
+    df_education_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% education_percent_vars_18)
+    
+    df_education_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% education_percent_vars_18)
+    
+    
+    ##combine the percents into one table
+    
+    df_education_tract_18 <- cbind(education_vars_names_18, df_education_tract_counts_18, df_education_tract_percent_18)
+    
+    df_education_county_18 <- cbind(education_vars_names_18, df_education_county_counts_18, df_education_county_percent_18)
+    
+    
+    trimmed_df_education_tract_18 <- df_education_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_education_county_18 <- df_education_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_education_tract_18 <- st_set_geometry(trimmed_df_education_tract_18, NULL)
+    
+    data_table_education_county_18 <- st_set_geometry(trimmed_df_education_county_18, NULL)
+    
+    ##rename the columns 
+    
+    education_table_tract_names <- c("Education Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    names(data_table_education_tract_18) <- education_table_tract_names
+    
+    names(data_table_education_county_18) <- education_table_county_names
+    
+    
+    ##make the data tables
+    
+    education_tract_data_table_18 <- datatable(data_table_education_tract_18, caption = "Education Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    education_county_data_table_18 <- datatable(data_table_education_county_18, caption = "Education Characteristics for Counties in Upper East Tennessee 2018")
+    
+    education_table_county_names <- c("Education Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    education_tract_data_table_18
+    
+    education_county_data_table_18
+    
+    
+    ###make a map of less than highschool diploma
+    
+    education_tract_map_names <- c("Education Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    education_county_map_names <- c("Education Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_education_county_18) <- education_county_map_names
+    
+    names(trimmed_df_education_tract_18) <- education_tract_map_names
+    
+    percent_hs_or_higher_county <- trimmed_df_education_county_18 %>%
+      filter(`Education Measure` == "25 Years and Up Educational Attainment: Highschool Degree or Higher")
+    
+    percent_hs_or_higher_tract <- trimmed_df_education_tract_18 %>%
+      filter(`Education Measure` == "25 Years and Up Educational Attainment: Highschool Degree or Higher")
+    
+    hs_or_higher_map <- mapview(list(percent_hs_or_higher_county, percent_hs_or_higher_tract),
+                                zcol = list("Percent", "Percent"),
+                                layer.name = list("Percent Highschool Degree or Equivalent or Higher County", "Percent Highschool Degree or Equivalent or Higher Tract"),
+                                legend = list(FALSE, TRUE))
+    
+    hs_or_higher_map
+    
+    
+    ##preschool/nursery school enrollment map
+    
+    preschool_enrollment_county <- trimmed_df_education_county_18 %>%
+      filter(`Education Measure` == "Number of Children Enrolled in Nursery School or Preschool")
+    
+    preschool_enrollment_tract <- trimmed_df_education_tract_18 %>%
+      filter(`Education Measure` == "Number of Children Enrolled in Nursery School or Preschool")
+    
+    preschool_enrollment_map <- mapview(list(preschool_enrollment_county, preschool_enrollment_tract),
+                                        zcol = list("Count", "Count"),
+                                        layer.name = list("Preschool Enrollment County", "Preschool Enrollment Tract"),
+                                        legend = list(FALSE, TRUE))
+    
+    preschool_enrollment_map
+    
+    
+    ## Disability status ### 
+    
+    disability_vars_18 <- c("DP02_0070", "DP02_0071", "DP02_0072", "DP02_0073", "DP02_0074", "DP02_0075", "DP02_0076", "DP02_0077")
+    
+    disability_percent_vars_18 <- c("DP02_0070P", "DP02_0071P", "DP02_0072P", "DP02_0073P", "DP02_0074P", "DP02_0075P", "DP02_0076P", "DP02_0077P")
+    
+    disability_vars_names_18 <- c("Total Civilian Population", "Civilian Population with a Disability","Total Civilian Population Under 18 Years of Age", "Civilian Population Under 18 Years of Age with a Disability",
+                                  "Total Civilain Population Ages 18-64", "Civilian Population Ages 18-74 with a Disability", "Total Civilian Population Over 65 Years of Age", "Civilian Population Over 65 Years of Age with a Disability")
+    
+    
+    
+    df_disability_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% disability_vars_18)
+    
+    df_disability_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% disability_vars_18)
+    
+    df_disability_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% disability_percent_vars_18)
+    
+    df_disability_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% disability_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_disability_tract_18 <- cbind(disability_vars_names_18, df_disability_tract_counts_18, df_disability_tract_percent_18)
+    
+    df_disability_county_18 <- cbind(disability_vars_names_18, df_disability_county_counts_18, df_disability_county_percent_18)
+    
+    trimmed_df_disability_tract_18 <- df_disability_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_disability_county_18 <- df_disability_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_disability_tract_18 <- st_set_geometry(trimmed_df_disability_tract_18, NULL)
+    
+    data_table_disability_county_18 <- st_set_geometry(trimmed_df_disability_county_18, NULL)
+    
+    ##rename the columns 
+    
+    
+    disability_table_tract_names <- c("Disability Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    disability_table_county_names <- c("Disability Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    names(data_table_disability_tract_18) <- disability_table_tract_names
+    
+    names(data_table_disability_county_18) <- disability_table_county_names
+    
+    ##make the data tables
+    
+    disability_tract_data_table_18 <- datatable(data_table_disability_tract_18, caption = "Disability Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    disability_county_data_table_18 <- datatable(data_table_disability_county_18, caption = "Disability Characteristics for Counties in Upper East Tennessee 2018")
+    
+    
+    ##percent disability or greater map
+    
+    disability_tract_map_names <- c("Disability Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    disability_county_map_names <- c("Disability Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_disability_county_18) <- disability_county_map_names
+    
+    names(trimmed_df_disability_tract_18) <- disability_tract_map_names
+    
+    percent_disabled_county <- trimmed_df_disability_county_18 %>%
+      filter(`Disability Measure` == "Civilian Population with a Disability")
+    
+    percent_disabled_tract <- trimmed_df_disability_tract_18 %>%
+      filter(`Disability Measure` == "Civilian Population with a Disability")
+    
+    disability_map <- mapview(list(percent_disabled_county, percent_disabled_tract),
+                              zcol = list("Percent", "Percent"),
+                              layer.name = list("Percent Population with a Disability County", "Percent Population with a Disability Tract"),
+                              legend = list(FALSE, TRUE))
+    
+    disability_map
+    
+    ## Residence
+    
+    residence_vars_18 <- c("DP02_0079", "DP02_0080", "DP02_0081", "DP02_0082", "DP02_0083", "DP02_0084", "DP02_0085")
+    
+    residence_percent_vars_18 <- c("DP02_0079P", "DP02_0080P", "DP02_0081P", "DP02_0082P", "DP02_0083P", "DP02_0084P", "DP02_0085P")
+    
+    residence_vars_names_18 <- c("Residence 1 Year Ago in same House", "Residence 1 Year Ago in Different House in US", "Residence 1 Year Ago in Different House in Same County",
+                                 "Residence 1 Year Ago in Different House Different County", "Residence 1 Year Ago in Different House Same State", "Residence 1 Year Ago in Different House Different State",
+                                 "Residence 1 Year Ago in Different House Abroad")
+    
+    
+    df_residence_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% residence_vars_18)
+    
+    df_residence_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% residence_vars_18)
+    
+    df_residence_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% residence_percent_vars_18)
+    
+    df_residence_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% residence_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_residence_tract_18 <- cbind(residence_vars_names_18, df_residence_tract_counts_18, df_residence_tract_percent_18)
+    
+    df_residence_county_18 <- cbind(residence_vars_names_18, df_residence_county_counts_18, df_residence_county_percent_18)
+    
+    trimmed_df_residence_tract_18 <- df_residence_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_residence_county_18 <- df_residence_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_residence_tract_18 <- st_set_geometry(trimmed_df_residence_tract_18, NULL)
+    
+    data_table_residence_county_18 <- st_set_geometry(trimmed_df_residence_county_18, NULL)
+    
+    ##rename the columns 
+    
+    residence_table_tract_names <- c("Residence Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    residence_table_county_names <- c("Residence Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_residence_tract_18) <- residence_table_tract_names
+    
+    names(data_table_residence_county_18) <- residence_table_county_names
+    
+    ##make the data tables
+    
+    residence_tract_data_table_18 <- datatable(data_table_residence_tract_18, caption = "Residence Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    residence_county_data_table_18 <- datatable(data_table_residence_county_18, caption = "Residence Characteristics for Counties in Upper East Tennessee 2018")
+    
+    ##residence less than 1 year  map
+    
+    residence_tract_map_names <- c("Residence Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    residence_county_map_names <- c("Residence Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_residence_county_18) <- residence_county_map_names
+    
+    names(trimmed_df_residence_tract_18) <- residence_tract_map_names
+    
+    percent_residence_diff_state_county <- trimmed_df_residence_county_18 %>%
+      filter(`Residence Measure` == "Residence 1 Year Ago in Different House Different State")
+    
+    percent_residence_diff_state_tract <- trimmed_df_residence_tract_18 %>%
+      filter(`Residence Measure` == "Residence 1 Year Ago in Different House Different State")
+    
+    residence_diff_state_map <- mapview(list(percent_residence_diff_state_county, percent_residence_diff_state_tract),
+                                        zcol = list("Percent", "Percent"),
+                                        layer.name = list("Percent Residence in a Different State 1 Year Ago County", "Percent Residence in a Different State 1 Year Ago Tract"),
+                                        legend = list(FALSE, TRUE))
+    
+    #place of birth
+    
+    birthplace_vars_18 <- c("DP02_0088", "DP02_0089", "DP02_0090", "DP02_0092", "DP02_0093", "DP02_0094", "DP02_0095",
+                            "DP02_0101", "DP02_0102", "DP02_0104", "DP02_0105", "DP02_0106", "DP02_0108", "DP02_0109")
+    
+    birthplace_percent_vars_18 <- c("DP02_0088P", "DP02_0089P", "DP02_0090P", "DP02_0092P", "DP02_0093P", "DP02_0094P", "DP02_0095P",
+                                    "DP02_0101P", "DP02_0102P", "DP02_0104P", "DP02_0105P", "DP02_0106P", "DP02_0108P", "DP02_0109P")
+    
+    birthplace_vars_names_18 <- c("Total Born in the USA", "Total Born in State of Residence", "Total Born in Different State of Residence", "Total Foreign Born",
+                                  "Foreign Born Total Population", "Foreign Born Naturalized Citizens", "Foreign Born Non-Citizens", "Foreign Born Entering US since 2010",
+                                  "Foreign Born Entering US before 2010", "European Born", "Asian Born", "African Born", "Latin American Born", "North American Born, Outside of USA")
+    
+    df_birthplace_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% birthplace_vars_18)
+    
+    df_birthplace_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% birthplace_vars_18)
+    
+    df_birthplace_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% birthplace_percent_vars_18)
+    
+    df_birthplace_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% birthplace_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_birthplace_tract_18 <- cbind(birthplace_vars_names_18, df_birthplace_tract_counts_18, df_birthplace_tract_percent_18)
+    
+    df_birthplace_county_18 <- cbind(birthplace_vars_names_18, df_birthplace_county_counts_18, df_birthplace_county_percent_18)
+    
+    trimmed_df_birthplace_tract_18 <- df_birthplace_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_birthplace_county_18 <- df_birthplace_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_birthplace_tract_18 <- st_set_geometry(trimmed_df_birthplace_tract_18, NULL)
+    
+    data_table_birthplace_county_18 <- st_set_geometry(trimmed_df_birthplace_county_18, NULL)
+    
+    ##rename the columns 
+    
+    birthplace_table_tract_names <- c("Birthplace Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    birthplace_table_county_names <- c("Birthplace Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    ##make the data tables
+    
+    birthplace_tract_data_table_18 <- datatable(data_table_birthplace_tract_18, caption = "Birthplace Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    birthplace_county_data_table_18 <- datatable(data_table_birthplace_county_18, caption = "Birthplace Characteristics for Counties in Upper East Tennessee 2018")
+    
+    ## birthplace map 
+    
+    birthplace_tract_map_names <- c("Birthplace Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    birthplace_county_map_names <- c("Birthplace Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_birthplace_county_18) <- birthplace_county_map_names
+    
+    names(trimmed_df_birthplace_tract_18) <- birthplace_tract_map_names
+    
+    percent_birthplace_state_county <- trimmed_df_birthplace_county_18 %>%
+      filter(`Birthplace Measure` == "Total Born in State of Residence")
+    
+    percent_birthplace_state_tract <- trimmed_df_birthplace_tract_18 %>%
+      filter(`Birthplace Measure` == "Total Born in State of Residence")
+    
+    birthplace_state_map <- mapview(list(percent_birthplace_state_county, percent_birthplace_state_tract),
+                                    zcol = list("Percent", "Percent"),
+                                    layer.name = list("Percent Born in Tennessee County", "Percent Born in Tennessee Tract"),
+                                    legend = list(FALSE, TRUE))
+    
+    birthplace_state_map
+   
+    #foreign born map 
+    
+    percent_foreign_born_county <- trimmed_df_birthplace_county_18 %>%
+      filter(`Birthplace Measure` == "Total Foreign Born")
+    
+    percent_foreign_born_tract <- trimmed_df_birthplace_tract_18 %>%
+      filter(`Birthplace Measure` == "Total Foreign Born")
+    
+    foreign_born_map <- mapview(list(percent_foreign_born_county, percent_foreign_born_tract),
+                                zcol = list("Percent", "Percent"),
+                                layer.name = list("Percent Foreign Born County", "Percent Foreign Born Tract"),
+                                legend = list(FALSE, TRUE))
+    
+    foreign_born_map
+  
+    #language spoken at home
+    
+    language_vars_18 <- c("DP02_0112", "DP02_0113", "DP02_0114", "DP02_0115")
+    
+    language_percent_vars_18 <- c("DP02_0112P", "DP02_0113P", "DP02_0114P", "DP02_0115P")
+    
+    language_vars_names_18 <- c("Population over 5 Years Old that Primarily Speak a Language Other than English", "Population over 5 Years Old that Speak English less than Very Well",
+                                "Population over 5 Years Old for which Spanish is the Primary Language", "Population over 5 Years Old for Which Spanish is the Primary Language and Who Speak English Less Than Very Well")
+    
+    df_language_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% language_vars_18)
+    
+    df_language_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% language_vars_18)
+    
+    df_language_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% language_percent_vars_18)
+    
+    df_language_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% language_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_language_tract_18 <- cbind(language_vars_names_18, df_language_tract_counts_18, df_language_tract_percent_18)
+    
+    df_language_county_18 <- cbind(language_vars_names_18, df_language_county_counts_18, df_language_county_percent_18)
+    
+    trimmed_df_language_tract_18 <- df_language_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_language_county_18 <- df_language_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_language_tract_18 <- st_set_geometry(trimmed_df_language_tract_18, NULL)
+    
+    data_table_language_county_18 <- st_set_geometry(trimmed_df_language_county_18, NULL)
+    
+    ##rename the columns 
+    
+    language_table_tract_names <- c("Language Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    language_table_county_names <- c("Language Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_language_tract_18) <- language_table_tract_names
+    
+    names(data_table_language_county_18) <- language_table_county_names
+    
+    ##make the data tables
+    
+    language_tract_data_table_18 <- datatable(data_table_language_tract_18, caption = "Language Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    language_county_data_table_18 <- datatable(data_table_language_county_18, caption = "Language Characteristics for Counties in Upper East Tennessee 2018")
+    
+    ## language maps 
+    
+    language_tract_map_names <- c("Language Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    language_county_map_names <- c("Language Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_language_county_18) <- language_county_map_names
+    
+    names(trimmed_df_language_tract_18) <- language_tract_map_names
+    
+    percent_language_county <- trimmed_df_language_county_18 %>%
+      filter(`Language Measure` == "Population over 5 Years Old that Primarily Speak a Language Other than English")
+    
+    percent_language_tract <- trimmed_df_language_tract_18 %>%
+      filter(`Language Measure` == "Population over 5 Years Old that Primarily Speak a Language Other than English")
+    
+    language_map <- mapview(list(percent_language_county, percent_language_tract),
+                            zcol = list("Percent", "Percent"),
+                            layer.name = list("Percent Primary Language Other than English County", "Percent Primary Language Other than English Tract"),
+                            legend = list(FALSE, TRUE))
+    
+    language_map
+    
+    #computers
+    
+    computer_vars_18 <- c("DP02_0150", "DP02_0151", "DP02_0152")
+    
+    computer_percent_vars_18 <- c("DP02_0150P", "DP02_0151P", "DP02_0152P")
+    
+    computer_vars_names_18 <- c("Total Households", "Households with a Computer", "Households with a Broadband Internet Subscription")
+    
+    df_computer_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% computer_vars_18)
+    
+    df_computer_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% computer_vars_18)
+    
+    df_computer_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% computer_percent_vars_18)
+    
+    df_computer_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% computer_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_computer_tract_18 <- cbind(computer_vars_names_18, df_computer_tract_counts_18, df_computer_tract_percent_18)
+    
+    df_computer_county_18 <- cbind(computer_vars_names_18, df_computer_county_counts_18, df_computer_county_percent_18)
+    
+    trimmed_df_computer_tract_18 <- df_computer_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_computer_county_18 <- df_computer_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_computer_tract_18 <- st_set_geometry(trimmed_df_computer_tract_18, NULL)
+    
+    data_table_computer_county_18 <- st_set_geometry(trimmed_df_computer_county_18, NULL)
+    
+    ##rename the columns 
+    
+    computer_table_tract_names <- c("Computer Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    computer_table_county_names <- c("Computer Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    ##make the data tables
+    
+    computer_tract_data_table_18 <- datatable(data_table_computer_tract_18, caption = "Computer Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    computer_county_data_table_18 <- datatable(data_table_computer_county_18, caption = "Computer Characteristics for Counties in Upper East Tennessee 2018")
+    
+    #broadband internet map 
+    
+    computer_tract_map_names <- c("Computer Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    computer_county_map_names <- c("Computer Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_computer_county_18) <- computer_county_map_names
+    
+    names(trimmed_df_computer_tract_18) <- computer_tract_map_names
+    
+    percent_computer_county <- trimmed_df_computer_county_18 %>%
+      filter(`Computer Measure` == "Households with a Broadband Internet Subscription")
+    
+    percent_computer_tract <- trimmed_df_computer_tract_18 %>%
+      filter(`Computer Measure` == "Households with a Broadband Internet Subscription")
+    
+    computer_map <- mapview(list(percent_computer_county, percent_computer_tract),
+                            zcol = list("Percent", "Percent"),
+                            layer.name = list("Percent Households with a Broadband Internet Subscription County", "Percent Households with a Broadband Internet Subscription Tract"),
+                            legend = list(FALSE, TRUE))
+    
+    computer_map
+    
+#### Economic Characteristics ####
+    
+    # workforce demographics
+    
+    workforce_vars_18 <- c("DP03_0001", "DP03_0002", "DP03_0003", "DP03_0004", "DP03_0005", "DP03_0007", "DP03_0009",
+                           "DP03_0012", "DP03_0013", "DP03_0014", "DP03_0015", "DP03_0016", "DP03_0017")
+    
+    workforce_percent_vars_18 <- c("DP03_0001P", "DP03_0002P", "DP03_0003P", "DP03_0004P", "DP03_0005P", "DP03_0007P", "DP03_0009P",
+                                   "DP03_0012P", "DP03_0013P", "DP03_0014P", "DP03_0015P", "DP03_0016P", "DP03_0017P")
+    
+    workforce_vars_names_18 <- c("Total Population Aged 16 Years and Above", "Total Population Aged 16 Years and Above: In Labor Force",
+                                 "Total Population Aged 16 Years and Above: In Civilian Labor Force", "Total Population Aged 16 Years and Above: Employed",
+                                 "Total Population Aged 16 Years and Above: Unemployed", "Total Population Aged 16 Years and Above: Not in Labor Force",
+                                 "Unemployment Rate", "Total Population Aged 16 Years and Above: Females in Civilian Labor Force", "Total Population Aged 16 Years and Above: Employed Females in Civilian Labor Force",
+                                 "Total Households with Children under 6 Years of Age", "Households with Children under 6 Years of Age, All Parents in Labor Force",
+                                 "Total Households with Children Aged 6-17 Years Old", "Households with Children aged 6-17 Years Old, All Parents in Labor Force")
+    
+    df_workforce_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% workforce_vars_18)
+    
+    df_workforce_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% workforce_vars_18)
+    
+    df_workforce_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% workforce_percent_vars_18)
+    
+    df_workforce_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% workforce_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_workforce_tract_18 <- cbind(workforce_vars_names_18, df_workforce_tract_counts_18, df_workforce_tract_percent_18)
+    
+    df_workforce_county_18 <- cbind(workforce_vars_names_18, df_workforce_county_counts_18, df_workforce_county_percent_18)    
+    
+    trimmed_df_workforce_tract_18 <- df_workforce_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_workforce_county_18 <- df_workforce_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_workforce_tract_18 <- st_set_geometry(trimmed_df_workforce_tract_18, NULL)
+    
+    data_table_workforce_county_18 <- st_set_geometry(trimmed_df_workforce_county_18, NULL)
+    
+    ##rename the columns 
+    
+    workforce_table_tract_names <- c("Workforce Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    workforce_table_county_names <- c("Workforce Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_workforce_tract_18) <- workforce_table_tract_names
+    
+    names(data_table_workforce_county_18) <- workforce_table_county_names
+    
+    ##make the data tables
+    
+    workforce_tract_data_table_18 <- datatable(data_table_workforce_tract_18, caption = "Workforce Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+    
+    workforce_county_data_table_18 <- datatable(data_table_workforce_county_18, caption = "Workforce Characteristics for Upper East Tennessee 2018")
+    
+    workforce_tract_data_table_18
+    
+    workforce_county_data_table_18
+    
+    #unemployment map 
+    
+    ##workforce unemployed 
+    
+    workforce_tract_map_names <- c("Workforce Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    workforce_county_map_names <- c("Workforce Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_workforce_county_18) <- workforce_county_map_names
+    
+    names(trimmed_df_workforce_tract_18) <- workforce_tract_map_names
+    
+    percent_workforce_county <- trimmed_df_workforce_county_18 %>%
+      filter(`Workforce Measure` == "Total Population Aged 16 Years and Above: Unemployed")
+    
+    percent_workforce_tract <- trimmed_df_workforce_tract_18 %>%
+      filter(`Workforce Measure` == "Total Population Aged 16 Years and Above: Unemployed")
+    
+    workforce_map <- mapview(list(percent_workforce_county, percent_workforce_tract),
+                             zcol = list("Percent", "Percent"),
+                             layer.name = list("Percent Total Population Aged 16 Years and Above: Unemployed County", "Percent Total Population Aged 16 Years and Above: UnemployedTract"),
+                             legend = list(FALSE, TRUE))
+    
+    workforce_map
+    
+    #workers transportation 
+    
+    work_trans_vars_18 <- c("DP03_0018", "DP03_0019", "DP03_0020", "DP03_0021", "DP03_0022", "DP03_0023", "DP03_0024", "DP03_0025")
+    
+    work_trans_percent_vars_18 <- c("DP03_0018P", "DP03_0019P", "DP03_0020P", "DP03_0021P", "DP03_0022P", "DP03_0023P", "DP03_0024P", "DP03_0025P")
+    
+    work_trans_vars_names_18 <- c("Total Workers Aged 16 Years and Above", "Total Workers Driving to Work Alone", "Total Workers that Carpooled",
+                                  "Total Workers that used Public Transit", "Total Workers that Walked", "Total Workers that used Other Means of Transportation", "Total Workers that Worked at Home", "Mean Travel Time to Work")
+    
+    df_work_trans_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% work_trans_vars_18)
+    
+    df_work_trans_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% work_trans_vars_18)
+    
+    df_work_trans_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% work_trans_percent_vars_18)
+    
+    df_work_trans_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% work_trans_percent_vars_18)
+    
+    
+    ##combine the percents into one table
+    
+    df_work_trans_tract_18 <- cbind(work_trans_vars_names_18, df_work_trans_tract_counts_18, df_work_trans_tract_percent_18)
+    
+    df_work_trans_county_18 <- cbind(work_trans_vars_names_18, df_work_trans_county_counts_18, df_work_trans_county_percent_18) 
+    
+    trimmed_df_work_trans_tract_18 <- df_work_trans_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_work_trans_county_18 <- df_work_trans_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_work_trans_tract_18 <- st_set_geometry(trimmed_df_work_trans_tract_18, NULL)
+    
+    data_table_work_trans_county_18 <- st_set_geometry(trimmed_df_work_trans_county_18, NULL)
+    
+    ##rename the columns 
+    
+    work_trans_table_tract_names <- c("Workers Transportation Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    work_trans_table_county_names <- c("Workers Transportation Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    ##make the data tables
+    
+    work_trans_tract_data_table_18 <- datatable(data_table_work_trans_tract_18, caption = "Workers Transportation Characteristics of Census Tract Groups for Upper East Tennessee Tennessee 2018")
+    
+    work_trans_county_data_table_18 <- datatable(data_table_work_trans_county_18, caption = "Workers Transportation Characteristics for Counties in Upper East Tennessee 2018")
+    
+    work_trans_tract_data_table_18
+    
+    work_trans_county_data_table_18
+    
+    ##public transit users and mean commute time maps 
+    
+    work_trans_tract_map_names <- c("Workers Transportation Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    work_trans_county_map_names <- c("Workers Transportation Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_work_trans_county_18) <- work_trans_county_map_names
+    
+    names(trimmed_df_work_trans_tract_18) <- work_trans_tract_map_names
+    
+    #mean time map
+    
+    percent_work_trans_county <- trimmed_df_work_trans_county_18 %>%
+      filter(`Workers Transportation Measure` == "Mean Travel Time to Work")
+    
+    percent_work_trans_tract <- trimmed_df_work_trans_tract_18 %>%
+      filter(`Workers Transportation Measure` == "Mean Travel Time to Work")
+    
+    work_trans_map <- mapview(list(percent_work_trans_county, percent_work_trans_tract),
+                              zcol = list("Count", "Count"),
+                              layer.name = list("Mean Travel Time to Work County", "Mean Travel Time to Work  Tract"),
+                              legend = list(FALSE, TRUE))
+    
+    #public transit
+    
+    percent_public_transit_county <- trimmed_df_work_trans_county_18 %>%
+      filter(`Workers Transportation Measure` == "Total Workers that used Public Transit")
+    
+    percent_public_transit_tract <- trimmed_df_work_trans_tract_18 %>%
+      filter(`Workers Transportation Measure` == "Total Workers that used Public Transit")
+    
+    public_transit_map <- mapview(list(percent_public_transit_county, percent_public_transit_tract),
+                                  zcol = list("Percent", "Percent"),
+                                  layer.name = list("Percent Workers that used Public Transit County", "Percent Workers that used Public Transit Tract"),
+                                  legend = list(FALSE, TRUE))
+    
+    public_transit_map
+    
+    # occupation type
+    
+    occ_vars_18 <- c("DP03_0026", "DP03_0027", "DP03_0028", "DP03_0029", "DP03_0030", "DP03_0031")
+    
+    occ_percent_vars_18 <- c("DP03_0026P", "DP03_0027P", "DP03_0028P", "DP03_0029P", "DP03_0030P", "DP03_0031P")
+    
+    occ_vars_names_18 <- c("Total Civilian Employed Population", "Total Management, Business, Science, and Art Occupations",
+                           "Total Service Occupations", "Total Sales and Office Occupations", "Total Natural Resources, Construction, and Maintenance Occupations",
+                           "Total Production, Transportation, and Material Moving Occupations")
+    
+    df_occ_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% occ_vars_18)
+    
+    df_occ_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% occ_vars_18)
+    
+    df_occ_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% occ_percent_vars_18)
+    
+    df_occ_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% occ_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_occ_tract_18 <- cbind(occ_vars_names_18, df_occ_tract_counts_18, df_occ_tract_percent_18)
+    
+    df_occ_county_18 <- cbind(occ_vars_names_18, df_occ_county_counts_18, df_occ_county_percent_18) 
+    
+    trimmed_df_occ_tract_18 <- df_occ_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_occ_county_18 <- df_occ_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_occ_tract_18 <- st_set_geometry(trimmed_df_occ_tract_18, NULL)
+    
+    data_table_occ_county_18 <- st_set_geometry(trimmed_df_occ_county_18, NULL)
+    
+    ##rename the columns 
+    
+    occ_table_tract_names <- c("Occupation Type", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    occ_table_county_names <- c("Occupation Type", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_occ_tract_18) <- occ_table_tract_names
+    
+    names(data_table_occ_county_18) <- occ_table_county_names
+    
+    ##make the data tables
+    
+    occ_tract_data_table_18 <- datatable(data_table_occ_tract_18, caption = "Occupation Type of Census Tract Groups for Upper East Tennessee 2018")
+    
+    occ_county_data_table_18 <- datatable(data_table_occ_county_18, caption = "Occupation Type for Counties in Upper East Tennessee 2018")   
+    
+    occ_tract_data_table_18
+    
+    occ_county_data_table_18
+    
+    ##service occupations map 
+    
+    occ_tract_map_names <- c("Occupation Type", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    occ_county_map_names <- c("Occupation Type", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_occ_county_18) <- occ_county_map_names
+    
+    names(trimmed_df_occ_tract_18) <- occ_tract_map_names
+    
+    
+    percent_occ_county <- trimmed_df_occ_county_18 %>%
+      filter(`Occupation Type` == "Total Service Occupations")
+    
+    percent_occ_tract <- trimmed_df_occ_tract_18 %>%
+      filter(`Occupation Type` == "Total Service Occupations")
+    
+    occ_map <- mapview(list(percent_occ_county, percent_occ_tract),
+                       zcol = list("Percent", "Percent"),
+                       layer.name = list("Percent Service Occupations County", "Percent Service Occupations  Tract"),
+                       legend = list(FALSE, TRUE))
+    
+    occ_map
+    
+    #industry type
+    
+    industry_vars_18 <- c("DP03_0033", "DP03_0034", "DP03_0035", "DP03_0036", "DP03_0037", "DP03_0038", "DP03_0039",
+                          "DP03_0040", "DP03_0041", "DP03_0042", "DP03_0043", "DP03_0044", "DP03_0045", "DP03_0048", "DP03_0049")
+    
+    industry_percent_vars_18  <- c("DP03_0033P", "DP03_0034P", "DP03_0035P", "DP03_0036P", "DP03_0037P", "DP03_0038P", "DP03_0039P",
+                                   "DP03_0040P", "DP03_0041P", "DP03_0042P", "DP03_0043P", "DP03_0044P", "DP03_0045P", "DP03_0048P", "DP03_0049P")
+    
+    industry_vars_names_18 <- c("Agriculture, Forestry, Fishing and Hunting, Mining", "Construction", "Manufacturing", 
+                                "Wholesale Trade", "Retail Trade", "Transportation and Warehousing, Utilities", "Information", 
+                                "Finance and Insurance, Real Estate, Rental and Leasing", "Professional, Sceintific, and Mangagement, Administrative and Waste Management Services",
+                                "Educational Services, Healthcare and Social Assistance", "Arts, Entertainment, Recreation and Accomodation and Food Services",
+                                "Other", "Public Administration", "Government Workers", "Self Employed in Own Business")
+    
+    df_industry_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% industry_vars_18)
+    
+    df_industry_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% industry_vars_18)
+    
+    df_industry_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% industry_percent_vars_18)
+    
+    df_industry_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% industry_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_industry_tract_18 <- cbind(industry_vars_names_18, df_industry_tract_counts_18, df_industry_tract_percent_18)
+    
+    df_industry_county_18 <- cbind(industry_vars_names_18, df_industry_county_counts_18, df_industry_county_percent_18)
+    
+    trimmed_df_industry_tract_18 <- df_industry_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_industry_county_18 <- df_industry_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_industry_tract_18 <- st_set_geometry(trimmed_df_industry_tract_18, NULL)
+    
+    data_table_industry_county_18 <- st_set_geometry(trimmed_df_industry_county_18, NULL)
+    
+    ##rename the columns 
+    
+    industry_table_tract_names <- c("Industry Type", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    industry_table_county_names <- c("Industry Type", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_industry_tract_18) <- industry_table_tract_names
+    
+    names(data_table_industry_county_18) <- industry_table_county_names
+    
+    ##make the data tables
+    
+    industry_tract_data_table_18 <- datatable(data_table_industry_tract_18, caption = "Industry Type of Census Tract Groups for Upper East Tennessee 2018")
+    
+    industry_county_data_table_18 <- datatable(data_table_industry_county_18, caption = "Industry Type for Counties in Upper East Tennessee 2018")
+    
+    industry_tract_data_table_18
+    
+    industry_county_data_table_18
+    
+    ##service industryupations map 
+    
+    industry_tract_map_names <- c("Industry Type", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    industry_county_map_names <- c("Industry Type", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_industry_county_18) <- industry_county_map_names
+    
+    names(trimmed_df_industry_tract_18) <- industry_tract_map_names
+    
+    percent_self_employed_county <- trimmed_df_industry_county_18 %>%
+      filter(`Industry Type` == "Self Employed in Own Business")
+    
+    percent_self_employed_tract <- trimmed_df_industry_tract_18 %>%
+      filter(`Industry Type` == "Self Employed in Own Business")
+    
+    self_employed_map <- mapview(list(percent_self_employed_county, percent_self_employed_tract),
+                                 zcol = list("Percent", "Percent"),
+                                 layer.name = list("Percent Self Employed County", "Percent Self Employed  Tract"),
+                                 legend = list(FALSE, TRUE))
+    
+    self_employed_map
+    
+    
+    ## income and benefits
+    
+    income_vars_18 <- c("DP03_0051", "DP03_0052", "DP03_0053", "DP03_0054", "DP03_0055", "DP03_0056", "DP03_0057", "DP03_0058", "DP03_0059", "DP03_0060", "DP03_0061", "DP03_0062",
+                        "DP03_0063", "DP03_0064", "DP03_0065", "DP03_0066", "DP03_0067", "DP03_0072", "DP03_0073", "DP03_0074", "DP03_0088", "DP03_0092", "DP03_0093", "DP03_0094")
+    
+    income_percent_vars_18 <- c("DP03_0051P", "DP03_0052P", "DP03_0053P", "DP03_0054P", "DP03_0055P", "DP03_0056P", "DP03_0057P", "DP03_0058P", "DP03_0059P", "DP03_0060P", "DP03_0061P", "DP03_0062P",
+                                "DP03_0063P", "DP03_0064P", "DP03_0065P", "DP03_0066P", "DP03_0067P", "DP03_0072P", "DP03_0073P", "DP03_0074P", "DP03_0088P", "DP03_0092P", "DP03_0093P", "DP03_0094P")
+    
+    income_vars_names_18 <- c("Total Households", "Household Income: Less than 10,000", "Household Income: 10,000-14,999", "Household Income: 15,000-24,999", "Household Income: 25,000-34,999", "Household Income: 35,000-49,000",
+                              "Household Income: 50,000-74,999", "Household Income: 75,000-99,999", "Household Income: 100,000-149,999", "Household Income: 150,000-199,999", "Household Income: 200,000 and Up", "Median Household Income", 
+                              "Mean Household Income", "Total Households with Earnings", "Mean Earnings of Total Households with Earnings", "Total Households with Social Security", "Mean Social Security Income of Households with Social Security Income", 
+                              "Total Households with Cash Public Assistance Income", "Mean Cash Public Assistance Income of Households with Public Assistance Income", "Total Households with Food Stamps or SNAP Benefits in past 12 Months",
+                              "Per Capita Income", "Median Earnings for Workers", "Median Earnings for Male Full Time Workers", "Median Earnings for Female Full Time Workers")
+    
+    df_income_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% income_vars_18)
+    
+    df_income_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% income_vars_18)
+    
+    df_income_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% income_percent_vars_18)
+    
+    df_income_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% income_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_income_tract_18 <- cbind(income_vars_names_18, df_income_tract_counts_18, df_income_tract_percent_18)
+    
+    df_income_county_18 <- cbind(income_vars_names_18, df_income_county_counts_18, df_income_county_percent_18)
+    
+    trimmed_df_income_tract_18 <- df_income_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_income_county_18 <- df_income_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_income_tract_18 <- st_set_geometry(trimmed_df_income_tract_18, NULL)
+    
+    data_table_income_county_18 <- st_set_geometry(trimmed_df_income_county_18, NULL)
+    
+    ##rename the columns 
+    
+    income_table_tract_names <- c("Income Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    income_table_county_names <- c("Income Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_income_tract_18) <- income_table_tract_names
+    
+    names(data_table_income_county_18) <- income_table_county_names
+    
+    ##make the data tables
+    
+    income_tract_data_table_18 <- datatable(data_table_income_tract_18, caption = "Income Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    income_county_data_table_18 <- datatable(data_table_income_county_18, caption = "Income Measures for Counties in Upper East Tennessee 2018")
+    
+    income_tract_data_table_18
+    
+    income_county_data_table_18
+    
+    ##median household income map
+    
+    income_tract_map_names <- c("Income Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    income_county_map_names <- c("Income Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_income_county_18) <- income_county_map_names
+    
+    names(trimmed_df_income_tract_18) <- income_tract_map_names
+    
+    median_household_income_county <- trimmed_df_income_county_18 %>%
+      filter(`Income Measure` == "Median Household Income")
+    
+    median_household_income_tract <- trimmed_df_income_tract_18 %>%
+      filter(`Income Measure` == "Median Household Income")
+    
+    median_household_income_map <- mapview(list(median_household_income_county, median_household_income_tract),
+                                           zcol = list("Count", "Count"),
+                                           layer.name = list("Median Household Income County", "Median Household Income Tract"),
+                                           legend = list(FALSE, TRUE))    
+    
+    median_household_income_map
+    
+    #mean household income
+    
+    mean_household_income_county <- trimmed_df_income_county_18 %>%
+      filter(`Income Measure` == "Mean Household Income")
+    
+    
+    mean_household_income_tract <- trimmed_df_income_tract_18 %>%
+      filter(`Income Measure` == "Mean Household Income")
+    
+    mean_household_income_kpt <- trimmed_income_kpt_18_for_map %>%
+      filter(`Income Measure` == "Mean Household Income")
+    
+    mean_household_income_map <- mapview(list(mean_household_income_county, mean_household_income_tract),
+                                         zcol = list("Count", "Count"),
+                                         layer.name = list("Mean Household Income County", "Mean Household Income Tract"),
+                                         legend = list(FALSE, TRUE))
+    
+    mean_household_income_map 
+    
+    
+    #combined map 
+    
+    income_spread_map <- median_household_income_map + mean_household_income_map
+    
+    income_spread_map
+    
+    #SNAP
+    
+    snap_household_income_county <- trimmed_df_income_county_18 %>%
+      filter(`Income Measure` == "Total Households with Food Stamps or SNAP Benefits in past 12 Months")
+    
+    
+    snap_household_income_tract <- trimmed_df_income_tract_18 %>%
+      filter(`Income Measure` == "Total Households with Food Stamps or SNAP Benefits in past 12 Months")
+    
+    snap_household_income_map <- mapview(list(snap_household_income_county, snap_household_income_tract),
+                                         zcol = list("Percent", "Percent"),
+                                         layer.name = list("Percent SNAP Households County", "Percent SNAP Households Tract"),
+                                         legend = list(FALSE, TRUE))
+    
+    snap_household_income_map
+    
+    #below 10,000
+    
+    b10_household_income_county <- trimmed_df_income_county_18 %>%
+      filter(`Income Measure` == "Household Income: Less than 10,000")
+    
+    
+    b10_household_income_tract <- trimmed_df_income_tract_18 %>%
+      filter(`Income Measure` == "Household Income: Less than 10,000")
+    
+    b10_household_income_map <- mapview(list(b10_household_income_county, b10_household_income_tract),
+                                        zcol = list("Percent", "Percent"),
+                                        layer.name = list("Percent of Households with Income Below 10,000 County", "Percent of Households with Income Below 10,000 Tract"),
+                                        legend = list(FALSE, TRUE))	
+    
+    b10_household_income_map
+    
+    
+    #social security
+    
+    ss_household_income_county <- trimmed_df_income_county_18 %>%
+      filter(`Income Measure` == "Total Households with Social Security")
+    
+    
+    ss_household_income_tract <- trimmed_df_income_tract_18 %>%
+      filter(`Income Measure` == "Total Households with Social Security")
+    
+    ss_household_income_map <- mapview(list(ss_household_income_county, ss_household_income_tract),
+                                       zcol = list("Percent", "Percent"),
+                                       layer.name = list("Percent of Households with Social Security County", "Percent of Households with Social Security Tract"),
+                                       legend = list(FALSE, TRUE))
+    ss_household_income_map
+    
+    
+    #cash assistance
+    
+    
+    cash_household_income_county <- trimmed_df_income_county_18 %>%
+      filter(`Income Measure` == "Total Households with Cash Public Assistance Income")
+    
+    
+    cash_household_income_tract <- trimmed_df_income_tract_18 %>%
+      filter(`Income Measure` == "Total Households with Cash Public Assistance Income")
+    
+    
+    cash_household_income_map <- mapview(list(cash_household_income_county, cash_household_income_tract),
+                                         zcol = list("Percent", "Percent"),
+                                         layer.name = list("Percent of Households with Cash Public Assistance County", "Percent of Households with Cash Public Assistance Tract"),
+                                         legend = list(FALSE, TRUE))
+    
+    cash_household_income_map
+    
+    
+    #target map 
+    
+    
+    target_map <- ss_household_income_map + cash_household_income_map + b10_household_income_map + snap_household_income_map
+    
+    target_map
+    
+    # health insurance
+    
+    insurance_vars_18 <- c("DP03_0095", "DP03_0096", "DP03_0097", "DP03_0098", "DP03_0099", "DP03_0100", "DP03_0101",
+                           "DP03_0102", "DP03_0104", "DP03_0105", "DP03_0106", "DP03_0107", "DP03_0108", "DP03_0109",
+                           "DP03_0110", "DP03_0111", "DP03_0112", "DP03_0113")
+    
+    insurance_percent_vars_18 <- c("DP03_0095P", "DP03_0096P", "DP03_0097P", "DP03_0098P", "DP03_0099P", "DP03_0100P", "DP03_0101P",
+                                   "DP03_0102P", "DP03_0104P", "DP03_0105P", "DP03_0106P", "DP03_0107P", "DP03_0108P", "DP03_0109P",
+                                   "DP03_0110P", "DP03_0111P", "DP03_0112P", "DP03_0113P")
+    
+    insurance_vars_names_18 <- c("Total Civilian Non-Institutionalized Population", "Total Population with Health Insurance", "Total Population with Private Health Insurance",
+                                 "Total Population with Public Health Insurance", "Total Population with No Health Insurance", "Total Population under 19 Years of Age",
+                                 "Total Population under 19 Years of Age Without Health Insurance", "Total Population Aged 19-64", "Total Population Aged 19-64 Employed",
+                                 "Total Population Aged 19-64 Employed with Health Insurance", "Total Population Aged 19-64 Employed with Private Health Insurance", "Total Population Aged 19-64 Employed with Public Health Insurance",
+                                 "Total Population Aged 19-64 Employed with No Health Insurance", "Total Population Aged 19-64 Unemployed", "Total Population Aged 19-64 Unemployed with Health Insurance",
+                                 "Total Population Aged 19-64 Unemployed with Private Health Insurance", "Total Population Aged 19-64 Unemployed with Public Health Insurance", "Total Population Aged 19-64 Unemployed with No Health Insurance")
+    
+    
+    df_insurance_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% insurance_vars_18)
+    
+    df_insurance_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% insurance_vars_18)
+    
+    df_insurance_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% insurance_percent_vars_18)
+    
+    df_insurance_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% insurance_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_insurance_tract_18 <- cbind(insurance_vars_names_18, df_insurance_tract_counts_18, df_insurance_tract_percent_18)
+    
+    df_insurance_county_18 <- cbind(insurance_vars_names_18, df_insurance_county_counts_18, df_insurance_county_percent_18)
+    
+    trimmed_df_insurance_tract_18 <- df_insurance_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_insurance_county_18 <- df_insurance_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_insurance_tract_18 <- st_set_geometry(trimmed_df_insurance_tract_18, NULL)
+    
+    data_table_insurance_county_18 <- st_set_geometry(trimmed_df_insurance_county_18, NULL)
+    
+    
+    ##rename the columns 
+    
+    
+    insurance_table_tract_names <- c("Insurance Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    insurance_table_county_names <- c("Insurance Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    names(data_table_insurance_tract_18) <- insurance_table_tract_names
+    
+    names(data_table_insurance_county_18) <- insurance_table_county_names
+    
+    ##make the data tables
+    
+    insurance_tract_data_table_18 <- datatable(data_table_insurance_tract_18, caption = "Insurance Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    insurance_county_data_table_18 <- datatable(data_table_insurance_county_18, caption = "Insurance Measures for Counties in Upper East Tennessee 2018")
+    
+    insurance_tract_data_table_18
+    
+    insurance_county_data_table_18
+    
+    ## insurance map 
+    
+    insurance_tract_map_names <- c("Insurance Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    insurance_county_map_names <- c("Insurance Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_insurance_county_18) <- insurance_county_map_names
+    
+    names(trimmed_df_insurance_tract_18) <- insurance_tract_map_names
+    
+    #uninsuraed map
+    
+    uninsured_county <- trimmed_df_insurance_county_18 %>%
+      filter(`Insurance Measure` == "Total Population with No Health Insurance")
+    
+    uninsured_tract <- trimmed_df_insurance_tract_18 %>%
+      filter(`Insurance Measure` == "Total Population with No Health Insurance")
+    
+    uninsured_map <- mapview(list(uninsured_county, uninsured_tract),
+                             zcol = list("Percent", "Percent", NULL),
+                             layer.name = list("Percent Uninsured County", "Percent Uninsured Tract"),
+                             legend = list(FALSE, TRUE))
+    uninsured_map
+    
+    #public health insurnace
+    
+    public_county <- trimmed_df_insurance_county_18 %>%
+      filter(`Insurance Measure` == "Total Population with Public Health Insurance")
+    
+    public_tract <- trimmed_df_insurance_tract_18 %>%
+      filter(`Insurance Measure` == "Total Population with Public Health Insurance")
+    
+    public_map <- mapview(list(public_county, public_tract),
+                          zcol = list("Percent", "Percent"),
+                          layer.name = list("Percent Population with Public Health Insurance County", "Percent Population with Public Health Insurance Tract"),
+                          legend = list(FALSE, TRUE))
+    
+    public_map	
+    
+    # poverty
+    
+    poverty_vars_18 <- c("DP03_0119", "DP03_0120", "DP03_0121", "DP03_0122", "DP03_0123", "DP03_0124", "DP03_0125", "DP03_0126",
+                         "DP03_0127", "DP03_0128", "DP03_0129", "DP03_0131", "DP03_0132", "DP03_0133", "DP03_0134", "DP03_0135")
+    
+    poverty_percent_vars_18 <-  c("DP03_0119P", "DP03_0120P", "DP03_0121P", "DP03_0122P", "DP03_0123P", "DP03_0124P", "DP03_0125P", "DP03_0126P",
+                                  "DP03_0127P", "DP03_0128P", "DP03_0129P", "DP03_0131P", "DP03_0132P", "DP03_0133P", "DP03_0134P", "DP03_0135P")
+    
+    poverty_vars_names_18 <- c("Percentage of All Families Below Poverty Line past 12 Months", "Percentage of All Families Below Poverty Level past 12 Months, with Children under 18 Years Old",
+                               "Percentage of All Families Below Poverty Level past 12 Months with Children under 5 Years Old", "Percentage of All Married Families Below Poverty Level past 12 Months ",
+                               "Percentage of All Married Families Below Poverty Level past 12 Months, with Children below 18 Years Old", "Percentage of All Married Families Below Poverty Level past 12 Months, with Children under 5 Years Old",
+                               "Percentage of All Families Below Poverty Level Past 12 Months Female, No Husband", "Percentage of All Families Below Poverty Level Past 12 Months Female, No Husband, with Children Below 18 Years Old",
+                               "Percentage of All Families Below Poverty Level Past 12 Months Female, No Husband, with Children Below 5 Years Old", "Percentage of All People Below Poverty Level past 12 Months", "Percentage of All People Below Poverty Level past 12 Months Under 18 Years Old",
+                               "Percentage of All People Below Poverty Level past 12 Months under 5 Years Old", "Percentage of All People Below Poverty Level past 12 Months Aged 5-17", "Percentage of All People Below Poverty Level past 12 Months Over 18 Years Old",
+                               "Percentage of All People Below Poverty Level past 12 Months Aged 18-64", "Percentage of All People Below Poverty Level past 12 Months Over 65 Years Old")
+    
+    df_poverty_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% poverty_vars_18)
+    
+    df_poverty_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% poverty_vars_18)
+    
+    df_poverty_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% poverty_percent_vars_18)
+    
+    df_poverty_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% poverty_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_poverty_tract_18 <- cbind(poverty_vars_names_18, df_poverty_tract_counts_18, df_poverty_tract_percent_18)
+    
+    df_poverty_county_18 <- cbind(poverty_vars_names_18, df_poverty_county_counts_18, df_poverty_county_percent_18)
+    
+    trimmed_df_poverty_tract_18 <- df_poverty_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_poverty_county_18 <- df_poverty_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_poverty_tract_18 <- st_set_geometry(trimmed_df_poverty_tract_18, NULL)
+    
+    data_table_poverty_county_18 <- st_set_geometry(trimmed_df_poverty_county_18, NULL)
+    
+    ##rename the columns 
+    
+    poverty_table_tract_names <- c("Poverty Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    poverty_table_county_names <- c("Poverty Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    names(data_table_poverty_tract_18) <- poverty_table_tract_names
+    
+    names(data_table_poverty_county_18) <- poverty_table_county_names
+    
+    ##make the data tables
+    
+    poverty_tract_data_table_18 <- datatable(data_table_poverty_tract_18, caption = "Poverty Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    poverty_county_data_table_18 <- datatable(data_table_poverty_county_18, caption = "Poverty Measures for Counties in Upper East Tennessee 2018")
+
+    poverty_tract_data_table_18
+    
+    poverty_county_data_table_18
+    
+    #poverty map 
+    
+    poverty_tract_map_names <- c("Poverty Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    poverty_county_map_names <- c("Poverty Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_poverty_county_18) <- poverty_county_map_names
+    
+    names(trimmed_df_poverty_tract_18) <- poverty_tract_map_names
+    
+    ###map for poverty stuff###
+    
+    u5_family_poverty_county <- trimmed_df_poverty_county_18 %>%
+      filter(`Poverty Measure` == "Percentage of All Families Below Poverty Level past 12 Months with Children under 5 Years Old")
+    
+    u5_family_poverty_tract <- trimmed_df_poverty_tract_18 %>%
+      filter(`Poverty Measure` == "Percentage of All Families Below Poverty Level past 12 Months with Children under 5 Years Old")
+    
+    u5_family_poverty_map <- mapview(list(u5_family_poverty_county, u5_family_poverty_tract),
+                                     zcol = list("Percent", "Percent"),
+                                     layer.name = list("Percent Of Families with Children Under 5 In Poverty County", "Percent Of Families with Children Under 5 In Poverty Tract"),
+                                     legend = list(FALSE, TRUE))
+    
+    u5_family_poverty_map
+    
+    #percent of all people below the poverty line 
+    
+    all_poverty_county <- trimmed_df_poverty_county_18 %>%
+      filter(`Poverty Measure` == "Percentage of All People Below Poverty Level past 12 Months")
+    
+    
+    all_poverty_tract <- trimmed_df_poverty_tract_18 %>%
+      filter(`Poverty Measure` == "Percentage of All People Below Poverty Level past 12 Months")
+    
+    all_poverty_map <- mapview(list(all_poverty_county, all_poverty_tract),
+                               zcol = list("Percent", "Percent"),
+                               layer.name = list("Percent Of All People In Poverty County", "Percent Of All People In Poverty Tract"),
+                               legend = list(FALSE, TRUE))
+    all_poverty_map
+
+#### Housing Characteristics ####
+    
+    housing_units_vars_18 <- c("DP04_0001", "DP04_0002", "DP04_0003", "DP04_0004", "DP04_0005", "DP04_0014", "DP04_0017", "DP04_0018", "DP04_0019", "DP04_0020", "DP04_0021", "DP04_0022",
+                               "DP04_0023", "DP04_0024", "DP04_0025", "DP04_0026", "DP04_0037", "DP04_0046", "DP04_0047", "DP04_0048", "DP04_0049", "DP04_0051", "DP04_0052", "DP04_0053",
+                               "DP04_0054", "DP04_0055", "DP04_0056")
+    
+    housing_units_percent_vars_18 <- c("DP04_0001P", "DP04_0002P", "DP04_0003P", "DP04_0004P", "DP04_0005P", "DP04_0014P", "DP04_0017P", "DP04_0018P", "DP04_0019P", "DP04_0020P", "DP04_0021P", "DP04_0022P",
+                                       "DP04_0023P", "DP04_0024P", "DP04_0025P", "DP04_0026P", "DP04_0037P", "DP04_0046P", "DP04_0047P", "DP04_0048P", "DP04_0049P", "DP04_0051P", "DP04_0052P", "DP04_0053P",
+                                       "DP04_0054P", "DP04_0055P", "DP04_0056P")
+    
+    housing_units_vars_names_18 <- c("Total Housing Units", "Occupied Housing Units", "Vacant Housing Units", "Homeowner Vacancy Rate", "Rental Vacancy Rate", "Mobile Homes", "Homes Built 2014 or Later",
+                                     "Homes Built 2010-2013", "Homes Built 2000-2009", "Homes Built 1990-1999", "Homes Built 1980-1989", "Homes Built 1970-1979", "Homes Built 1960-1969", "Homes Built 1950-1959",
+                                     "Homes Built 1940-1949", "Homes Built 1939 or Earlier", "Median Number of Rooms per Unit", "Owner Occupied Housing Units", "Renter Occupied Housing Units", "Average Houshold Size of Owner Occupied Units",
+                                     "Average Household Size of Renter Occupied Units", "Occupied Housing Units Moved Into: 2017 or Later", "Occupied Housing Units Moved Into: 2015-2016", "Occupied Housing Units Moved Into: 2010-2014",
+                                     "Occupied Housing Units Moved Into: 2000-2009", "Occupied Housing Units Moved Into: 1990-1999", "Occupied Housing Units Moved Into: 1989 and Earlier")
+    
+    
+    
+    df_housing_units_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% housing_units_vars_18)
+    
+    df_housing_units_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% housing_units_vars_18)
+    
+    df_housing_units_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% housing_units_percent_vars_18)
+    
+    df_housing_units_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% housing_units_percent_vars_18)
+    
+    
+    ##combine the percents into one table
+    
+    df_housing_units_tract_18 <- cbind(housing_units_vars_names_18, df_housing_units_tract_counts_18, df_housing_units_tract_percent_18)
+    
+    df_housing_units_county_18 <- cbind(housing_units_vars_names_18, df_housing_units_county_counts_18, df_housing_units_county_percent_18)
+    
+    trimmed_df_housing_units_tract_18 <- df_housing_units_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_housing_units_county_18 <- df_housing_units_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_housing_units_tract_18 <- st_set_geometry(trimmed_df_housing_units_tract_18, NULL)
+    
+    data_table_housing_units_county_18 <- st_set_geometry(trimmed_df_housing_units_county_18, NULL)
+    
+    ##rename the columns 
+    
+    housing_units_table_tract_names <- c("Housing Unit Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    housing_units_table_county_names <- c("Housing Unit Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    names(data_table_housing_units_tract_18) <- housing_units_table_tract_names
+    
+    names(data_table_housing_units_county_18) <- housing_units_table_county_names
+    
+    ##make the data tables
+    
+    housing_units_tract_data_table_18 <- datatable(data_table_housing_units_tract_18, caption = "Housing Unit Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    housing_units_county_data_table_18 <- datatable(data_table_housing_units_county_18, caption = "Housing Unit Measures for Counties in Upper East Tennessee 2018")
+    
+    housing_units_tract_data_table_18
+    
+    housing_units_county_data_table_18
+    
+    
+    ##service housing_unitsupations map 
+    
+    housing_units_tract_map_names <- c("Housing Unit Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    housing_units_county_map_names <- c("Housing Unit Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_housing_units_county_18) <- housing_units_county_map_names
+    
+    names(trimmed_df_housing_units_tract_18) <- housing_units_tract_map_names
+    
+    #renter map 
+    
+    renter_county <- trimmed_df_housing_units_county_18 %>%
+      filter(`Housing Unit Measure` == "Renter Occupied Housing Units")
+    
+    renter_tract <- trimmed_df_housing_units_tract_18 %>%
+      filter(`Housing Unit Measure` == "Renter Occupied Housing Units")
+    
+    renter_map <- mapview(list(renter_county, renter_tract),
+                          zcol = list("Percent", "Percent"),
+                          layer.name = list("Percent of Renter Occupied Units County", "Percent of Renter Occupied Units Tract"),
+                          legend = list(FALSE, TRUE))
+    
+    renter_map
+    
+    
+    #rental vacancy rate map
+    
+    rental_county <- trimmed_df_housing_units_county_18 %>%
+      filter(`Housing Unit Measure` == "Rental Vacancy Rate")
+    
+    rental_tract <- trimmed_df_housing_units_tract_18 %>%
+      filter(`Housing Unit Measure` == "Rental Vacancy Rate")
+    
+    rental_map <- mapview(list(rental_county, rental_tract),
+                          zcol = list("Count", "Count"),
+                          layer.name = list("Rental Vacancy Rate County", "Rental Vacancy Rate Tract"),
+                          legend = list(FALSE, TRUE))
+    
+    rental_map
+    
+    #Housing Affordability
+    
+    
+    #affordability 
+    
+    afford_vars_18 <- c("DP04_0110", "DP04_0111", "DP04_0112", "DP04_0113", "DP04_0114", "DP04_0115", "DP04_0123", "DP04_0124", "DP04_0126", "DP04_0127", "DP04_0128", 
+                        "DP04_0129", "DP04_0130", "DP04_0134", "DP04_0137", "DP04_0138", "DP04_0139", "DP04_0140", "DP04_0141", "DP04_0142")
+    
+    afford_percent_vars_18 <- c("DP04_0110P", "DP04_0111P", "DP04_0112P", "DP04_0113P", "DP04_0114P", "DP04_0115P", "DP04_0123P", "DP04_0124P", "DP04_0126P", "DP04_0127P", "DP04_0128P", 
+                                "DP04_0129P", "DP04_0130P", "DP04_0134P", "DP04_0137P", "DP04_0138P", "DP04_0139P", "DP04_0140P", "DP04_0141P", "DP04_0142P")
+    
+    afford_vars_names_18 <- c("Housing Units with a Mortgage", "Housing Units with a Mortgage SMOCAPI Less than 20%", "Housing Units with a Mortgage SMOCAPI 20-24.9%", "Housing Units with a Mortgage SMOCAPI 25-29.9%", 
+                              "Housing Units with a Mortgage SMOCAPI 30-34.9%", "Housing Units with a Mortgage SMOCAPI 35% or More", "Housing Units Without a Mortgage SMOCAPI 30-34.9%", "Housing Units Without a Mortgage SMOCAPI 35% or More",
+                              "Total Occupied Units Paying Rent", "Rent Less Than $500", "Rent $500-$999", "Rent $1000-$1499", "Rent $1500-$1999", "Median Rent", "GRAPI Less than 15%", "GRAPI 15-19.9%", "GRAPI 20-24.9%", "GRAPI 25-29.9%",
+                              "GRAPI 30-34.9%", "GRAPI 35% or More")
+    
+    df_afford_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% afford_vars_18)
+    
+    df_afford_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% afford_vars_18)
+    
+    df_afford_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% afford_percent_vars_18)
+    
+    df_afford_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% afford_percent_vars_18)
+    
+    ##combine the percents into one table
+    
+    df_afford_tract_18 <- cbind(afford_vars_names_18, df_afford_tract_counts_18, df_afford_tract_percent_18)
+    
+    df_afford_county_18 <- cbind(afford_vars_names_18, df_afford_county_counts_18, df_afford_county_percent_18)
+    
+    
+    trimmed_df_afford_tract_18 <- df_afford_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_afford_county_18 <- df_afford_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_afford_tract_18 <- st_set_geometry(trimmed_df_afford_tract_18, NULL)
+    
+    data_table_afford_county_18 <- st_set_geometry(trimmed_df_afford_county_18, NULL)
+    
+    ##rename the columns 
+    
+    
+    afford_table_tract_names <- c("Affordability Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    afford_table_county_names <- c("Affordability Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+    
+    names(data_table_afford_tract_18) <- afford_table_tract_names
+    
+    names(data_table_afford_county_18) <- afford_table_county_names
+    
+    
+    
+    tract_g1_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "GRAPI 30-34.9%")
+    
+    tract_g2_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "GRAPI 35% or More")
+    
+    tract_g3_18 <- left_join(tract_g1_18, tract_g2_18, by = "Census Tract")
+    
+    tract_grapi30_18 <- tract_g3_18 %>%
+      transmute("Affordability Measure" = "GRAPI 30% or More",
+                "Census Tract" = `Census Tract`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Margin of Error.x`^2 + `Margin of Error.y`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent Margin of Error.x`^2 + `Percent Margin of Error.y`^2),2))
+    
+    tract_s1_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 30-34.9%")
+    
+    tract_s2_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 35% or More")
+    
+    tract_s3_18 <-left_join(tract_s1_18, tract_s2_18, by = "Census Tract")
+    
+    tract_smocapi30_18 <-  tract_s3_18%>%
+      transmute("Affordability Measure" = "Housing Units with a Mortgage SMOCAPI 30% or More",
+                "Census Tract" = `Census Tract`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Margin of Error.x`^2 + `Margin of Error.y`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent Margin of Error.x`^2 + `Percent Margin of Error.y`^2),2))
+    
+    tract_x1_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 30-34.9%")
+    
+    tract_x2_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 35% or More")
+    
+    tract_x3_18 <- left_join(tract_x1_18, tract_x2_18, by = "Census Tract")
+    
+    tract_with_out_smocapi30_18 <-  tract_s3_18%>%
+      transmute("Affordability Measure" = "Housing Units without a Mortgage SMOCAPI 30% or More",
+                "Census Tract" = `Census Tract`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Margin of Error.x`^2 + `Margin of Error.y`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent Margin of Error.x`^2 + `Percent Margin of Error.y`^2),2))
+    
+    data_table_afford_tract_18 <- rbind(data_table_afford_tract_18, tract_grapi30_18, tract_smocapi30_18, tract_with_out_smocapi30_18)
+    
+    #county
+    
+    county_g1_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "GRAPI 30-34.9%")
+    
+    county_g2_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "GRAPI 35% or More")
+    
+    county_g3_18 <- left_join(county_g1_18, county_g2_18, by = "County")
+    
+    county_grapi30_18 <- county_g3_18 %>%
+      transmute("Affordability Measure" = "GRAPI 30% or More",
+                "County" = `County`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Margin of Error.x`^2 + `Margin of Error.y`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent Margin of Error.x`^2 + `Percent Margin of Error.y`^2),2))
+    
+    county_s1_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 30-34.9%")
+    
+    county_s2_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 35% or More")
+    
+    county_s3_18 <-left_join(county_s1_18, county_s2_18, by = "County")
+    
+    county_smocapi30_18 <-  county_s3_18%>%
+      transmute("Affordability Measure" = "Housing Units with a Mortgage SMOCAPI 30% or More",
+                "County" = `County`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Margin of Error.x`^2 + `Margin of Error.y`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent Margin of Error.x`^2 + `Percent Margin of Error.y`^2),2))
+    
+    county_x1_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 30-34.9%")
+    
+    county_x2_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 35% or More")
+    
+    county_x3_18 <- left_join(county_x1_18, county_x2_18, by = "County")
+    
+    county_with_out_smocapi30_18 <-  county_s3_18%>%
+      transmute("Affordability Measure" = "Housing Units without a Mortgage SMOCAPI 30% or More",
+                "County" = `County`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Margin of Error.x`^2 + `Margin of Error.y`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent Margin of Error.x`^2 + `Percent Margin of Error.y`^2),2))
+    
+    data_table_afford_county_18 <- rbind(data_table_afford_county_18, county_grapi30_18, county_smocapi30_18, county_with_out_smocapi30_18)                            
+    
+    ##make the data tables
+    
+    afford_tract_data_table_18 <- datatable(data_table_afford_tract_18, caption = "Affordability Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    afford_county_data_table_18 <- datatable(data_table_afford_county_18, caption = "Affordability Measures for Counties in Upper East Tennessee 2018")
+    
+    afford_tract_data_table_18
+    
+    afford_county_data_table_18
+    
+    
+    #median rent map
+    
+    afford_tract_map_names <- c("Affordability Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    afford_county_map_names <- c("Affordability Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_afford_county_18) <- afford_county_map_names
+    
+    names(trimmed_df_afford_tract_18) <- afford_tract_map_names
+    
+    median_rent_county <- trimmed_df_afford_county_18 %>%
+      filter(`Affordability Measure` == "Median Rent")
+    
+    median_rent_tract <- trimmed_df_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Median Rent")
+    
+    median_rent_map <- mapview(list(median_rent_county, median_rent_tract),
+                               zcol = list("Count", "Count"),
+                               layer.name = list("Median Rent County", "Median Rent Tract"),
+                               legend = list(FALSE, TRUE))
+    
+    median_rent_map
+    
+    
+    #grapi above 35% map
+    
+    grapi35_county <- trimmed_df_afford_county_18 %>%
+      filter(`Affordability Measure` == "GRAPI 35% or More")
+    
+    grapi35_tract <- trimmed_df_afford_tract_18 %>%
+      filter(`Affordability Measure` == "GRAPI 35% or More")
+    
+    grapi35_map <- mapview(list(grapi35_county, grapi35_tract),
+                           zcol = list("Percent", "Percent"),
+                           layer.name = list("GRAPI Above 35% County", "GRAPI Above 35% Tract"),
+                           legend = list(FALSE, TRUE))
+    
+    grapi35_map
+    
+    rent_afford_map <- median_rent_map + grapi35_map
+    
+    rent_afford_map
+    
+    
+    ####grapi 30+ map 
+    
+    afford_tract_map_names <- c("Affordability Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    afford_county_map_names <- c("Affordability Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_afford_county_18) <- afford_county_map_names
+    
+    names(trimmed_df_afford_tract_18) <- afford_tract_map_names
+    
+    
+    maptract_g1_18 <- trimmed_df_afford_tract_18 %>%
+      filter(`Affordability Measure` == "GRAPI 30-34.9%")
+    
+    maptract_g2_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "GRAPI 35% or More")
+    
+    maptract_g3_18 <- left_join(maptract_g1_18, maptract_g2_18, by = "Census Tract")
+    
+    maptract_grapi30_18 <- maptract_g3_18 %>%
+      transmute("Affordability Measure" = "GRAPI 30% or More",
+                "Census Tract" = `Census Tract`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Count MOE`^2 + `Margin of Error`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent MOE`^2 + `Percent Margin of Error`^2),2))
+    
+    maptract_s1_18 <- trimmed_df_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 30-34.9%")
+    
+    maptract_s2_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 35% or More")
+    
+    maptract_s3_18 <- left_join(maptract_s1_18, maptract_s2_18, by = "Census Tract")
+    
+    maptract_smocapi30_18 <- maptract_s3_18 %>%
+      transmute("Affordability Measure" = "Housing Units with a Mortgage SMOCAPI 30% or More",
+                "Census Tract" = `Census Tract`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Count MOE`^2 + `Margin of Error`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent MOE`^2 + `Percent Margin of Error`^2),2))
+    
+    maptract_x1_18 <- trimmed_df_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 30-34.9%")
+    
+    maptract_x2_18 <- data_table_afford_tract_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 35% or More")
+    
+    maptract_x3_18 <- left_join(maptract_x1_18, maptract_x2_18, by = "Census Tract")
+    
+    maptract_smocapi30_without_18 <- maptract_x3_18 %>%
+      transmute("Affordability Measure" = "Housing Units without a Mortgage SMOCAPI 30% or More",
+                "Census Tract" = `Census Tract`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Count MOE`^2 + `Margin of Error`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent MOE`^2 + `Percent Margin of Error`^2),2))
+    
+    
+    
+    mapcounty_g1_18 <- trimmed_df_afford_county_18 %>%
+      filter(`Affordability Measure` == "GRAPI 30-34.9%")
+    
+    mapcounty_g2_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "GRAPI 35% or More")
+    
+    mapcounty_g3_18 <- left_join(mapcounty_g1_18, mapcounty_g2_18, by = "County")
+    
+    mapcounty_grapi30_18 <- mapcounty_g3_18 %>%
+      transmute("Affordability Measure" = "GRAPI 30% or More",
+                "County" = `County`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Count MOE`^2 + `Margin of Error`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent MOE`^2 + `Percent Margin of Error`^2),2))
+    
+    mapcounty_s1_18 <- trimmed_df_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 30-34.9%")
+    
+    mapcounty_s2_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units with a Mortgage SMOCAPI 35% or More")
+    
+    mapcounty_s3_18 <- left_join(mapcounty_s1_18, mapcounty_s2_18, by = "County")
+    
+    mapcounty_smocapi30_18 <- mapcounty_s3_18 %>%
+      transmute("Affordability Measure" = "Housing Units with a Mortgage SMOCAPI 30% or More",
+                "County" = `County`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Count MOE`^2 + `Margin of Error`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent MOE`^2 + `Percent Margin of Error`^2),2))
+    
+    mapcounty_x1_18 <- trimmed_df_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 30-34.9%")
+    
+    mapcounty_x2_18 <- data_table_afford_county_18 %>%
+      filter(`Affordability Measure` == "Housing Units Without a Mortgage SMOCAPI 35% or More")
+    
+    mapcounty_x3_18 <- left_join(mapcounty_x1_18, mapcounty_x2_18, by = "County")
+    
+    mapcounty_smocapi30_without_18 <- mapcounty_x3_18 %>%
+      transmute("Affordability Measure" = "Housing Units Without a Mortgage SMOCAPI 30% or More",
+                "County" = `County`,
+                "Count" = Count.x + Count.y,
+                "Margin of Error" = round(sqrt(`Count MOE`^2 + `Margin of Error`^2),2),
+                "Percent" = Percent.x + Percent.y,
+                "Percent Margin of Error" = round(sqrt(`Percent MOE`^2 + `Percent Margin of Error`^2),2))
+    
+    grapi_above_30_map <- mapview(list(mapcounty_grapi30_18, maptract_grapi30_18),
+                                  zcol = list("Percent", "Percent"),
+                                  layer.name = list("GRAPI Above 30% County", "GRAPI Above 30% Tract"),
+                                  legend = list(FALSE, TRUE))
+    grapi_above_30_map
+    
+    smocapi_above_30_map <- mapview(list(mapcounty_smocapi30_18, maptract_smocapi30_18),
+                                    zcol = list("Percent", "Percent"),
+                                    layer.name = list("SMOCAPI Above 30% County", "SMOCAPI Above 30% Tract"),
+                                    legend = list(FALSE, TRUE))
+    
+    smocapi_above_30_map
+    
+    # transportation per housing unit
+    
+    transp_housing_vars_18 <- c("DP04_0057", "DP04_0058", "DP04_0059", "DP04_0060", "DP04_0061")
+    
+    transp_housing_percent_vars_18 <- c("DP04_0057P", "DP04_0058P", "DP04_0059P", "DP04_0060P", "DP04_0061P")
+    
+    transp_housing_vars_names_18 <- c("Total Occupied Housing Units", "Occupied Housing Units with Zero Vehicles Available",
+                                      "Occupied Housing Units with One Vehicle Available", "Occupied Housing Untis with Two Vehicles Available",
+                                      "Occupied Housing Units with Three or More Vehicles Available")
+    
+    df_transp_housing_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% transp_housing_vars_18)
+    
+    df_transp_housing_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% transp_housing_vars_18)
+    
+    df_transp_housing_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% transp_housing_percent_vars_18)
+    
+    df_transp_housing_county_percent_18 <- County_dp_2018 %>%
+      
+      
+      
+      ##combine the percents into one table
+      
+      df_transp_housing_tract_18 <- cbind(transp_housing_vars_names_18, df_transp_housing_tract_counts_18, df_transp_housing_tract_percent_18)
+    
+    df_transp_housing_county_18 <- cbind(transp_housing_vars_names_18, df_transp_housing_county_counts_18, df_transp_housing_county_percent_18)
+    
+    trimmed_df_transp_housing_tract_18 <- df_transp_housing_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_transp_housing_county_18 <- df_transp_housing_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_transp_housing_tract_18 <- st_set_geometry(trimmed_df_transp_housing_tract_18, NULL)
+    
+    data_table_transp_housing_county_18 <- st_set_geometry(trimmed_df_transp_housing_county_18, NULL)
+    
+    ##rename the columns 
+    
+    transp_housing_table_tract_names <- c("Housing Unit Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    transp_housing_table_county_names <- c("Housing Unit Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    names(data_table_transp_housing_tract_18) <- transp_housing_table_tract_names
+    
+    names(data_table_transp_housing_county_18) <- transp_housing_table_county_names
+    
+    ##make the data tables
+    
+    transp_housing_tract_data_table_18 <- datatable(data_table_transp_housing_tract_18, caption = "Transportation for Housing Unit Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    transp_housing_county_data_table_18 <- datatable(data_table_transp_housing_county_18, caption = "Transportation for Housing Unit Measures for Counties in Upper East Tennessee 2018")
+    
+    transp_housing_tract_data_table_18
+    
+    transp_housing_county_data_table_18
+    
+    
+    transp_housing_tract_map_names <- c("Housing Unit Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    transp_housing_county_map_names <- c("Housing Unit Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_transp_housing_county_18) <- transp_housing_county_map_names
+    
+    names(trimmed_df_transp_housing_tract_18) <- transp_housing_tract_map_names
+    
+    #zero vehicles  map 
+    
+    zero_vehicles_county <- trimmed_df_transp_housing_county_18 %>%
+      filter(`Housing Unit Measure` == "Occupied Housing Units with Zero Vehicles Available")
+    
+    zero_vehicles_tract <- trimmed_df_transp_housing_tract_18 %>%
+      filter(`Housing Unit Measure` == "Occupied Housing Units with Zero Vehicles Available")
+    
+    zero_vehicles_map <- mapview(list(zero_vehicles_county, zero_vehicles_tract),
+                                 zcol = list("Percent", "Percent"),
+                                 layer.name = list("Percent of Occupied Housing Units with Zero Vehicles Available County", "Percent of Occupied Housing Units with Zero Vehicles Available Tract", "Percent of Occupied Housing Units with Zero Vehicles Available City"),
+                                 legend = list(FALSE, TRUE, FALSE))
+    
+    zero_vehicles_map
+    
+    #heating
+    
+    heating_vars_18 <- c("DP04_0062", "DP04_0063", "DP04_0064", "DP04_0065", "DP04_0066", "DP04_0067", "DP04_0068", "DP04_0069",
+                         "DP04_0070", "DP04_0071", "DP04_0073", "DP04_0074", "DP04_0075", "DP04_0079")
+    
+    heating_percent_vars_18 <- c("DP04_0062P", "DP04_0063P", "DP04_0064P", "DP04_0065P", "DP04_0066P", "DP04_0067P", "DP04_0068P", "DP04_0069P",
+                                 "DP04_0070P", "DP04_0071P", "DP04_0073P", "DP04_0074P", "DP04_0075P", "DP04_0079P")
+    
+    heating_vars_names_18 <- c("Total Occupied Housing Units", "Occupied Housing Units Heated by Utility Gas", "Occupied Housing Units Heated by Bottled, Tank, or LP Gas",
+                               "Occupied Housing Units Heated by Electric Heating", "Occupied Housing Units Heated by Fuel Oil or Kerosene", "Occupied Housing Units Heated by Coal",
+                               "Occupied Housing Units Heated by Wood", "Occupied Housing Units Heated by Solar", "Occupied Housing Units Heated by Other Fuel", "Occupied Housing Units No Heat Source",
+                               "Occupied Housing Units Lacking Complete Plumbing", "Occupied Housing Units Lacking a Complete Kitchen", "Occupied Housing Units with No Telephone Service Available",
+                               "Occupied Housing Units with Greater than 1.51 Occupants per Room")
+    
+    
+    
+    df_heating_tract_counts_18 <- dp_2018 %>%
+      filter(variable %in% heating_vars_18)
+    
+    df_heating_county_counts_18 <- County_dp_2018 %>%
+      filter(variable %in% heating_vars_18)
+    
+    df_heating_tract_percent_18 <- dp_2018 %>%
+      filter(variable %in% heating_percent_vars_18)
+    
+    df_heating_county_percent_18 <- County_dp_2018 %>%
+      filter(variable %in% heating_percent_vars_18)
+    
+    
+    ##combine the percents into one table
+    
+    df_heating_tract_18 <- cbind(heating_vars_names_18, df_heating_tract_counts_18, df_heating_tract_percent_18)
+    
+    df_heating_county_18 <- cbind(heating_vars_names_18, df_heating_county_counts_18, df_heating_county_percent_18)    
+    
+    
+    trimmed_df_heating_tract_18 <- df_heating_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    trimmed_df_heating_county_18 <- df_heating_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+    
+    
+    ##get ride of location data for the tract/county
+    
+    data_table_heating_tract_18 <- st_set_geometry(trimmed_df_heating_tract_18, NULL)
+    
+    data_table_heating_county_18 <- st_set_geometry(trimmed_df_heating_county_18, NULL)
+    
+    ##rename the columns 
+    
+    
+    heating_table_tract_names <- c("Housing Unit Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+    
+    heating_table_county_names <- c("Housing Unit Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error")  
+    
+    names(data_table_heating_tract_18) <- heating_table_tract_names
+    
+    names(data_table_heating_county_18) <- heating_table_county_names
+    
+    ##make the data tables
+    
+    heating_tract_data_table_18 <- datatable(data_table_heating_tract_18, caption = "Heating and Misc Housing Unit Measures of Census Tract Groups for Upper East Tennessee 2018")
+    
+    heating_county_data_table_18 <- datatable(data_table_heating_county_18, caption = "Heating and Misc Housing Unit Measures for Counties in Upper East Tennessee 2018")
+    
+    
+    heating_tract_data_table_18
+    
+    heating_county_data_table_18
+    
+    ##service heatingupations map 
+    
+    heating_tract_map_names <- c("Heating and Misc Housing Unit Measure", "Census Tract", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    heating_county_map_names <- c("Heating and Misc Housing Unit Measure", "County", "Count", "Count MOE", "Percent", "Percent MOE", "geometry")
+    
+    names(trimmed_df_heating_county_18) <- heating_county_map_names
+    
+    names(trimmed_df_heating_tract_18) <- heating_tract_map_names
+    
+    
+    #no heat source  map 
+    
+    no_heat_source_county <- trimmed_df_heating_county_18 %>%
+      filter(`Heating and Misc Housing Unit Measure` == "Occupied Housing Units No Heat Source")
+    
+    
+    no_heat_source_tract <- trimmed_df_heating_tract_18 %>%
+      filter(`Heating and Misc Housing Unit Measure` == "Occupied Housing Units No Heat Source")
+    
+    no_heat_source_map <- mapview(list(no_heat_source_county, no_heat_source_tract),
+                                  zcol = list("Percent", "Percent"),
+                                  layer.name = list("Percent of Occupied Housing Units with No Heat Source County", "Percent of Occupied Housing Units with No Heat Source Tract"),
+                                  legend = list(FALSE, TRUE))
+    
+    no_heat_source_map
+    

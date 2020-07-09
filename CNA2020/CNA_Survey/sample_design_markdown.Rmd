@@ -1,0 +1,73 @@
+---
+title: "Community Needs Assessment Survey Methods and Design"
+author: "Paul Collins"
+date: "3/4/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(DT)
+library(knitr)
+library(kableExtra)
+```
+
+## Survey Methods and Design for the Community Needs Assessment 
+
+This document is to show the estimated sample sizes needed, and the rational behind their calculation from the general population for the area served by the Upper East Tennessee Human Development Agency for the 2020 Community Needs Assessment. 
+
+## Background 
+ 
+The Community Needs Assessment is an annual assessment of the ever changing needs in the communities that Community Action Partnerships serve. The main goal for the Community Needs Assessment is to assess what services our local community members need, what services our partner organizations are currently providing, and to find what needs we may not be meeting for our neighbors. A secondary goal is to build a current contact list and network of other agencies and what services they provide. This will help UETHDA better serve everyone in our community in our goal of helping people and changing lives. Because UETHDA serves over 500,000 people across eight diverse counties, care must be taken so that no community is left behind. 
+
+## Survey Design
+
+For this Community Needs Assessment, there will be two seperate surveys, and three seperate populations surveyed. The Partner Survey will be for partner organizations that also serve the community in a variety of ways so that we have a current understanding of what services they provide and what needs they are seeing in the community. The Neighbor Survey will be for the general population to assess their individual needs and their perceived needs of their communities. This second survey will also be given to UETHDA staff members to assess how in-touch we are with the current challenges faced by our neighbors. The population of the first survey will be the partnet organizations, so no sample will be needed. For the second survey, a proportional stratified random sample will be applied to both populations. The general population will be stratified based on the county that the citizen resides in. The UETHDA staff members will be stratified based on job department/title. 
+
+## Sample Size Calculation 
+
+
+We will be acting as if there is no prior knowledge of the publics opion on the need for these services, based to the changing of the survey design from the previous year. Therefor, we will be using a 0.5 prior value that maximizes the needed sample size. It is also reasonable to use the 2019 Community Needs Assessment Survey as a basis for this prior, but even with the critical value that maximizes the function, the sample size is still realtively small when compared with the total population of each county. 
+
+These are the calculated sample sizes for the Neighbor Survey for each county based on the 2018 ACS population estimates. For 95% confidence with a 5% margin of error, a total of 387 people will need to be survey, with a county breakdown in the following table. 
+
+```{r counties total, echo = FALSE}
+
+
+county_names <- c("Carter", "Greene", "Hancock", "Hawkins", "Johnson", "Sullivan", "Washington", "Unicoi")
+
+pop_sizes_county <- c(56391, 68669, 6585, 56402, 17789, 156734, 127055, 17780)
+
+poverty_rate <- c(0.235, 0.17, 0.258, 0.19, 0.235, 0.166, 0.157, 0.21)
+
+max_prop <- 0.5
+
+z_scores <- c(1.64, 1.96, 2.58)
+
+confidence_level <- c("90%", "95%", "99%")
+
+
+sample_size_function <- function(nH, P, MOE, Z, names, confidence){
+  
+  n0 = (Z^2) * (P * (1 - P)) / MOE^2
+  N = sum(nH)
+  x = nH / N
+  n = n0 * x 
+  whole_n = ceiling(n)
+  
+  table <- as.data.frame(rbind(nH, whole_n), row.names = c("Population", "Sample Needed"))
+  names(table) <- names
+  
+  table
+}
+
+kable(sample_size_function(pop_sizes_county, P = 0.5, MOE = 0.05, Z = 1.96, county_names, confidence = 0.95),"latex", caption = "Sample Size Needed for 95% Confidence with 5% Margin of Error", booktabs = T) %>%
+  kable_styling(latex_options = c("striped","scale_down"))
+
+```
+
+
+
+## Sampling Outreach Strategies
+

@@ -1,0 +1,64 @@
+---
+title: "Sample Size"
+author: "Paul Collins"
+date: "3/10/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r packages, echo = FALSE, include = FALSE}
+
+
+library(DT)
+library(knitr)
+library(kableExtra)
+```
+
+
+```
+
+## Sample Size for Each County
+
+```{r sample size table, echo = FALSE}
+
+
+
+county_names <- c("Carter", "Greene", "Hancock", "Hawkins", "Johnson", "Sullivan", "Washington", "Unicoi")
+
+pop_sizes_county <- c(56391, 68669, 6585, 56402, 17789, 156734, 127055, 17780)
+
+poverty_rate <- c(0.235, 0.17, 0.258, 0.19, 0.235, 0.166, 0.157, 0.21)
+
+max_prop <- 0.5
+
+z_scores <- c(1.64, 1.96, 2.58)
+
+confidence_level <- c("90%", "95%", "99%")
+
+
+sample_size_function <- function(nH, P, MOE, Z, names, confidence){
+  
+  n0 = (Z^2) * (P * (1 - P)) / MOE^2
+  N = sum(nH)
+  x = nH / N
+  n = n0 * x 
+  whole_n = ceiling(n)
+  
+  table <- as.data.frame(rbind(nH, whole_n), row.names = c("Population", "Sample Needed"))
+  names(table) <- names
+  
+  table
+}
+
+n95_1 <- sample_size_function(pop_sizes_county, P = 0.5, MOE = 0.05, Z = 1.96, county_names, confidence = 0.95)
+
+
+kable(n95_1,"latex", caption = "Sample Size Needed for 95% Confidence with 5% Margin of Error", booktabs = T) %>%
+  kable_styling(latex_options = c("striped","scale_down"))
+
+
+```
