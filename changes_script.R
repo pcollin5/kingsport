@@ -3119,7 +3119,8 @@ age_sex_df <-as.data.frame(age_sex_table)
 
 age_sex_df2 <- cbind(Location_Names, age_sex_df)
 
-
+kable(age_sex_df2) %>%
+kable_styling(latex_options = c("scale_down", "striped"))
 
 names(age_sex_df2) <- c("Location", "Male", "Female", "18+", "< 5", "Median Age")
 
@@ -3180,3 +3181,5 @@ long_percent_changes$Location <- factor(long_percent_changes$Location, levels = 
 age_groups_percent_change_bar <- long_percent_changes %>%
   ggplot(aes(x = Location, y = `Percent Change`, fill = `Age Group`))+
   geom_bar(stat = "identity", position = "dodge")
+
+age_groups_percent_change_bar

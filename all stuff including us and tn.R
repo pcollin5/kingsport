@@ -476,6 +476,11 @@ Combined_dp_2018_no_geom <- st_set_geometry(Combined_dp_2018, NULL)
 Full_dp_2018 <- rbind(US_dp_2018, Combined_dp_2018_no_geom)
 
 
+####FUNCTION FOR KABLE TABLES TO BE UNIFORM####
+kable_format <- function(x){kable(x)%>%
+    kable_styling(latex_options = c("scale_down", "striped"))}
+
+
 
 ####Demographics####
 
@@ -605,22 +610,24 @@ age_count_for_table <-age_full_dt %>%
   select(`Age Group`, `Location`, `Count Estimate`) %>%
   pivot_wider(names_from = `Age Group`, values_from = c(`Count Estimate`))
 
+
+
 age_percent_for_table <- age_full_dt %>%
   filter(`Age Group` == "Total Population" | `Age Group` == "Age Under 5 Years" | `Age Group` == "Age 18+ Years" | `Age Group` == "Age 65+ Years") %>%
   select(`Age Group`, `Location`, `Percent of Total Population`) %>%
   pivot_wider(names_from = `Age Group`, values_from = c(`Percent of Total Population`))
 
-kable_age_count_table <- kable(age_count_for_table, caption = "Selected Age Groups from 2018 ACS") %>%
+kable_age_count_table <- kable(age_count_for_table) %>%
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
 
 kable_age_count_table
 
-kable_age_count_html_table <- kable(age_count_for_table, caption = "Selected Age Groups from 2018 ACS") %>%
+kable_age_count_html_table <- kable(age_count_for_table) %>%
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position")) %>%
   kable("html", booktabs = TRUE, escape = FALSE)
 
-kable_age_percent_table <- kable(age_percent_for_table, caption = "Selected Age Groups from 2018 ACS") %>%
-  kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
+kable_age_percent_table <- kable(age_percent_for_table) %>%
+  kable_styling(latex_options = c("scale_down", "striped"))
 
 kable_age_percent_table
 
@@ -774,27 +781,30 @@ hispanic_percent_for_table <- race_full_dt %>%
 
 datatable(hispanic_percent_for_table)
 
-kable_race_count_table <- kable(race_count_for_table, caption = "Racial Groups from 2018 ACS") %>%
+kable_race_count_table <- kable(race_count_for_table) %>%
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
 
 kable_race_count_table
 
-kable_race_percent_table <- kable(race_percent_for_table, caption = "Racial Groups Percent of Population from 2018 ACS") %>%
+kable_race_percent_table <- kable(race_percent_for_table) %>%
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
+
 
 kable_race_percent_table
 
 datatable(race_percent_for_table)
 
-kable_hispanic_count_table <- kable(hispanic_count_for_table, caption = "Hispanic Population Count from 2018 ACS") %>%
-  kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
+kable_hispanic_count_table <- kable(hispanic_count_for_table) %>%
+  kable("html", booktabs = TRUE, escape = FALSE) %>%
+  kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position")) 
 
 kable_hispanic_count_table
 
-kable_hispanic_percent_table <- kable(hispanic_percent_for_table, caption = "Hispanic Percent of Population from 2018 ACS") %>%
+kable_hispanic_percent_table <- kable(hispanic_percent_for_table) %>%
   kable_styling(latex_options = c("scale_down", "repeat_header", "HOLD_position"))
 
 kable_hispanic_percent_table
+
 
 ## plots
 
@@ -824,19 +834,20 @@ hispanic_bar_chart
 ###households##
 
 household_vars_18 <- c("DP02_0001", "DP02_0002", "DP02_0003", "DP02_0004", "DP02_0007", "DP02_0009", "DP02_0012", "DP02_0013",
-                       "DP02_0015", "DP02_0016", "DP02_0017", "DP02_0020", "DP02_0044", "DP02_0045", "DP02_0046", "DP02_0047",
+                       "DP02_0015", "DP02_0016", "DP02_0017", "DP02_0020","DP02_0043", "DP02_0044", "DP02_0045", "DP02_0046", "DP02_0047",
                        "DP02_0048", "DP02_0050")
 
 household_percent_vars_18 <- c("DP02_0001P", "DP02_0002P", "DP02_0003P", "DP02_0004P", "DP02_0007P", "DP02_0009P", "DP02_0012P", "DP02_0013P",
-                               "DP02_0015P", "DP02_0016P", "DP02_0017P", "DP02_0020P", "DP02_0044P", "DP02_0045P", "DP02_0046P", "DP02_0047P",
+                               "DP02_0015P", "DP02_0016P", "DP02_0017P", "DP02_0020P","DP02_0043P", "DP02_0044P", "DP02_0045P", "DP02_0046P", "DP02_0047P",
                                "DP02_0048P", "DP02_0050P")
 
 household_vars_names_18 <- c("Total Households", "Family Households", "Family Households with Children under 18", "Married Couple Family Households",
                              "Single Male Households with Children under 18", "Single Female Households with Children under 18", "Households of Age 65 or Greater Living Alone",
                              "Total Households with Children under 18", "Average Household Size", "Average Family Size", "Population in Households", "Children in Households", 
-                             "Number of Grandparents Living With and Responsible for Children under 18 Years Old", "Number of Grandparents Living With and Responsible for Children under 1 Year Old",
-                             "Number of Grandparents Living With and Responsible for Children 1-2 Years Old", "Number of Grandparents Living With and Responsible for Children 3-4 Years Old",
-                             "Number of Grandparents Living With and Responsible for Children 5+ Years Old", "Number of Female Grandparents Living With and Responsible for Children under 18 Years Old")
+                             "Number of Grandparents Living With Grandchildren under 18 Years Old",
+                             "Number of Grandparents Living With and Responsible for Children under 18 Years Old", "Number of Grandparents Living With and Responsible for Children for less than 1 Year",
+                             "Number of Grandparents Living With and Responsible for Children 1-2 Years", "Number of Grandparents Living With and Responsible for Children 3-4 Years",
+                             "Number of Grandparents Living With and Responsible for Children greater than 5 Years", "Number of Female Grandparents Living With and Responsible for Children under 18 Years Old")
 
 
 df_household_tract_counts_18 <- dp_2018 %>%
@@ -890,6 +901,7 @@ data_table_household_county_18 <- st_set_geometry(trimmed_df_household_county_18
 
 data_table_household_combined_18 <- st_set_geometry(trimmed_df_household_combined_18, NULL)
 
+data_table_household_full_18 <- trimmed_df_household_full_18
 
 ##rename the columns 
 
@@ -898,13 +910,17 @@ household_table_tract_names <- c("Household Measure", "Census Tract", "Count", "
 
 household_table_county_names <- c("Household Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
 
-household_table_combined_names <- c()
+household_table_combined_names <- c("Household Measure", "Location", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
 
-household_table_full_names <- c()
+household_table_full_names <- c("Household Measure", "Location", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
 
 names(data_table_household_tract_18) <- household_table_tract_names
 
 names(data_table_household_county_18) <- household_table_county_names
+
+names(data_table_household_combined_18) <- household_table_combined_names
+
+names(data_table_household_full_18) <- household_table_full_names
 
 ##make the data tables
 
@@ -912,6 +928,175 @@ household_tract_data_table_18 <- datatable(data_table_household_tract_18, captio
 
 household_county_data_table_18 <- datatable(data_table_household_county_18, caption = "Household Characteristics County Level for Upper East Tennessee 2018")
 
-household_tract_data_table_18  
+household_combined_data_table_18 <- datatable(data_table_household_combined_18)
 
-household_county_data_table_18
+household_full_data_table_18 <- datatable(data_table_household_full_18)
+
+####tables for word doc####
+
+temp <- data_table_household_full_18 %>%
+  filter(`Household Measure` == "Total Households" |
+           `Household Measure` == "Family Households"|
+           `Household Measure`=="Total Households with Children under 18"|
+           `Household Measure` == "Family Households with Children under 18") %>%
+  select(Location, `Household Measure`,Count, Percent) %>%
+  pivot_wider(names_from = `Household Measure`, names_glue = "{`Household Measure`} {.value}", values_from = c(`Count`, `Percent`))
+
+
+temp_for_table <- temp %>%
+  select(Location, `Total Households Count`, `Family Households Count`, `Family Households Percent`, 
+         `Total Households with Children under 18 Count`, `Total Households with Children under 18 Percent`, `Family Households with Children under 18 Percent`)
+
+kable_format(temp_for_table)
+
+single_households<- data_table_household_full_18 %>%
+  filter(`Household Measure` == "Single Female Households with Children under 18"|
+           `Household Measure` == "Single Male Households with Children under 18")%>%
+  select(Location, `Household Measure`, Count, Percent) %>%
+  pivot_wider(names_from = `Household Measure`, names_glue = "{`Household Measure`} {.value}",
+              values_from = c(`Count`, `Percent`))%>%
+  select(`Location`, `Single Female Households with Children under 18 Count`,
+         `Single Female Households with Children under 18 Percent`, 
+         `Single Male Households with Children under 18 Count`,
+         `Single Male Households with Children under 18 Percent`)
+
+kable_format(single_households)
+
+grandparents_1 <- data_table_household_full_18 %>%
+  filter(`Household Measure` == "Number of Grandparents Living With Grandchildren under 18 Years Old" | `Household Measure` == "Number of Grandparents Living With and Responsible for Children under 18 Years Old") %>%
+  select(Location, `Household Measure`, Count, Percent) %>%
+  pivot_wider(names_from = `Household Measure`, names_glue = "{`Household Measure`} {.value}",
+              values_from = c(`Count`, `Percent`)) %>%
+  select(`Location`, `Number of Grandparents Living With Grandchildren under 18 Years Old Count`, `Number of Grandparents Living With and Responsible for Children under 18 Years Old Count`, `Number of Grandparents Living With and Responsible for Children under 18 Years Old Percent`)
+  
+kable_format(grandparents_1)
+
+gp <-data_table_household_full_18 %>%
+  filter(str_detect(`Household Measure`, "Grandparents"))%>%
+  filter(`Household Measure` != "Number of Female Grandparents Living With and Responsible for Children under 18 Years Old") %>%
+  filter(`Household Measure` != "Number of Grandparents Living With Grandchildren under 18 Years Old") %>%
+  filter(`Household Measure` != "Number of Grandparents Living With and Responsible for Children under 18 Years Old")
+
+graph.names <- c("US","US","US","US", "TN","TN","TN","TN", "Carter County","Carter County","Carter County","Carter County",
+                 "Greene County","Greene County","Greene County","Greene County", "Hancock County","Hancock County","Hancock County","Hancock County",
+                 "Hawkins County","Hawkins County","Hawkins County","Hawkins County", "Johnson County","Johnson County","Johnson County","Johnson County", 
+                 "Sullivan County","Sullivan County","Sullivan County","Sullivan County",
+                 "Washington County","Washington County","Washington County","Washington County", "Unicoi County","Unicoi County","Unicoi County","Unicoi County")
+
+graph_names_ordered <- factor(graph.names, levels = c("US", "TN", "Carter County", "Greene County",
+                                  "Hawkins County", "Hancock County", "Johnson County", 
+                                  "Sullivan County", "Unicoi County", "Washington County"))
+
+gp_plot_dt <- cbind(graph_names_ordered, gp)
+
+gp_plot_dt%>%
+  select(Location, `Household Measure`, Percent) %>%
+  ggplot(aes(x = graph_names_ordered, y = Percent, fill = `Household Measure`))+
+  geom_bar(stat = "identity")+
+  labs(x = " ")
+
+
+#language spoken at home
+
+language_vars_18 <- c("DP02_0111", "DP02_0112", "DP02_0113", "DP02_0114", "DP02_0115")
+
+language_percent_vars_18 <- c("DP02_0111P", "DP02_0112P", "DP02_0113P", "DP02_0114P", "DP02_0115P")
+
+language_vars_names_18 <- c("Pop. Over 5 Years where English is only Spoken at Home",
+                            "Pop. Over 5 Years where a Language other than English is Primarily Spoken at Home",
+                            "Pop. Over 5 Years that Speak English less than 'Very Well'", 
+                            "Pop. Over 5 Years where Spanish is Primary Langauge Spoken at Home",
+                            "Pop. Over 5 Years where Spanish is Primary Language and Speak English less than 'Very Well'"
+                            )
+
+
+df_language_tract_counts_18 <- dp_2018 %>%
+  filter(variable %in% language_vars_18)
+
+df_language_county_counts_18 <- County_dp_2018 %>%
+  filter(variable %in% language_vars_18)
+
+df_language_tract_percent_18 <- dp_2018 %>%
+  filter(variable %in% language_percent_vars_18)
+
+df_language_county_percent_18 <- County_dp_2018 %>%
+  filter(variable %in% language_percent_vars_18)
+
+df_language_combined_counts_18 <- Combined_dp_2018 %>%
+  filter(variable %in% language_vars_18)
+
+df_language_combined_percent_18 <- Combined_dp_2018 %>%
+  filter(variable %in% language_percent_vars_18)
+
+df_language_full_counts_18 <- Full_dp_2018 %>%
+  filter(variable %in% language_vars_18)
+
+df_language_full_percent_18 <- Full_dp_2018 %>%
+  filter(variable %in% language_percent_vars_18)
+
+
+##combine the percents into one table
+
+df_language_tract_18 <- cbind(language_vars_names_18, df_language_tract_counts_18, df_language_tract_percent_18)
+
+df_language_county_18 <- cbind(language_vars_names_18, df_language_county_counts_18, df_language_county_percent_18)    
+
+df_language_combined_18 <- cbind(language_vars_names_18, df_language_combined_counts_18, df_language_combined_percent_18)
+
+df_language_full_18 <- cbind(language_vars_names_18, df_language_full_counts_18, df_language_full_percent_18)
+
+trimmed_df_language_tract_18 <- df_language_tract_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+
+trimmed_df_language_county_18 <- df_language_county_18[,c(1,3,5,6,12,13)] #these are the ones with the location data
+
+trimmed_df_language_combined_18 <- df_language_combined_18[,c(1,3,5,6,12,13)]
+
+trimmed_df_language_full_18 <- df_language_full_18[,c(1,3,5,6,12,13)] # no location data because it has full US values
+
+##get ride of location data for the tract/county
+
+data_table_language_tract_18 <- st_set_geometry(trimmed_df_language_tract_18, NULL)
+
+data_table_language_county_18 <- st_set_geometry(trimmed_df_language_county_18, NULL)
+
+data_table_language_combined_18 <- st_set_geometry(trimmed_df_language_combined_18, NULL)
+
+data_table_language_full_18 <- trimmed_df_language_full_18
+
+##rename the columns 
+
+
+language_table_tract_names <- c("Language Measure", "Census Tract", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+
+language_table_county_names <- c("Language Measure", "County", "Count", "Margin of Error", "Percent", "Percent Margin of Error") 
+
+language_table_combined_names <- c("Language Measure", "Location", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+
+language_table_full_names <- c("Language Measure", "Location", "Count", "Margin of Error", "Percent", "Percent Margin of Error")
+
+names(data_table_language_tract_18) <- language_table_tract_names
+
+names(data_table_language_county_18) <- language_table_county_names
+
+names(data_table_language_combined_18) <- language_table_combined_names
+
+names(data_table_language_full_18) <- language_table_full_names
+
+##make the data tables
+
+language_tract_data_table_18 <- datatable(data_table_language_tract_18, caption = "Language Characteristics of Census Tract Groups for Upper East Tennessee 2018")
+
+language_county_data_table_18 <- datatable(data_table_language_county_18, caption = "language Characteristics County Level for Upper East Tennessee 2018")
+
+language_combined_data_table_18 <- datatable(data_table_language_combined_18)
+
+language_full_data_table_18 <- datatable(data_table_language_full_18)
+
+###data_table_language_full_18
+
+language_table <- data_table_language_full_18 %>%
+  select(Location, `Language Measure`, `Percent`) %>%
+  pivot_wider(names_from = `Language Measure`, names_glue = "{`Language Measure`} {.value}",
+              values_from = c(`Percent`))
+
+kable_format(language_table)

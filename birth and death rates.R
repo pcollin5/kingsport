@@ -272,4 +272,99 @@ facet_by_NAME <-full %>%
   geom_line() +
   facet_wrap(~NAME)
 
+difference_line_plot
 
+facet_by_rate
+
+facet_by_NAME
+##need a table of birth/death rates
+
+birth_rate_2010 <- full %>%
+  filter(Year == "2010-2011") %>%
+  filter(Rate == "Birth")%>%
+  select(NAME, Year, Rate, value)
+
+death_rate_2010 <- full %>%
+  filter(Year == "2010-2011") %>%
+  filter(Rate == "Death") %>%
+  select(NAME, Year, Rate, value)
+
+combined_rates_2010 <- full %>%
+  filter(Year == "2010-2011") %>%
+  select(NAME, Year, Rate, value)  %>%
+  pivot_wider(names_from = "Rate")
+
+rate_table_names <- c("Location", "Year", "Birth Rate", "Death Rate")
+
+names(combined_rates_2010) <- rate_table_names
+ 
+kable(combined_rates_2010) %>%
+  kable_styling(latex_options = c("scale_down", "striped"))
+
+combined_rates_2018 <- full %>%
+  filter(Year == "2017-2018") %>%
+  select(NAME, Year, Rate, value) %>%
+  pivot_wider(names_from = "Rate")
+
+names(combined_rates_2018) <- rate_table_names
+
+kable(combined_rates_2018) %>%
+  kable_styling(latex_options = c("scale_down", "striped"))
+
+br_2018 <- full %>%
+  filter(Year == "2017-2018") %>%
+  filter(Rate == "Birth") %>%
+  select(value)
+
+br_2010 <- full %>%
+  filter(Year == "2010-2011") %>%
+  filter(Rate == "Birth") %>%
+  select(value)
+
+`Birth Rate Difference` = br_2018 - br_2010
+
+birth_rate_difference <- full %>%
+  filter(Year == "2017-2018") %>%
+  filter(Rate == "Birth") %>%
+  select(NAME) %>%
+  cbind(`Birth Rate Difference`)
+
+names(birth_rate_difference) <- c("Location", "2018 Birth Rate Compared with 2011 Birth Rate")  
+
+kable(birth_rate_difference) %>%
+  kable_styling(latex_options = c("scale_down", "striped"))
+
+full
+
+dr_2018 <- full %>%
+  filter(Year == "2017-2018") %>%
+  filter(Rate == "Death") %>%
+  select(value)
+
+dr_2010 <- full %>%
+  filter(Year == "2010-2011") %>%
+  filter(Rate == "Death") %>%
+  select(value)
+
+`Death Rate Difference` = dr_2018 - dr_2010
+
+death_rate_difference <- full %>%
+  filter(Year == "2017-2018") %>%
+  filter(Rate == "Death") %>%
+  select(NAME) %>%
+  cbind(`Death Rate Difference`)
+
+names(death_rate_difference) <- c("Location", "2018 Death Rate Compared with 2011 Death Rate")
+
+kable(death_rate_difference) %>%
+  kable_styling(latex_options = c("scale_down", "striped"))
+
+diff_2018 <- full %>%
+  filter(Year == "2017-2018") %>%
+  filter(Rate == "Birth") %>%
+  select(NAME, Year, Difference)
+
+names(diff_2018) <- c("Location", "Year", "Birth Rate minus Death Rate")
+
+kable(diff_2018) %>%
+  kable_styling(latex_options = c("scale_down", "striped"))
